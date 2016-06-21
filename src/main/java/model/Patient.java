@@ -53,7 +53,37 @@ public class Patient {
 	@Column
 	private boolean inpatient;
 	
+	public Patient(){}
 	
+	
+	
+	public Patient(int id, String forename, String surname, Date dob, boolean gender, String address, String phone,
+			String nextOfKin, int doctorId, int deptId, Date admissionDate, Date dischargeDate, int bedId,
+			Date appointment, boolean alive, Set<Prescription> prescriptions, Set<Note> patientNotes,
+			PatientType patientType, boolean inpatient) {
+		this.id = id;
+		this.forename = forename;
+		this.surname = surname;
+		this.dob = dob;
+		this.gender = gender;
+		this.address = address;
+		this.phone = phone;
+		this.nextOfKin = nextOfKin;
+		this.doctorId = doctorId;
+		this.deptId = deptId;
+		this.admissionDate = admissionDate;
+		this.dischargeDate = dischargeDate;
+		this.bedId = bedId;
+		this.appointment = appointment;
+		this.alive = alive;
+		this.prescriptions = prescriptions;
+		this.patientNotes = patientNotes;
+		this.patientType = patientType;
+		this.inpatient = inpatient;
+	}
+
+
+
 	public int getId() {
 		return id;
 	}
