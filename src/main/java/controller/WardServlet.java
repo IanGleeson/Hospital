@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Department
+ * Servlet implementation class Ward
  */
-public class DepartmentServlet extends HttpServlet {
+public class WardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DepartmentServlet() {
+    public WardServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,41 +30,15 @@ public class DepartmentServlet extends HttpServlet {
 			action="viewAll";
 		}
 		switch (action) {
-		case "addDepartment":
+		case "addWard":
 			break;
 
 		default:
-			viewDepartment(request,response);
+			//viewWard(request,response);
 			break;
 		}
-		
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	private void deleteDepartment(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	private void updateDepartment(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	private void addDepartment(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	private void viewAllDepartment(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	private void viewDepartment(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/**
