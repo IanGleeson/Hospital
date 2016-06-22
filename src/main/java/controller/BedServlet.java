@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Ward
+ * Servlet implementation class BedServlet
  */
-public class WardServlet extends HttpServlet {
+public class BedServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WardServlet() {
+    public BedServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,42 +30,42 @@ public class WardServlet extends HttpServlet {
 			action="viewAll";
 		}
 		switch (action) {
-		case "addWard":
+		case "addBed":
 			break;
 
 		default:
-			//viewWard(request,response);
+			//viewRoom(request,response);
 			break;
 		}
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	
-	private void deleteWard(HttpServletRequest request, HttpServletResponse response) {
+	private void deleteBed(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	private void updateWard(HttpServletRequest request, HttpServletResponse response) {
+	private void updateBed(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	private void addWard(HttpServletRequest request, HttpServletResponse response) {
+	private void addBed(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	private void viewAllWard(HttpServletRequest request, HttpServletResponse response) {
+	private void viewAllBed(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	private void viewWard(HttpServletRequest request, HttpServletResponse response) {
+	private void viewBed(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
 	}
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

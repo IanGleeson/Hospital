@@ -17,18 +17,8 @@ public class Note {
 	private int patientId;
 	
 	
-	public Note(){}
 	
 	
-	
-	public Note(int id, String content, int patientId) {
-		this.id = id;
-		this.content = content;
-		this.patientId = patientId;
-	}
-
-
-
 	public int getId() {
 		return id;
 	}
@@ -46,13 +36,6 @@ public class Note {
 	}
 	public void setPatientId(int patientId) {
 		this.patientId = patientId;
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "Note [id=" + id + ", content=" + content + ", patientId=" + patientId + "]";
 	}
 	
 	

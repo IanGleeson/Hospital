@@ -18,20 +18,8 @@ public class Prescription {
 	@Column
 	private List<String> prescriptionList;
 	
-	public Prescription(){}
 	
 	
-	
-	
-	public Prescription(int id, Date prescriptionDate, List<String> prescriptionList) {
-		this.id = id;
-		this.prescriptionDate = prescriptionDate;
-		this.prescriptionList = prescriptionList;
-	}
-
-
-
-
 	public int getId() {
 		return id;
 	}
@@ -49,15 +37,6 @@ public class Prescription {
 	}
 	public void setPrescriptionList(List<String> prescriptionList) {
 		this.prescriptionList = prescriptionList;
-	}
-
-
-
-
-	@Override
-	public String toString() {
-		return "Prescription [id=" + id + ", prescriptionDate=" + prescriptionDate + ", prescriptionList="
-				+ prescriptionList + "]";
 	}
 
 

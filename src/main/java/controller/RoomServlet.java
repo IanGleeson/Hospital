@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Ward
+ * Servlet implementation class RoomServlet
  */
-public class WardServlet extends HttpServlet {
+public class RoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WardServlet() {
+    public RoomServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -24,45 +24,43 @@ public class WardServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String action = request.getParameter("action");
 		if(action==null){
 			action="viewAll";
 		}
 		switch (action) {
-		case "addWard":
+		case "addRoom":
 			break;
 
 		default:
-			//viewWard(request,response);
+			//viewRoom(request,response);
 			break;
 		}
+		
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-
-	
-	private void deleteWard(HttpServletRequest request, HttpServletResponse response) {
+	private void deleteRoom(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	private void updateWard(HttpServletRequest request, HttpServletResponse response) {
+	private void updateRoom(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	private void addWard(HttpServletRequest request, HttpServletResponse response) {
+	private void addRoom(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	private void viewAllWard(HttpServletRequest request, HttpServletResponse response) {
+	private void viewAllRoom(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	private void viewWard(HttpServletRequest request, HttpServletResponse response) {
+	private void viewRoom(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
 	}
