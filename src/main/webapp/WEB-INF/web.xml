@@ -2,6 +2,7 @@
 
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
+	
 	<servlet> 
      	<servlet-name>DepartmentServlet</servlet-name>  
      	<servlet-class>controller.DepartmentServlet</servlet-class>  
@@ -11,7 +12,6 @@
     	<url-pattern>/Department</url-pattern>  
 	</servlet-mapping>
 	
-	 
 	<servlet> 
      	<servlet-name>PatientServlet</servlet-name>  
      	<servlet-class>controller.PatientServlet</servlet-class>  
