@@ -5,6 +5,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <display-name>Archetype Created Web Application</display-name>
+	
 	<servlet> 
      	<servlet-name>DepartmentServlet</servlet-name>  
      	<servlet-class>controller.DepartmentServlet</servlet-class>  
@@ -14,7 +15,6 @@
     	<url-pattern>/Department</url-pattern>  
 	</servlet-mapping>
 	
-	 
 	<servlet> 
      	<servlet-name>PatientServlet</servlet-name>  
      	<servlet-class>controller.PatientServlet</servlet-class>  
