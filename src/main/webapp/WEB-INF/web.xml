@@ -20,4 +20,13 @@
      	<servlet-name>PatientServlet</servlet-name>  
     	<url-pattern>/Patient</url-pattern>  
 	</servlet-mapping>
+	
+	<servlet> 
+     	<servlet-name>BedServlet</servlet-name>  
+     	<servlet-class>controller.BedServlet</servlet-class>  
+   	</servlet>  
+   	<servlet-mapping>  
+     	<servlet-name>BedServlet</servlet-name>  
+    	<url-pattern>/Bed</url-pattern>  
+	</servlet-mapping>
 </web-app>

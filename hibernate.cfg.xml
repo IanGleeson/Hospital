@@ -39,6 +39,7 @@
         <mapping class="model.User"/>
         <mapping class="model.UserType"/>
         <mapping class="model.RoomTypeAndCost"/>
+        <mapping class="model.Bed"/>
         
         
 		<!-- List of XML mapping files if not using annotations in the POJO  -->
