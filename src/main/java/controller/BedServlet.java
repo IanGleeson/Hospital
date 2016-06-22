@@ -6,14 +6,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.BedDAO;
 import model.Bed;
+
 
 /**
  * Servlet implementation class BedServlet
  */
 public class BedServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private BedDAO bedDAO;   
+    private BedDAO bedDAO;
     /**
      * @see HttpServlet#HttpServlet()
      */
