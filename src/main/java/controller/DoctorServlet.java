@@ -25,37 +25,37 @@ public class DoctorServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		switch(action){
 		case "addDoctor":
-			addDoctor(request,response);
+			//addDoctor(request,response);
 			break;
 		case "updateDoctor":
-			updateDoctor(request,response);
+			//updateDoctor(request,response);
 			break;
 		case "getAllDoctors":
-			getAllDoctors(request,response);
+			//getAllDoctors(request,response);
 			break;
 		case"deleteDoctor":
-			deleteDoctor(request, response);
+			//deleteDoctor(request, response);
 			break;
 		case "getDoctorDetailsById":
-		getDoctorDetailsById(request, response);
+		//getDoctorDetailsById(request, response);
 		break;
 		case "getDoctorDetailsByLastname":
-			getDoctorDetailsByLastname(request,response);
+			//getDoctorDetailsByLastname(request,response);
 			break;
 		case "getDoctorDetailsByDepartment":
-			getDoctorDetailsByDepartment(request, response);
+			//getDoctorDetailsByDepartment(request, response);
 			break;
 		default: //viewAll
 			break;
 		}
-		public boolean addDoctor(){
-			String firstName = request.getParameter(firstName);
-			String lastName = request.getParameter(lastName);
-			
-		}
+		
 	}
 
-
+	public void addDoctor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		
+	} 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request,response);
 	}
