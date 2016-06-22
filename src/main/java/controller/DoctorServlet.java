@@ -52,8 +52,8 @@ public class DoctorServlet extends HttpServlet {
 	}
 
 	public void addDoctor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String firstName = request.getParameter("firstName");
-		String lastName = request.getParameter("lastName");
+		//String firstName = request.getParameter("firstName");
+		//String lastName = request.getParameter("lastName");
 		
 	} 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
