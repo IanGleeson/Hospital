@@ -25,6 +25,20 @@ public class Bill {
 	@Column
 	private BigDecimal miscFee;
 	
+	
+	public Bill(){}
+	
+	
+	public Bill(int id, Date billDate, int patientId, BigDecimal roomCharge, BigDecimal doctorFee, Note billNote,
+			BigDecimal miscFee) {
+		this.id = id;
+		this.billDate = billDate;
+		this.patientId = patientId;
+		this.roomCharge = roomCharge;
+		this.doctorFee = doctorFee;
+		this.billNote = billNote;
+		this.miscFee = miscFee;
+	}
 	public int getId() {
 		return id;
 	}
@@ -66,6 +80,13 @@ public class Bill {
 	}
 	public void setMiscFee(BigDecimal miscFee) {
 		this.miscFee = miscFee;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Bill [id=" + id + ", billDate=" + billDate + ", patientId=" + patientId + ", roomCharge=" + roomCharge
+				+ ", doctorFee=" + doctorFee + ", billNote=" + billNote + ", miscFee=" + miscFee + "]";
 	}
 	
 	

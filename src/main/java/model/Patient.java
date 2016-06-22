@@ -198,6 +198,18 @@ public class Patient {
 	public void setInpatient(boolean inpatient) {
 		this.inpatient = inpatient;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Patient [id=" + id + ", forename=" + forename + ", surname=" + surname + ", dob=" + dob + ", gender="
+				+ gender + ", address=" + address + ", phone=" + phone + ", nextOfKin=" + nextOfKin + ", doctorId="
+				+ doctorId + ", deptId=" + deptId + ", admissionDate=" + admissionDate + ", dischargeDate="
+				+ dischargeDate + ", bedId=" + bedId + ", appointment=" + appointment + ", alive=" + alive
+				+ ", prescriptions=" + prescriptions + ", patientNotes=" + patientNotes + ", patientType=" + patientType
+				+ ", inpatient=" + inpatient + "]";
+	}
 	
 	
 
