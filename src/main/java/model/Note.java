@@ -13,12 +13,21 @@ public class Note {
 	private int id;
 	@Column
 	private String content;
-	@Column
-	private int patientId;
 	
 	
 	
+	public Note(){}
 	
+	
+	
+	public Note(int id, String content) {
+		this.id = id;
+		this.content = content;
+		
+	}
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -31,12 +40,15 @@ public class Note {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int getPatientId() {
-		return patientId;
-	}
-	public void setPatientId(int patientId) {
-		this.patientId = patientId;
+	
+
+
+
+	@Override
+	public String toString() {
+		return "Note [id=" + id + ", content=" + content+ "]";
 	}
 	
 	
 }
+
