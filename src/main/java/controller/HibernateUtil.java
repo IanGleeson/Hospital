@@ -27,6 +27,8 @@ public class HibernateUtil {
 		config.addAnnotatedClass(model.Bill.class);
 		config.addAnnotatedClass(model.Note.class);
 		config.addAnnotatedClass(model.Prescription.class);
+		config.addAnnotatedClass(model.Department.class);
+
 		
 		/* config.getProperties() gets all the mappings/ properties 
 		 * from the hibernate config file. */

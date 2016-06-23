@@ -4,7 +4,10 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 
 import model.Department;
 
@@ -12,11 +15,29 @@ import model.Department;
 
 public class DepartmentDAO {
 	
+	//private static SessionFactory sessionFactory;
+	
 	public DepartmentDAO(){
+		
+/*		 A Configuration hooks up to the hibernate.cfg.xml file
+		 * to read the properties. The configure() method uses
+		 * the mapping and properties in that resource/ config file. 
+		Configuration config = new Configuration().configure();
+		
+		config.addAnnotatedClass(model.Department.class);
+		
+		 config.getProperties() gets all the mappings/ properties 
+		 * from the hibernate config file. 
+		StandardServiceRegistryBuilder builder = 
+				new StandardServiceRegistryBuilder().
+				applySettings(config.getProperties());
+		
+		 A SessionFactory is used to create each Session instance 
+		sessionFactory = config.buildSessionFactory(builder.build());*/
 		
 	}
 
-	protected boolean addDepartment(Department department){
+	protected   boolean addDepartment(Department department){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 		Integer departmentId = 0;
