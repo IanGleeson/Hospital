@@ -8,5 +8,6 @@
 </head>
 <body>
 <h1>View Department</h1>
+<a   href="DepartmentServlet?action=addDepartment">AddDepartment</a>
 </body>
 </html>
