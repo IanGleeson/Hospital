@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 public class Bill {
 	
@@ -20,11 +22,33 @@ public class Bill {
 	private BigDecimal roomCharge;
 	@Column
 	private BigDecimal doctorFee;
+	
+	
 	@Column
-	private Note billNote;
+	private String billNote;
 	@Column
 	private BigDecimal miscFee;
 	
+	
+	public Bill(){}
+	
+	
+	
+	
+	public Bill(int id, Date billDate, int patientId, BigDecimal roomCharge, BigDecimal doctorFee, String billNote,
+			BigDecimal miscFee) {
+		this.id = id;
+		this.billDate = billDate;
+		this.patientId = patientId;
+		this.roomCharge = roomCharge;
+		this.doctorFee = doctorFee;
+		this.billNote = billNote;
+		this.miscFee = miscFee;
+	}
+
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -55,10 +79,10 @@ public class Bill {
 	public void setDoctorFee(BigDecimal doctorFee) {
 		this.doctorFee = doctorFee;
 	}
-	public Note getBillNote() {
+	public String getBillNote() {
 		return billNote;
 	}
-	public void setBillNote(Note billNote) {
+	public void setBillNote(String billNote) {
 		this.billNote = billNote;
 	}
 	public BigDecimal getMiscFee() {
@@ -67,8 +91,18 @@ public class Bill {
 	public void setMiscFee(BigDecimal miscFee) {
 		this.miscFee = miscFee;
 	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Bill [id=" + id + ", billDate=" + billDate + ", patientId=" + patientId + ", roomCharge=" + roomCharge
+				+ ", doctorFee=" + doctorFee + ", billNote=" + billNote + ", miscFee=" + miscFee + "]";
+	}
 	
 	
 	
 
 }
+
