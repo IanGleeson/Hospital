@@ -39,14 +39,8 @@ public class RoomServlet extends HttpServlet {
 		case "addRoom": 		addRoom(request,response);
 			break;
 		case "deleteRoom": 		deleteRoom(request,response);
-			break;
-		case "updateRoom": 		updateRoom(request,response);
-			break;
-		case "showUpdateForm": 	showUpdateForm(request, response);
 			break;	
-		case "viewRoom": 		viewRoom(request,response);
-			break;
-		default:				viewAllRooms(request,response);
+		default:				viewRoom(request,response);
 			break;
 		}
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -55,10 +49,6 @@ public class RoomServlet extends HttpServlet {
 	 * @param request
 	 * @param response
 	 */
-	private void showUpdateForm(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	private void deleteRoom(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int id = Integer.valueOf(request.getParameter("roomId"));
@@ -66,34 +56,9 @@ public class RoomServlet extends HttpServlet {
 		response.sendRedirect("RoomServlet?action=viewAll");
 		
 	}
-	//METHOD UNDER CONSTRUCTION
-	private void updateRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Create a room from all the parameters from the update form
-		int id = Integer.valueOf(request.getParameter("roomId"));
-		int WardId = Integer.valueOf(request.getParameter("WardId"));
-		int Type = Integer.valueOf(request.getParameter("Type"));
-		//Set<Bed> Beds = request.getParameter("Beds");
-		
-		//Set<Room> beds = new HashSet<>(roomDAO.viewRoom());
-
-		//Room room = new Room(id, WardId, Type, Beds);
-
-		// Send that room to the DAO
-		//roomDAO.updateRoom(room);
-
-		//response.sendRedirect("RoomServlet?action=viewAllRooms");
-		viewAllRooms(request, response);
-		
-	}
 	
 	private void addRoom(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		
-	}
-	
-	private void viewAllRooms(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("WEB-INF/view/viewAllRooms.jsp").
-		forward(request, response);
 		
 	}
 	
