@@ -17,25 +17,17 @@ import model.Department;
 @WebServlet( "/DepartmentServlet" )
 public class DepartmentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-<<<<<<< HEAD
        
     /**
      * @see HttpServlet#HttpServlet()
      * 
      */
 	
-=======
-     
->>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
 	private DepartmentDAO departmentDAO;
 	
     public DepartmentServlet() {
-<<<<<<< HEAD
  
     	departmentDAO = new DepartmentDAO();	
-=======
-        departmentDAO = new DepartmentDAO();
->>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
     }
 
 	/**
@@ -44,9 +36,9 @@ public class DepartmentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String action = request.getParameter("action");
-		//if(action==null){
+		if(action==null){
 			action="addDepartment";
-		//}
+		}
 		switch (action) {
 		case "addDepartment":
 			addDepartment(request,response);
@@ -58,8 +50,7 @@ public class DepartmentServlet extends HttpServlet {
 			break;
 		}
 		
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	private void deleteDepartment(HttpServletRequest request, HttpServletResponse response) {
@@ -84,7 +75,7 @@ public class DepartmentServlet extends HttpServlet {
 		boolean departmentId = departmentDAO.addDepartment(d);
 		if(departmentId) System.out.println("Department Inserted ");
 		
-		response.sendRedirect("DepartmentServlet?action=addDepartment");
+	//	response.sendRedirect("DepartmentServlet?action=addDepartment");
 		
 		
 	}

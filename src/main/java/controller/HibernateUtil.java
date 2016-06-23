@@ -28,12 +28,14 @@ public class HibernateUtil {
 		config.addAnnotatedClass(model.Bill.class);
 		config.addAnnotatedClass(model.Note.class);
 		config.addAnnotatedClass(model.Prescription.class);
-<<<<<<< HEAD
+		
+		config.addAnnotatedClass(model.Bed.class);
+		config.addAnnotatedClass(model.RoomTypeAndCost.class);
 		config.addAnnotatedClass(model.Department.class);
-
-=======
 		config.addAnnotatedClass(model.Ward.class);
->>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
+		config.addAnnotatedClass(model.Room.class);
+
+		
 		
 		/* config.getProperties() gets all the mappings/ properties 
 		 * from the hibernate config file. */
