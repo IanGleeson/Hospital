@@ -24,59 +24,80 @@ public class Ward {
 	@JoinColumn(name="DeptId")
 	private List<Department> Departments;
 
-	/**
-	 * @return the id
-	 */
+	public Ward() {
+		super();
+	}
+
+	public Ward(int id, int deptId, String name, List<Department> departments) {
+		super();
+		Id = id;
+		DeptId = deptId;
+		Name = name;
+		Departments = departments;
+	}
+
 	public int getId() {
 		return Id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
 	public void setId(int id) {
 		Id = id;
 	}
 
-	/**
-	 * @return the deptId
-	 */
 	public int getDeptId() {
 		return DeptId;
 	}
 
-	/**
-	 * @param deptId the deptId to set
-	 */
 	public void setDeptId(int deptId) {
 		DeptId = deptId;
 	}
 
-	/**
-	 * @return the name
-	 */
 	public String getName() {
 		return Name;
 	}
 
-	/**
-	 * @param name the name to set
-	 */
 	public void setName(String name) {
 		Name = name;
 	}
 
-	/**
-	 * @return the departments
-	 */
 	public List<Department> getDepartments() {
 		return Departments;
 	}
 
-	/**
-	 * @param departments the departments to set
-	 */
 	public void setDepartments(List<Department> departments) {
 		Departments = departments;
 	}
+
+	@Override
+	public String toString() {
+		return "Ward [Id=" + Id + ", DeptId=" + DeptId + ", Name=" + Name + ", Departments=" + Departments + "]";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ward other = (Ward) obj;
+		if (Departments == null) {
+			if (other.Departments != null)
+				return false;
+		} else if (!Departments.equals(other.Departments))
+			return false;
+		if (DeptId != other.DeptId)
+			return false;
+		if (Id != other.Id)
+			return false;
+		if (Name == null) {
+			if (other.Name != null)
+				return false;
+		} else if (!Name.equals(other.Name))
+			return false;
+		return true;
+	}
+
+	
 }
