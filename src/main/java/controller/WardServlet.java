@@ -15,6 +15,7 @@ public class WardServlet extends HttpServlet {
 	
     public WardServlet() {
         wardDAO = new WardDAO();
+        System.out.println("Database Created");
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
