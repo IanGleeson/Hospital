@@ -6,23 +6,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.BedDAO;
-import model.Bed;
-
-
 /**
  * Servlet implementation class BedServlet
  */
 public class BedServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private BedDAO bedDAO;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
     public BedServlet() {
         super();
         // TODO Auto-generated constructor stub
-        bedDAO = new BedDAO();
     }
 
 	/**
@@ -40,7 +35,6 @@ public class BedServlet extends HttpServlet {
 
 		default:
 			//viewRoom(request,response);
-			addBed(request, response);
 			break;
 		}
 		// TODO Auto-generated method stub
@@ -59,11 +53,6 @@ public class BedServlet extends HttpServlet {
 	
 	private void addBed(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		Bed bed = new Bed();
-		bed.setId(1);
-		bed.setRoomId(1);
-		bed.setOccupied(true);
-		bedDAO.addBed(bed);
 		
 	}
 	

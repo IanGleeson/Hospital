@@ -22,12 +22,5 @@ public class Department {
 	@OneToMany(cascade={CascadeType.ALL})
 	@JoinColumn(name="DeptId")
 	private List<Ward> Wards;
-
-	public Department(int id, String name) {
-		super();
-		Id = id;
-		Name = name;
-	}
-	
 	
 }
