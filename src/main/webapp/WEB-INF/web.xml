@@ -29,4 +29,13 @@
      	<servlet-name>BedServlet</servlet-name>  
     	<url-pattern>/Bed</url-pattern>  
 	</servlet-mapping>
+	
+	<servlet> 
+     	<servlet-name>WardServlet</servlet-name>  
+     	<servlet-class>controller.WardServlet</servlet-class>  
+   	</servlet>  
+   	<servlet-mapping>  
+     	<servlet-name>WardServlet</servlet-name>  
+    	<url-pattern>/Ward</url-pattern>  
+	</servlet-mapping>
 </web-app>

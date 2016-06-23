@@ -17,17 +17,25 @@ import model.Department;
 @WebServlet( "/DepartmentServlet" )
 public class DepartmentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+<<<<<<< HEAD
        
     /**
      * @see HttpServlet#HttpServlet()
      * 
      */
 	
+=======
+     
+>>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
 	private DepartmentDAO departmentDAO;
 	
     public DepartmentServlet() {
+<<<<<<< HEAD
  
     	departmentDAO = new DepartmentDAO();	
+=======
+        departmentDAO = new DepartmentDAO();
+>>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
     }
 
 	/**

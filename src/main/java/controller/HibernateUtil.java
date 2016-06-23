@@ -1,5 +1,6 @@
 package controller;
 
+
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -27,8 +28,12 @@ public class HibernateUtil {
 		config.addAnnotatedClass(model.Bill.class);
 		config.addAnnotatedClass(model.Note.class);
 		config.addAnnotatedClass(model.Prescription.class);
+<<<<<<< HEAD
 		config.addAnnotatedClass(model.Department.class);
 
+=======
+		config.addAnnotatedClass(model.Ward.class);
+>>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
 		
 		/* config.getProperties() gets all the mappings/ properties 
 		 * from the hibernate config file. */

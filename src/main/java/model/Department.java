@@ -21,6 +21,7 @@ public class Department {
 	@Column
 	private String Name;
 	
+<<<<<<< HEAD
    @OneToMany(cascade=CascadeType.ALL)
    @JoinColumn(name="DeptId")
    private Set<Ward> wards = new HashSet<>();	
@@ -119,5 +120,10 @@ public String toString() {
 	return "Department [Id=" + Id + ", Name=" + Name + ", wards=" + wards + "]";
 }
 
+=======
+	@OneToMany(cascade={CascadeType.ALL})
+	@JoinColumn(name="DeptId")
+	private List<Ward> Wards;
+>>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
 	
 }

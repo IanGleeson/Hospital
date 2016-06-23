@@ -46,49 +46,85 @@ public class Ward {
 
 
 
-	/**
-	 * @return the id
-	 */
+	public Ward() {
+		super();
+	}
+
+	public Ward(int id, int deptId, String name, List<Department> departments) {
+		super();
+		Id = id;
+		DeptId = deptId;
+		Name = name;
+		Departments = departments;
+	}
+
 	public int getId() {
 		return Id;
 	}
 
+<<<<<<< HEAD
 
 
 	/**
 	 * @param id the id to set
 	 */
+=======
+>>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
 	public void setId(int id) {
 		Id = id;
 	}
 
+<<<<<<< HEAD
+=======
+	public int getDeptId() {
+		return DeptId;
+	}
+>>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
 
+<<<<<<< HEAD
+=======
+	public void setDeptId(int deptId) {
+		DeptId = deptId;
+	}
+>>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
 
-	/**
-	 * @return the name
-	 */
 	public String getName() {
 		return Name;
 	}
 
+<<<<<<< HEAD
 
 
 	/**
 	 * @param name the name to set
 	 */
+=======
+>>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
 	public void setName(String name) {
 		Name = name;
 	}
 
+<<<<<<< HEAD
 
+=======
+	public List<Department> getDepartments() {
+		return Departments;
+	}
+>>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
 
+<<<<<<< HEAD
 	/**
 	 * @return the deptId
 	 */
 	public int getDeptId() {
 		return DeptId;
+=======
+	public void setDepartments(List<Department> departments) {
+		Departments = departments;
+>>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
 	}
 
+<<<<<<< HEAD
 
 
 	/**
@@ -178,3 +214,38 @@ public class Ward {
 
 	
 }
+=======
+	@Override
+	public String toString() {
+		return "Ward [Id=" + Id + ", DeptId=" + DeptId + ", Name=" + Name + ", Departments=" + Departments + "]";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ward other = (Ward) obj;
+		if (Departments == null) {
+			if (other.Departments != null)
+				return false;
+		} else if (!Departments.equals(other.Departments))
+			return false;
+		if (DeptId != other.DeptId)
+			return false;
+		if (Id != other.Id)
+			return false;
+		if (Name == null) {
+			if (other.Name != null)
+				return false;
+		} else if (!Name.equals(other.Name))
+			return false;
+		return true;
+	}
+
+	
+}
+>>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
