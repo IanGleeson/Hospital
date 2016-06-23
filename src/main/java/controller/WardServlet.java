@@ -7,22 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class Ward
- */
+
 public class WardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private WardDAO wardDAO;
 	
     public WardServlet() {
-        
-    	wardDAO = new WardDAO();
+        wardDAO = new WardDAO();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String action = request.getParameter("action");
@@ -30,16 +24,21 @@ public class WardServlet extends HttpServlet {
 			action="viewAll";
 		}
 		switch (action) {
-		case "addWard":
-			
+		case "addWardForm":
+			request.getRequestDispatcher("WEB-INF/View/AddWard.jsp").forward(request, response);
 			break;
+		case "addWard":
+			break;
+ 
+		
 
 		default:
 			//viewWard(request,response);
 			break;
 		}
+		request.getRequestDispatcher("WEB-INF/Ward/ViewWard.jsp").forward(request, response);
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	
@@ -53,8 +52,8 @@ public class WardServlet extends HttpServlet {
 		
 	}
 	
-	private void addWard(HttpServletRequest request, HttpServletResponse response) {
-		
+	private void addWard(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("WEB-INF/Ward/AddWard.jsp").forward(request, response);
 		HttpSession session = request.getSession();
 		
 	}
