@@ -7,40 +7,8 @@
     <session-factory>
 
         <!-- Database connection settings -->
-        <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-        
-<<<<<<< HEAD
-        <property name="connection.url">jdbc:sqlserver://SD-16;databaseName=hms_db;</property>
-        <property name="connection.username">hospital</property>
-        <property name="connection.password">password</property>       
+        <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>    
 
-        <!-- JDBC connection pool (use the built-in) -->
-        <property name="connection.pool_size">1</property>
-
-        <!-- SQL dialect, e.g. some dbs take an int, some take an Integer -->
-        <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
-
-        <!-- Disable the second-level cache  -->
-        <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
-
-        <!-- Print out all executed SQL to stdout -->
-        <property name="show_sql">true</property>
-
-        <!-- Drop and re-create the database schema on startup, 'create' will create
-        any tables that are needed -->
-        
-        <property name="hibernate.hbm2ddl.auto">create</property>
-
-        <!-- Mention here ALL the model classes along with their package name -->
-        <mapping class="model.Bill"/>
-        <mapping class="model.Note"/>
-        <mapping class="model.Patient"/>
-        <mapping class="model.PatientType"/>
-        <mapping class="model.Prescription"/>
-        <mapping class="model.User"/>
-        <mapping class="model.UserType"/>
-        <mapping class="model.Department"/>
-=======
         <property name="connection.url">jdbc:sqlserver://SD-05;databaseName=hms_db;</property>
         <property name="connection.username">hospital</property>
         <property name="connection.password">password</property>       
@@ -70,9 +38,13 @@
         <mapping class="model.Prescription"/>
         <mapping class="model.User"/>
         <mapping class="model.UserType"/>
->>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
-        <mapping class="model.RoomTypeAndCost"/>
+        
         <mapping class="model.Bed"/>
+        <mapping class="model.RoomTypeAndCost"/>         
+        <mapping class="model.Room"/>
+        <mapping class="model.Ward"/>
+        <mapping class="model.Department"/>
+
         
         
 		<!-- List of XML mapping files if not using annotations in the POJO  -->
