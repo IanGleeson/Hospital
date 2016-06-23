@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Ward
@@ -12,12 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 public class WardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	private WardDAO wardDAO;
+	
     public WardServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+        
+    	wardDAO = new WardDAO();
     }
 
 	/**
@@ -31,6 +31,7 @@ public class WardServlet extends HttpServlet {
 		}
 		switch (action) {
 		case "addWard":
+			
 			break;
 
 		default:
@@ -53,7 +54,8 @@ public class WardServlet extends HttpServlet {
 	}
 	
 	private void addWard(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		
+		HttpSession session = request.getSession();
 		
 	}
 	

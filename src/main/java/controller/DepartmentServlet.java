@@ -11,13 +11,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class DepartmentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+     
+	private DepartmentDAO departmentDAO;
+	
     public DepartmentServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+        departmentDAO = new DepartmentDAO();
     }
 
 	/**
