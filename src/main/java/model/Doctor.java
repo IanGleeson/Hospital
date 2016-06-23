@@ -24,7 +24,7 @@ private String phoneNumber;
 @Column
 private String qualification;
 @Column
-private int DeptID;
+private int DeptId;
 
 public Doctor(){}
 
@@ -38,7 +38,7 @@ public Doctor(int id, String firstName, String lastName, boolean gender,
 	this.address = address;
 	this.phoneNumber = phoneNumber;
 	this.qualification = qualification;
-	DeptID = deptID;
+	DeptId = deptID;
 }
 
 public int getId() {
@@ -98,18 +98,18 @@ public void setQualification(String qualification) {
 }
 
 public int getDeptID() {
-	return DeptID;
+	return DeptId;
 }
 
-public void setDeptID(int deptID) {
-	DeptID = deptID;
+public void setDeptId(int deptId) {
+	DeptId = deptId;
 }
 
 @Override
 public int hashCode() {
 	final int prime = 31;
 	int result = 1;
-	result = prime * result + DeptID;
+	result = prime * result + DeptId;
 	result = prime * result + ((address == null) ? 0 : address.hashCode());
 	result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 	result = prime * result + (gender ? 1231 : 1237);
@@ -131,7 +131,7 @@ public boolean equals(Object obj) {
 	if (getClass() != obj.getClass())
 		return false;
 	Doctor other = (Doctor) obj;
-	if (DeptID != other.DeptID)
+	if (DeptId != other.DeptId)
 		return false;
 	if (address == null) {
 		if (other.address != null)
@@ -170,7 +170,7 @@ public String toString() {
 	return "Doctor [id=" + id + ", firstName=" + firstName + ", lastName="
 			+ lastName + ", gender=" + gender + ", address=" + address
 			+ ", phoneNumber=" + phoneNumber + ", qualification="
-			+ qualification + ", DeptID=" + DeptID + "]";
+			+ qualification + ", DeptID=" + DeptId + "]";
 }
 
 

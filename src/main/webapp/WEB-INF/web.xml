@@ -2,7 +2,7 @@
 
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
-    
+	
 	<servlet> 
      	<servlet-name>DepartmentServlet</servlet-name>  
      	<servlet-class>controller.DepartmentServlet</servlet-class>  
@@ -28,5 +28,14 @@
    	<servlet-mapping>  
      	<servlet-name>BedServlet</servlet-name>  
     	<url-pattern>/Bed</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet> 
+     	<servlet-name>WardServlet</servlet-name>  
+     	<servlet-class>controller.WardServlet</servlet-class>  
+   	</servlet>  
+   	<servlet-mapping>  
+     	<servlet-name>WardServlet</servlet-name>  
+    	<url-pattern>/Ward</url-pattern>  
 	</servlet-mapping>
 </web-app>
