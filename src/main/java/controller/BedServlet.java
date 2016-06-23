@@ -6,10 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.BedDAO;
 import model.Bed;
-
-
 /**
  * Servlet implementation class BedServlet
  */
@@ -63,7 +60,7 @@ public class BedServlet extends HttpServlet {
 		bed.setId(1);
 		bed.setRoomId(1);
 		bed.setOccupied(true);
-		bedDAO.addBed(bed);
+		//bedDAO.addBed(bed);
 		
 	}
 	
