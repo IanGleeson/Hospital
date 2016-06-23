@@ -36,7 +36,7 @@ public class PatientServlet extends HttpServlet {
 		} */
 		System.out.println("in doGet()");
 		addPatient(request, response);
-		request.getRequestDispatcher("WEB-INF/view/index.jsp").forward(request, response);	
+		request.getRequestDispatcher("index.jsp").forward(request, response);	
 	}
 
 	

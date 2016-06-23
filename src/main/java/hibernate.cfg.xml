@@ -9,8 +9,8 @@
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>    
 
-        <property name="connection.url">jdbc:sqlserver://SD-05;databaseName=hms_db;</property>
-        <property name="connection.username">hospital</property>
+        <property name="connection.url">jdbc:sqlserver://SD-05;databaseName=hms_db;integratedSecurity=false;</property>
+        <property name="connection.username">hosp</property>
         <property name="connection.password">password</property>       
 
         <!-- JDBC connection pool (use the built-in) -->
@@ -28,7 +28,7 @@
         <!-- Drop and re-create the database schema on startup, 'create' will create
         any tables that are needed -->
         
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Mention here ALL the model classes along with their package name -->
         <mapping class="model.Bill"/>
