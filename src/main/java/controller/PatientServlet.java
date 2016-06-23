@@ -47,7 +47,7 @@ public class PatientServlet extends HttpServlet {
 	}
 	protected void addPatient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Set<Prescription> setOfPres = new HashSet<>();
-		setOfPres.add(new Prescription(0, null));
+		/*setOfPres.add(new Prescription(0, null));
 		setOfPres.add(new Prescription(0, null));
 		setOfPres.add(new Prescription(0, null));
 		Set<Note> patientNotes = new HashSet<>();
@@ -59,7 +59,7 @@ public class PatientServlet extends HttpServlet {
 				3, null, true, setOfPres, patientNotes, PatientType.SEMI_PRIVATE, true);
 		
 		System.out.println(p);
-		patientDAO.addPatient(p);
+		patientDAO.addPatient(p);*/
         //response.sendRedirect("index.jsp");		
 	}
 	

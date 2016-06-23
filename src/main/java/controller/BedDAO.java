@@ -10,7 +10,7 @@ import model.Bed;
 
 public class BedDAO {
 
-	public BedDAO(){}
+	protected BedDAO(){}
 	
 	protected boolean addBed(Bed bed){
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -18,8 +18,8 @@ public class BedDAO {
 		Integer bedId = 0;
 		try {
 			tx = session.beginTransaction();
-			bedId=(Integer)session.save(bed);
-			tx.commit();
+			//bedId=(Integer)session.save(bed);
+			//tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
@@ -30,7 +30,7 @@ public class BedDAO {
 		return false;
 	}
 	
-	protected boolean updateBed(Bed bed){
+	/*protected boolean updateBed(Bed bed){
 		Session session =  HibernateUtil.getSessionFactory().openSession();
 		Transaction tx= null;
 
@@ -88,5 +88,5 @@ public class BedDAO {
 		return bed;
 		
 	}
-	
+	*/
 }
