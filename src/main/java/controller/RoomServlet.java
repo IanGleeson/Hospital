@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Bed;
-import model.Book;
 import model.Room;
 
 /**
@@ -68,7 +67,7 @@ public class RoomServlet extends HttpServlet {
 		
 	}
 	//METHOD UNDER CONSTRUCTION
-	private void updateRoom(HttpServletRequest request, HttpServletResponse response) {
+	private void updateRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Create a room from all the parameters from the update form
 		int id = Integer.valueOf(request.getParameter("roomId"));
 		int WardId = Integer.valueOf(request.getParameter("WardId"));
