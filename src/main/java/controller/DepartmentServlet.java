@@ -1,23 +1,33 @@
 package controller;
 
 import java.io.IOException;
+
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Department;
+
 /**
  * Servlet implementation class Department
  */
+@WebServlet( "/DepartmentServlet" )
 public class DepartmentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
+     * 
      */
+	
+	private DepartmentDAO departmentDAO;
+	
     public DepartmentServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+ 
+    	departmentDAO = new DepartmentDAO();	
     }
 
 	/**
@@ -27,10 +37,12 @@ public class DepartmentServlet extends HttpServlet {
 		
 		String action = request.getParameter("action");
 		if(action==null){
-			action="viewAll";
+			action="addDepartment";
 		}
 		switch (action) {
 		case "addDepartment":
+			addDepartment(request,response);
+			
 			break;
 
 		default:
@@ -38,8 +50,7 @@ public class DepartmentServlet extends HttpServlet {
 			break;
 		}
 		
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	private void deleteDepartment(HttpServletRequest request, HttpServletResponse response) {
@@ -52,8 +63,20 @@ public class DepartmentServlet extends HttpServlet {
 		
 	}
 	
-	private void addDepartment(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void addDepartment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//String name = request.getParameter("name");
+		String name = "Cardiology";
+		
+		Department d = new Department();
+		d.setName(name);
+		
+		System.out.println("Department details: " + d);
+		
+		boolean departmentId = departmentDAO.addDepartment(d);
+		if(departmentId) System.out.println("Department Inserted ");
+		
+	//	response.sendRedirect("DepartmentServlet?action=addDepartment");
+		
 		
 	}
 	
@@ -66,13 +89,3 @@ public class DepartmentServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
-}

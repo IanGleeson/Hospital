@@ -14,6 +14,6 @@
 		<a href="PatientServlet?action=viewAllPatients">Manage Patients</a>
 		<a href="DoctorServlet?action=viewAllDoctors">Manage Personnel</a>
 	</div>
-		
+	
 	</body>
 </html>

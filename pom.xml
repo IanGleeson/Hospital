@@ -25,6 +25,17 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.2.0.Final</version>
 		</dependency>
+		<dependency>
+    		<groupId>org.hibernate</groupId>
+    		<artifactId>hibernate</artifactId>
+    		<version>3.6.0.Beta2</version>
+    		<type>pom</type>
+		</dependency>
+		<dependency>
+  			<groupId>com.microsoft.sqlserver</groupId>
+  			<artifactId>sqljdbc4</artifactId>
+  			<version>4.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>HospitalManagementSystem</finalName>
