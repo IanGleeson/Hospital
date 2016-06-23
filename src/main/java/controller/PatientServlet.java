@@ -45,6 +45,9 @@ public class PatientServlet extends HttpServlet {
 		doGet(request, response);
 	}
 	protected void addPatient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		
+		
 		Set<Prescription> setOfPres = new HashSet<>();
 		setOfPres.add(new Prescription(0, null));
 		setOfPres.add(new Prescription(0, null));

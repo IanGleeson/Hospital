@@ -3,6 +3,7 @@ package model;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -44,14 +45,16 @@ public class Patient {
 	private Date appointment;
 	@Column
 	private boolean alive;
-	@OneToMany @JoinColumn(name="patientId")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="patientId")
 	private Set<Prescription> prescriptions;
-	@OneToMany @JoinColumn(name="patientId")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="patientId")
 	private Set<Note> patientNotes;
 	@Enumerated(EnumType.STRING)
 	private PatientType patientType;
 	@Column
-	private boolean inpatient;
+	private boolean inpatient;	
 	
 	public Patient(){}
 	
