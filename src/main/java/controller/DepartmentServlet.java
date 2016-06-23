@@ -37,7 +37,7 @@ public class DepartmentServlet extends HttpServlet {
 		
 		String action = request.getParameter("action");
 		if(action==null){
-			action="addDepartment";
+			action="viewAll";
 		}
 		switch (action) {
 		case "addDepartment":
@@ -75,7 +75,7 @@ public class DepartmentServlet extends HttpServlet {
 		boolean departmentId = departmentDAO.addDepartment(d);
 		if(departmentId) System.out.println("Department Inserted ");
 		
-	//	response.sendRedirect("DepartmentServlet?action=addDepartment");
+		response.sendRedirect("DepartmentServlet?action=viewAll");
 		
 		
 	}
@@ -85,8 +85,9 @@ public class DepartmentServlet extends HttpServlet {
 		
 	}
 	
-	private void viewDepartment(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void viewDepartment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("WEB-INF/Department/ViewDepartment.jsp").
+        forward(request, response);
 		
 	}
 }

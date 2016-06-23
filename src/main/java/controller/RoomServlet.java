@@ -1,10 +1,19 @@
 package controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.Bed;
+import model.Room;
 
 /**
  * Servlet implementation class RoomServlet
@@ -12,12 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 public class RoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	private RoomDAO roomDAO;
+
     public RoomServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+        roomDAO = new RoomDAO();
     }
 
 	/**
@@ -29,24 +36,53 @@ public class RoomServlet extends HttpServlet {
 			action="viewAll";
 		}
 		switch (action) {
-		case "addRoom":
+		case "addRoom": 		addRoom(request,response);
 			break;
-
-		default:
-			//viewRoom(request,response);
+		case "deleteRoom": 		deleteRoom(request,response);
+			break;
+		case "updateRoom": 		updateRoom(request,response);
+			break;
+		case "showUpdateForm": 	showUpdateForm(request, response);
+			break;	
+		case "viewRoom": 		viewRoom(request,response);
+			break;
+		default:				viewAllRooms(request,response);
 			break;
 		}
-		
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-	private void deleteRoom(HttpServletRequest request, HttpServletResponse response) {
+	/**
+	 * @param request
+	 * @param response
+	 */
+	private void showUpdateForm(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	private void updateRoom(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
+	private void deleteRoom(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		int id = Integer.valueOf(request.getParameter("roomId"));
+		roomDAO.deleteRoom(id);
+		response.sendRedirect("RoomServlet?action=viewAll");
+		
+	}
+	//METHOD UNDER CONSTRUCTION
+	private void updateRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Create a room from all the parameters from the update form
+		int id = Integer.valueOf(request.getParameter("roomId"));
+		int WardId = Integer.valueOf(request.getParameter("WardId"));
+		int Type = Integer.valueOf(request.getParameter("Type"));
+		//Set<Bed> Beds = request.getParameter("Beds");
+		
+		//Set<Room> beds = new HashSet<>(roomDAO.viewRoom());
+
+		//Room room = new Room(id, WardId, Type, Beds);
+
+		// Send that room to the DAO
+		//roomDAO.updateRoom(room);
+
+		//response.sendRedirect("RoomServlet?action=viewAllRooms");
+		viewAllRooms(request, response);
 		
 	}
 	
@@ -55,13 +91,15 @@ public class RoomServlet extends HttpServlet {
 		
 	}
 	
-	private void viewAllRoom(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void viewAllRooms(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("WEB-INF/view/viewAllRooms.jsp").
+		forward(request, response);
 		
 	}
 	
-	private void viewRoom(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void viewRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("WEB-INF/view/viewRoom.jsp").
+		forward(request, response);
 		
 	}
 	/**
