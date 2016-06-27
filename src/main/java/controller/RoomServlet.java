@@ -1,10 +1,19 @@
 package controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.Bed;
+import model.Room;
 
 /**
  * Servlet implementation class RoomServlet
@@ -12,12 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 public class RoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	private RoomDAO roomDAO;
+
     public RoomServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+        roomDAO = new RoomDAO();
     }
 
 	/**
@@ -29,24 +36,24 @@ public class RoomServlet extends HttpServlet {
 			action="viewAll";
 		}
 		switch (action) {
-		case "addRoom":
+		case "addRoom": 		addRoom(request,response);
 			break;
-
-		default:
-			//viewRoom(request,response);
+		case "deleteRoom": 		deleteRoom(request,response);
+			break;	
+		default:				viewRoom(request,response);
 			break;
 		}
-		
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-	private void deleteRoom(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	private void updateRoom(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	/**
+	 * @param request
+	 * @param response
+	 */
+
+	private void deleteRoom(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		int id = Integer.valueOf(request.getParameter("roomId"));
+		roomDAO.deleteRoom(id);
+		response.sendRedirect("RoomServlet?action=viewAll");
 		
 	}
 	
@@ -55,13 +62,9 @@ public class RoomServlet extends HttpServlet {
 		
 	}
 	
-	private void viewAllRoom(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	private void viewRoom(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void viewRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("WEB-INF/view/viewRoom.jsp").
+		forward(request, response);
 		
 	}
 	/**

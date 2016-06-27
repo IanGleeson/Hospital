@@ -20,8 +20,14 @@ public class User {
 	private UserType userType;
 	
 	
+	public User(){}
 	
-	
+	public User(int id, String username, String password, UserType userType) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.userType = userType;
+	}
 	public int getId() {
 		return id;
 	}
@@ -45,6 +51,11 @@ public class User {
 	}
 	public void setUserType(UserType userType) {
 		this.userType = userType;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", userType=" + userType + "]";
 	}
 	
 	

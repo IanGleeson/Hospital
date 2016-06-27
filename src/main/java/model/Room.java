@@ -25,7 +25,7 @@ public class Room {
 
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="RoomId")
-	private Set<Bed> beds = new HashSet<>();	
+	private Set<Bed> Beds = new HashSet<>();	
 	
 	public Room() {
 		super();
@@ -37,7 +37,7 @@ public class Room {
 		Id = id;
 		WardId = wardId;
 		Type = type;
-		this.beds = beds;
+		this.Beds = beds;
 	}
 
 
@@ -87,14 +87,14 @@ public class Room {
 	 * @return the beds
 	 */
 	public Set<Bed> getBeds() {
-		return beds;
+		return Beds;
 	}
 
 	/**
 	 * @param beds the beds to set
 	 */
 	public void setBeds(Set<Bed> beds) {
-		this.beds = beds;
+		this.Beds = beds;
 	}
 
 	/* (non-Javadoc)
@@ -107,7 +107,7 @@ public class Room {
 		result = prime * result + Id;
 		result = prime * result + Type;
 		result = prime * result + WardId;
-		result = prime * result + ((beds == null) ? 0 : beds.hashCode());
+		result = prime * result + ((Beds == null) ? 0 : Beds.hashCode());
 		return result;
 	}
 
@@ -129,10 +129,10 @@ public class Room {
 			return false;
 		if (WardId != other.WardId)
 			return false;
-		if (beds == null) {
-			if (other.beds != null)
+		if (Beds == null) {
+			if (other.Beds != null)
 				return false;
-		} else if (!beds.equals(other.beds))
+		} else if (!Beds.equals(other.Beds))
 			return false;
 		return true;
 	}
@@ -142,7 +142,7 @@ public class Room {
 	 */
 	@Override
 	public String toString() {
-		return "Room [Id=" + Id + ", WardId=" + WardId + ", Type=" + Type + ", beds=" + beds + "]";
+		return "Room [Id=" + Id + ", WardId=" + WardId + ", Type=" + Type + ", beds=" + Beds + "]";
 	}
 
 	

@@ -17,7 +17,6 @@ import model.PatientType;
 import model.Prescription;
 
 
-@WebServlet("/PatientServlet")
 public class PatientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private List<Patient> allPatients;
@@ -37,7 +36,7 @@ public class PatientServlet extends HttpServlet {
 		} */
 		System.out.println("in doGet()");
 		addPatient(request, response);
-		request.getRequestDispatcher("WEB-INF/view/index.jsp").forward(request, response);	
+		request.getRequestDispatcher("index.jsp").forward(request, response);	
 	}
 
 	
@@ -46,21 +45,31 @@ public class PatientServlet extends HttpServlet {
 		doGet(request, response);
 	}
 	protected void addPatient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		
+		
 		Set<Prescription> setOfPres = new HashSet<>();
-		/*setOfPres.add(new Prescription(0, null));
+		setOfPres.add(new Prescription(0, null));
 		setOfPres.add(new Prescription(0, null));
 		setOfPres.add(new Prescription(0, null));
 		Set<Note> patientNotes = new HashSet<>();
 		patientNotes.add(new Note(0, "abc"));
 		patientNotes.add(new Note(0, "def"));
 		patientNotes.add(new Note(0, "ghi"));
-		
-		Patient p = new Patient(0, "a", "c", null, true, "s", "m", "n", 1, 2, null, null, 
-				3, null, true, setOfPres, patientNotes, PatientType.SEMI_PRIVATE, true);
-		
+
+		Patient p = new Patient(0, "e", "f", null, true, "s", "m", "n", 1, 2, null, null, 3, null, true, setOfPres,
+				patientNotes, PatientType.PUBLIC, true);
+		Patient p1 = new Patient(0, "g", "h", null, true, "s", "m", "n", 1, 2, null, null, 3, null, true, setOfPres,
+				patientNotes, PatientType.PRIVATE, true);
+		Patient p2 = new Patient(0, "i", "j", null, true, "s", "m", "n", 1, 2, null, null, 3, null, true, setOfPres,
+				patientNotes, PatientType.SEMI_PRIVATE, true);
+		Patient p3 = new Patient(0, "a", "c", null, true, "s", "m", "n", 1, 2, null, null, 3, null, true, setOfPres,
+				patientNotes, PatientType.SEMI_PRIVATE, true);
 		System.out.println(p);
-		patientDAO.addPatient(p);*/
-        //response.sendRedirect("index.jsp");		
+		patientDAO.addPatient(p1);
+		patientDAO.addPatient(p2);
+		patientDAO.addPatient(p3);
+		patientDAO.addPatient(p);	
 	}
 	
 	

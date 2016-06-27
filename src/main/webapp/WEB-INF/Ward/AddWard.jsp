@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>View Ward</title>
+<title>Add a New Ward</title>
 </head>
 <body>
-
+<h1 align ="center">Add a new ward</h1>
 </body>
 </html>
