@@ -17,7 +17,7 @@ public class BedDAO {
 		Transaction tx = null;
 		Integer bedId = 0;
 		try {
-			tx = session.beginTransaction();
+			//tx = session.beginTransaction();
 			//bedId=(Integer)session.save(bed);
 			//tx.commit();
 		} catch (HibernateException e) {
