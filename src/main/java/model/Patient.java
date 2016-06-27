@@ -1,8 +1,9 @@
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 @Entity
 public class Patient {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -21,6 +24,7 @@ public class Patient {
 	@Column
 	private String surname;
 	@Column
+	@Temporal(TemporalType.DATE)
 	private Date dob;
 	@Column
 	private boolean gender;
@@ -44,14 +48,16 @@ public class Patient {
 	private Date appointment;
 	@Column
 	private boolean alive;
-	@OneToMany @JoinColumn(name="patientId")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="patientId")
 	private Set<Prescription> prescriptions;
-	@OneToMany @JoinColumn(name="patientId")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="patientId")
 	private Set<Note> patientNotes;
 	@Enumerated(EnumType.STRING)
 	private PatientType patientType;
 	@Column
-	private boolean inpatient;
+	private boolean inpatient;	
 	
 	public Patient(){}
 	

@@ -76,7 +76,9 @@ protected Doctor getDoctorDetailsByDepartment(String department){
 	
 	protected List<Doctor> getAllDoctors(){
 		List<Doctor> listOfDoctors = new ArrayList<>();
+		System.out.println("Ian is in the getAllDoctors() of DAO BEFORE the Hibernate Util");
 		Session session = HibernateUtil.getSessionFactory().openSession();
+		System.out.println("Ian is in the getAllDoctors() of DAO AFTER the Hibernate Util");
 		try{
 			Query query = session.createQuery("From Doctor");
 			listOfDoctors = (List<Doctor>)query.list();

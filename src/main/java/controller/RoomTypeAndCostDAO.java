@@ -1,26 +1,23 @@
 package controller;
 
-import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import model.Bed;
+import model.RoomTypeAndCost;
 
-public class BedDAO {
-
-	protected BedDAO(){}
+public class RoomTypeAndCostDAO {
 	
-	protected boolean addBed(Bed bed){
+protected RoomTypeAndCostDAO(){}
+	
+	protected boolean addRoomTypeAndCost(RoomTypeAndCost roomTypeAndCost){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
-		Integer bedId = 0;
+		Integer roomTypeAndCostId = 0;
 		try {
 			tx = session.beginTransaction();
-			bedId=(Integer)session.save(bed);
+			roomTypeAndCostId=(Integer)session.save(roomTypeAndCost);
 			tx.commit();
-
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
@@ -31,7 +28,7 @@ public class BedDAO {
 		return false;
 	}
 	
-	protected boolean updateBed(Bed bed){
+	/*protected boolean updateBed(Bed bed){
 		Session session =  HibernateUtil.getSessionFactory().openSession();
 		Transaction tx= null;
 
@@ -89,5 +86,7 @@ public class BedDAO {
 		return bed;
 		
 	}
+	*/
 	
+
 }
