@@ -20,6 +20,7 @@ public class BedDAO {
 			tx = session.beginTransaction();
 			bedId=(Integer)session.save(bed);
 			tx.commit();
+
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();

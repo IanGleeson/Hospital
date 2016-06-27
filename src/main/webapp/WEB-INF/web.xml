@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
@@ -49,4 +50,45 @@
     <servlet-name>RoomServlet</servlet-name>
     <url-pattern>/Room</url-pattern>
   </servlet-mapping>
+=======
+
+<web-app>
+    <display-name>Archetype Created Web Application</display-name>
+	
+	<servlet> 
+     	<servlet-name>DepartmentServlet</servlet-name>  
+     	<servlet-class>controller.DepartmentServlet</servlet-class>  
+   	</servlet>  
+   	<servlet-mapping>  
+     	<servlet-name>DepartmentServlet</servlet-name>  
+    	<url-pattern>/Department</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet> 
+     	<servlet-name>PatientServlet</servlet-name>  
+     	<servlet-class>controller.PatientServlet</servlet-class>  
+   	</servlet>  
+   	<servlet-mapping>  
+     	<servlet-name>PatientServlet</servlet-name>  
+    	<url-pattern>/Patient</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet> 
+     	<servlet-name>BedServlet</servlet-name>  
+     	<servlet-class>controller.BedServlet</servlet-class>  
+   	</servlet>  
+   	<servlet-mapping>  
+     	<servlet-name>BedServlet</servlet-name>  
+    	<url-pattern>/Bed</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet> 
+     	<servlet-name>WardServlet</servlet-name>  
+     	<servlet-class>controller.WardServlet</servlet-class>  
+   	</servlet>  
+   	<servlet-mapping>  
+     	<servlet-name>WardServlet</servlet-name>  
+    	<url-pattern>/Ward</url-pattern>  
+	</servlet-mapping>
+>>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
 </web-app>
