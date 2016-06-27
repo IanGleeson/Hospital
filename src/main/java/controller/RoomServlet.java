@@ -36,11 +36,15 @@ public class RoomServlet extends HttpServlet {
 			action="viewAll";
 		}
 		switch (action) {
-		case "addRoom": 		addRoom(request,response);
+		case "addRoom": 		
+			addRoom(request,response);
 			break;
-		case "deleteRoom": 		deleteRoom(request,response);
+		case "deleteRoom": 		
+			deleteRoom(request,response);
 			break;	
-		default:				viewRoom(request,response);
+		default:				
+			//viewRoom(request,response);
+			addRoom(request,response);
 			break;
 		}
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -59,6 +63,11 @@ public class RoomServlet extends HttpServlet {
 	
 	private void addRoom(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		Room room = new Room();
+		room.setWardId(1);
+		room.setType(1);
+		roomDAO.addRoom(room);
+		System.out.println("Room Added to the database");
 		
 	}
 	

@@ -1,7 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
+import java.math.BigDecimal;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,23 +9,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Bed;
+import model.RoomTypeAndCost;
 
 /**
- * Servlet implementation class BedServlet
+ * Servlet implementation class RoomTypeAndCostServlet
  */
-@WebServlet("/BedServlet")
-public class BedServlet extends HttpServlet {
+@WebServlet("/RoomTypeAndCostServlet")
+public class RoomTypeAndCostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private BedDAO bedDAO;
+	private RoomTypeAndCostDAO roomTypeAndCostDAO;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BedServlet() {
+    public RoomTypeAndCostServlet() {
         super();
-        
         // TODO Auto-generated constructor stub
-        bedDAO = new BedDAO();
+        roomTypeAndCostDAO = new RoomTypeAndCostDAO();
     }
 
 	/**
@@ -34,41 +34,36 @@ public class BedServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		if(action==null){
-			action="viewBeds";
+			action="viewRoomTypeAndCost";
 		}
 		switch (action) {
-		
-		case "showBedForm":
+		case "addRoomTypeAndCost":
+			addRoomTypeAndCost(request,response);
+			
 			break;
-		case "addBed":
-			addBed(request,response);
-			break;
+
 		default:
-			viewBeds(request,response);
+			//viewRoomTypeAndCost(request,response);
+			addRoomTypeAndCost(request,response);
 			break;
 		}
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	private void addBed(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Bed bed = new Bed();
-		bed.setOccupied(false);
-		bed.setRoomId(5);
-		bedDAO.addBed(bed);
-		System.out.println("Bed inserted");
-		
+	private void viewRoomTypeAndCost(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
 		
 	}
 
-	private void viewBeds(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		
-		List<Bed> listOfBeds = bedDAO.viewBed();
-		request.setAttribute("bedsList",listOfBeds);
-		request.getRequestDispatcher("WEB-INF/Bed/viewBed.jsp").forward(request, response);
-		
-		
+	private void addRoomTypeAndCost(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		RoomTypeAndCost roomTypeAndCost = new RoomTypeAndCost();
+		roomTypeAndCost.setRoomType("Day room");
+		roomTypeAndCost.setCost(new BigDecimal(300));
+		roomTypeAndCostDAO.addRoomTypeAndCost(roomTypeAndCost);
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

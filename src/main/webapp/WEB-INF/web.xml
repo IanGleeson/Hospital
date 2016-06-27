@@ -25,8 +25,7 @@
     <servlet-name>WardServlet</servlet-name>
     <url-pattern>/Ward</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>BedServlet</servlet-name>
     <servlet-class>controller.BedServlet</servlet-class>
   </servlet>
@@ -34,6 +33,20 @@
     <servlet-name>BedServlet</servlet-name>
     <url-pattern>/Bed</url-pattern>
   </servlet-mapping>
-  
-  
+  <servlet>
+    <servlet-name>RoomTypeAndCostServlet</servlet-name>
+    <servlet-class>controller.RoomTypeAndCostServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomTypeAndCostServlet</servlet-name>
+    <url-pattern>/RoomTypeAndCost</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>RoomServlet</servlet-name>
+    <servlet-class>controller.RoomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomServlet</servlet-name>
+    <url-pattern>/Room</url-pattern>
+  </servlet-mapping>
 </web-app>
