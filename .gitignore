@@ -69,3 +69,5 @@ buildNumber.properties
 
 ### Git ###
 *.orig
+
+/hibernate.cfg.xml
