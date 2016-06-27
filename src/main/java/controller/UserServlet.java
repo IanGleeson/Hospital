@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
+import model.UserType;
 
 @WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {
@@ -19,53 +20,107 @@ public class UserServlet extends HttpServlet {
        
    
     public UserServlet() {
-     
+    	userDAO = new UserDAO();
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String action = request.getParameter("action");
+		if (action == null) {
+			action = "viewAll";
+		}
+
+		System.out.println("action is " + action);
+
+		switch (action) {
+		case "showAddUserForm":
+			request.getRequestDispatcher("/WEB-INF/view/insertBook.jsp").forward(request, response);
+			break;
+		case "showUpdateUserForm":
+			showUpdateUserForm(request, response);
+			break;
+		case "addUser":
+			addUser(request, response);
+			break;
+		case "updateUser":
+			updateUser(request, response);
+			break;
+		case "deleteUser":
+			deleteUser(request, response);
+			break;
+		case "login":
+			login(request, response);
+			break;
+		case "logout":
+			request.getSession().invalidate();
+			response.sendRedirect("UserServlet?action=viewAll");
+			break;
+		case "changePassword":
+			changePassword(request, response);
+			break;
+		default:
+			viewAllUsers(request, response);
+			break;
+		}
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 	
-	protected void addUser(User user){
-			
+	protected void addUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		UserType usertype = UserType.valueOf(request.getParameter("usertype"));
+		
+		User user = new User(0, username, password, usertype);
+		
+		userDAO.addUser(user);
 	}
 	
-	protected void updateUser(int userId){	
+	protected void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		UserType usertype = UserType.valueOf(request.getParameter("usertype"));
+		
+		User user = new User(0, username, password, usertype);
+		userDAO.updateUser(user);
+		request.getRequestDispatcher("").forward(request, response);
+	}
+	
+	protected void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int Id = Integer.parseInt(request.getParameter("userId"));
+		userDAO.deleteUser(Id);
+		request.getRequestDispatcher("").forward(request, response);
+	}
+	
+	protected void viewAllUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<User> allUsers = userDAO.viewAllUsers();
+		request.setAttribute("allUsers", allUsers);
+		request.getRequestDispatcher("").forward(request, response);
+	}
+	
+	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String user = request.getParameter("username");
+		String pass = request.getParameter("password");
+		
+		if (userDAO.login(user, pass)) {
+			
+		}else{
+			request.setAttribute("failedLogInMsg", "Username or password incorrect");
+		}
+	}
+	
+	protected void changePassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
 	
-	protected void deleteUser(int userId){
-			
+	protected void showAddUserForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("").forward(request, response);
 	}
 	
-	protected List<User> viewAllUsers(int userId){
-		
-		return allUsers;
-	}
-	
-	protected void login(String username, String password){
-			
-	}
-	
-	protected void logout(){
-			
-	}
-	
-	protected void changePassword(User user){
-			
-	}
-	
-	protected void showAddUserForm(){
-			
-	}
-	
-	protected void showUpdateUserForm(){
-			
+	protected void showUpdateUserForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("").forward(request, response);
 	}
 
 }
