@@ -33,7 +33,7 @@ public class RoomServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		if(action==null){
-			action="viewAll";
+			action="viewRoom";
 		}
 		switch (action) {
 		case "addRoom": 		
@@ -43,8 +43,7 @@ public class RoomServlet extends HttpServlet {
 			deleteRoom(request,response);
 			break;	
 		default:				
-			//viewRoom(request,response);
-			addRoom(request,response);
+			viewRoom(request,response);
 			break;
 		}
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -57,12 +56,11 @@ public class RoomServlet extends HttpServlet {
 	private void deleteRoom(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int id = Integer.valueOf(request.getParameter("roomId"));
 		roomDAO.deleteRoom(id);
-		response.sendRedirect("RoomServlet?action=viewAll");
+		response.sendRedirect("RoomServlet?action=viewRoom");
 		
 	}
 	
 	private void addRoom(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
 		Room room = new Room();
 		room.setWardId(1);
 		room.setType(1);

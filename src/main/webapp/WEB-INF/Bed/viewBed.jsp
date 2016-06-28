@@ -24,8 +24,13 @@
 						<td>${bed.roomId}</td>
 					</tr>
 				</c:forEach>
+
 		</table>				
+
+
 		</c:otherwise>
+
 </c:choose>
+
 </body>
 </html>
