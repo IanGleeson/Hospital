@@ -10,7 +10,6 @@
 	<h2>Add Room</h2>
 
 	<form action="RoomServlet?action=viewRoom" method="POST">
-		<input type="hidden" name="roomId" value="${room.id}">
 
 		<p>Ward:</p>
 		<p>
