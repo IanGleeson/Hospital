@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -70,8 +71,8 @@ public class RoomServlet extends HttpServlet {
 	}
 	
 	private void viewRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("WEB-INF/view/viewRoom.jsp").
-		forward(request, response);
+		List<Room> roomsList = roomDAO.viewRoom();
+		request.getRequestDispatcher("WEB-INF/view/viewRoom.jsp").forward(request, response);
 		
 	}
 	/**

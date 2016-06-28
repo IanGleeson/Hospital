@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Bed;
+import model.Hospital;
 
 /**
  * Servlet implementation class BedServlet
@@ -21,9 +22,7 @@ public class BedServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BedServlet() {
-        super();
-        
+    public BedServlet() {      
         // TODO Auto-generated constructor stub
         bedDAO = new BedDAO();
     }
@@ -62,9 +61,13 @@ public class BedServlet extends HttpServlet {
 	}
 
 	private void viewBeds(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+		// Get the bed list
+		List<Hospital> bedsList = bedDAO.viewBed();
+		// With the help of roomId get the Room list
 		
-		List<Bed> listOfBeds = bedDAO.viewBed();
-		request.setAttribute("bedsList",listOfBeds);
+		//
+		request.setAttribute("bedsList",bedsList);
+		//System.out.println(bedsList);
 		request.getRequestDispatcher("WEB-INF/Bed/viewBed.jsp").forward(request, response);
 		
 		

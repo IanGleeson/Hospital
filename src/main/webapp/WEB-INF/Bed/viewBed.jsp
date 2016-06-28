@@ -20,11 +20,18 @@
 				<tr><th>Bed Id</th><th>Room Id</th></tr>
 				<c:forEach var="bed" items="${bedsList}">
 					<tr>
-						<td>${bed.Id}</td>
-						<td>${bed.RoomId}</td>
+						<td>${bed.id}</td>
+						<td>${bed.roomId}</td>
+						<td>${bed.wardId}</td>
 					</tr>
 				</c:forEach>
+
+		</table>				
+
+
 		</c:otherwise>
-</c:choose>		
+
+</c:choose>
+
 </body>
 </html>
