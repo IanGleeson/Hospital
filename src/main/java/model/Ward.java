@@ -95,7 +95,7 @@ public class Ward {
 	 * @param deptId the deptId to set
 	 */
 	public void setDeptId(int deptId) {
-		this.deptId = deptId;
+		deptId = deptId;
 	}
 
 

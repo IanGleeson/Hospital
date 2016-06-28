@@ -14,9 +14,8 @@
 </h1>
 
 <ul>
-  <li><a class="active" href="WardServlet">Home</a></li>
-  
-  <li><a href="Ward?action=addWardForm">Add Wards</a></li>
+   
+  <li ><a href="Ward?action=addWardForm">Add Wards</a></li>
     	 
 </ul>
 
@@ -39,23 +38,27 @@
 							<th>Ward Id</th>
 							<th>Department Name</th>
 							<th>Ward Name</th>
+							<th>Update Ward</th>
+							<th>Delete Ward</th>
 							
-						
-						<!-- <td><font size=4><a	href="<c:url value="WardServlet?action=showUpdateForm">
-								 <c:param name="wardId" value="${ward.id}"/>
-								 </c:url>">Update</a></font></td>
-						<td><font size=4><a href="<c:url value="WardServlet?action=delete">
-								 <c:param name="wardId" value="${ward.id}"/>
-								 </c:url>">Delete</a></font></td>-->
-						<c:forEach var="ward" items="${wardList}">
-								<tr bgcolor=#D6C2E6>
-								<td align="center"><font size=4>${ward.id}</font></td>
-								<td align="center"><font size=4>${ward.deptId}</font></td>
-								<td align="center"><font size=4>${ward.name}</font></td>
+						</tr>
+						 
+							<c:forEach var="ward" items="${wardList}">
+						      	<tr bgcolor=#D6C2E6>
+									<td align="center"><font size=4>${ward.id}</font></td>
+									<td align="center"><font size=4>${ward.deptId}</font></td>
+									<td align="center"><font size=4>${ward.name}</font></td>
+									
+									<td align="center"><font size=4><a	href="<c:url value="WardServlet?action=showUpdateForm">
+								 	<c:param name="wardId" value="${ward.id}"/>
+								 	</c:url>">Update</a></font></td>
+								 	
+									<td align="center"><font size=4><a href="<c:url value="WardServlet?action=delete">
+								 	<c:param name="wardId" value="${ward.id}"/>
+								 	</c:url>">Delete</a></font></td>
 								</tr>
-							</c:forEach>
-						
-
+							  </c:forEach>
+				 
 						
 					</table>
 				</c:otherwise>
