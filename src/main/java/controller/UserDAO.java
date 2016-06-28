@@ -109,7 +109,7 @@ public class UserDAO {
 	}
 
 	protected void changePassword(User user) {
-
+		
 	}
 
 }
