@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>View Ward</title>
+<title>Add Room</title>
 </head>
 <body>
-
+<h1>Add Room</h1>
+<a   href="DepartmentServlet?action=addRoom">AddRoom</a>
 </body>
 </html>

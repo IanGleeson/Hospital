@@ -12,10 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import model.User;
 import model.UserType;
 
-@WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private List<User> allUsers;
 	private UserDAO userDAO;
        
    
@@ -23,21 +21,20 @@ public class UserServlet extends HttpServlet {
     	userDAO = new UserDAO();
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		if (action == null) {
-			action = "viewAll";
+			action = "viewAllUsers";
 		}
 
 		System.out.println("action is " + action);
 
 		switch (action) {
 		case "showAddUserForm":
-			request.getRequestDispatcher("/WEB-INF/view/insertBook.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/view/showAddUserForm.jsp").forward(request, response);
 			break;
 		case "showUpdateUserForm":
-			showUpdateUserForm(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			break;
 		case "addUser":
 			addUser(request, response);
@@ -71,7 +68,7 @@ public class UserServlet extends HttpServlet {
 	protected void addUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		UserType usertype = UserType.valueOf(request.getParameter("usertype"));
+		UserType usertype = UserType.valueOf(request.getParameter("usertype").toUpperCase());
 		
 		User user = new User(0, username, password, usertype);
 		
@@ -81,7 +78,7 @@ public class UserServlet extends HttpServlet {
 	protected void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		UserType usertype = UserType.valueOf(request.getParameter("usertype"));
+		UserType usertype = UserType.valueOf(request.getParameter("usertype").toUpperCase());
 		
 		User user = new User(0, username, password, usertype);
 		userDAO.updateUser(user);
@@ -105,7 +102,7 @@ public class UserServlet extends HttpServlet {
 		String pass = request.getParameter("password");
 		
 		if (userDAO.login(user, pass)) {
-			
+			request.getRequestDispatcher("").forward(request, response);
 		}else{
 			request.setAttribute("failedLogInMsg", "Username or password incorrect");
 		}
@@ -113,14 +110,6 @@ public class UserServlet extends HttpServlet {
 	
 	protected void changePassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	}
-	
-	protected void showAddUserForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("").forward(request, response);
-	}
-	
-	protected void showUpdateUserForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("").forward(request, response);
 	}
 
 }
