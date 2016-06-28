@@ -9,16 +9,19 @@
 <title>Add a Doctor</title>
 </head>
 <body>
+You made it to the body of the addDoctor JSP YEAH YEAH!
 <h2>Add a Doctor</h2>
 <form action="DoctorServlet?action=addDoctor" method="POST">
 	<p>First Name</p>
-	<input type="text" name="firstName" value="${doctor.firstName}"></p> 
-	
+	<p>
+	<input type="text" name="firstName" value="${doctor.firstName}">
+	</p>
 	<p>Last Name</p>
-	<input type="text" name="lastName" value="${doctor.lastName}"></p>
-	
+	<p>
+	<input type="text" name="lastName" value="${doctor.lastName}">
+	</p>
 	<p>Gender</p> 
-	<p><input type="text" name="gender" value="${doctor.gender}"S></p> 
+	<p><input type="text" name="gender" value="${doctor.gender}"></p> 
 	
 	<p>Address</p> 
 	<p><textarea rows="8" cols="50" name="address">${doctor.address}</textarea></p> 
