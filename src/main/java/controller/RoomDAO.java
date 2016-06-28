@@ -78,8 +78,8 @@ public class RoomDAO {
 	protected List<Room> viewRoom(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		@SuppressWarnings("unchecked")
-		List<Room> room= (List<Room>) session.createQuery("From Room").list();
-		return room;
+		List<Room> roomsList= (List<Room>) session.createQuery("From Room").list();
+		return roomsList;
 		
 	}
 	protected Room viewAllRoom(int roomId){
