@@ -11,7 +11,7 @@
 <body>
 <form action="RoomServlet?action=deleteRoom" method="POST">
 	<p>Room Type</p>
-	<input type="text" name="id" value="${room.id}"></p> 
+	<input type="text" name="id" value="${room.id}">
 	<p><input type="submit" value="DELETE DOCTOR"/></p> 
 </form>
 </body>
