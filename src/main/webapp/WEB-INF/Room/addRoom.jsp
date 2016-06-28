@@ -8,7 +8,8 @@
 </head>
 <body>
 	<h1>Add Room</h1>
-	<a href="<c:url value="WEB-INF/view/addRoomForm.jsp">
+	<a
+		href="<c:url value="WEB-INF/Room/addRoomForm.jsp">
 			 <c:param name="roomId" value="${room.id}"/>
 			 </c:url>">Add Room</a>
 </body>
