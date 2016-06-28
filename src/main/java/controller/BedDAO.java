@@ -79,8 +79,8 @@ public class BedDAO {
 	protected List<Hospital> viewBed(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		@SuppressWarnings("unchecked")
-		String sql ="select Bed.Id,Bed.RoomId,Room.WardId,Ward.Name,Room.Type,RoomTypeAndCost.RoomType,Ward.DeptId,Department.Name from "
-				+ "Bed, Room, RoomTypeAndCost, Ward, Department where Bed.RoomId=Room.Id and Room.Type=RoomTypeAndCost.Id and Room.WardId=Ward.Id and Ward.DeptId=Department.Id";
+		//String sql ="select B.Id,B.RoomId,R.WardId from model.Bed B, model.Room R where B.RoomId=R.Id ";
+		String sql ="from Bed B, Room R left join fetch R.wardId";
 		System.out.println(sql);
 		List<Hospital> hospital= (List<Hospital>) session.createQuery(sql).list();
 		return hospital;
