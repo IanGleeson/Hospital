@@ -8,5 +8,13 @@
 </head>
 <body>
 <h1 align ="center">Add a new ward</h1>
+<form action="Ward?action=addWard" method="post">
+	<select name="selectOption">
+		<option value ="1">Cardiology</option>
+	</select>
+	<p>Ward Name</p>
+	<p><input type = "text" name="wardName" placeholder="Ward Name" required></p>
+	<input type="submit" value="Add Ward"/>
+</form>
 </body>
 </html>

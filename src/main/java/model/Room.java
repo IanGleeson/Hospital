@@ -34,9 +34,9 @@ public class Room {
 	
 	public Room(int id, int wardId, int type, Set<Bed> beds) {
 		super();
-		Id = id;
-		WardId = wardId;
-		Type = type;
+		this.Id = id;
+		this.WardId = wardId;
+		this.Type = type;
 		this.Beds = beds;
 	}
 
