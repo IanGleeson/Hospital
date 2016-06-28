@@ -16,13 +16,13 @@ import javax.persistence.OneToMany;
 @Entity
 public class Ward {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int Id;
+	private int id;
 	
 	@Column
-	private String Name;
+	private String name;
 	
 	@Column
-	private int DeptId;	
+	private int deptId;	
 
 	@OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="WardId")
@@ -38,9 +38,9 @@ public class Ward {
 
 	public Ward(int id, String name, int deptId, Set<Room> rooms) {
 		super();
-		Id = id;
-		Name = name;
-		DeptId = deptId;
+		this.id = id;
+		this.name = name;
+		this.deptId = deptId;
 		this.rooms = rooms;
 	}
 
@@ -50,7 +50,7 @@ public class Ward {
 	 * @return the id
 	 */
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 
@@ -59,7 +59,7 @@ public class Ward {
 	 * @param id the id to set
 	 */
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 
 
@@ -68,7 +68,7 @@ public class Ward {
 	 * @return the name
 	 */
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 
@@ -77,7 +77,7 @@ public class Ward {
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 
@@ -86,7 +86,7 @@ public class Ward {
 	 * @return the deptId
 	 */
 	public int getDeptId() {
-		return DeptId;
+		return deptId;
 	}
 
 
@@ -95,7 +95,7 @@ public class Ward {
 	 * @param deptId the deptId to set
 	 */
 	public void setDeptId(int deptId) {
-		DeptId = deptId;
+		this.deptId = deptId;
 	}
 
 
@@ -125,9 +125,9 @@ public class Ward {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + DeptId;
-		result = prime * result + Id;
-		result = prime * result + ((Name == null) ? 0 : Name.hashCode());
+		result = prime * result + deptId;
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((rooms == null) ? 0 : rooms.hashCode());
 		return result;
 	}
@@ -146,14 +146,14 @@ public class Ward {
 		if (getClass() != obj.getClass())
 			return false;
 		Ward other = (Ward) obj;
-		if (DeptId != other.DeptId)
+		if (deptId != other.deptId)
 			return false;
-		if (Id != other.Id)
+		if (id != other.id)
 			return false;
-		if (Name == null) {
-			if (other.Name != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!Name.equals(other.Name))
+		} else if (!name.equals(other.name))
 			return false;
 		if (rooms == null) {
 			if (other.rooms != null)
@@ -170,7 +170,7 @@ public class Ward {
 	 */
 	@Override
 	public String toString() {
-		return "Ward [Id=" + Id + ", Name=" + Name + ", DeptId=" + DeptId + ", rooms=" + rooms + "]";
+		return "Ward [Id=" + id + ", Name=" + name + ", DeptId=" + deptId + ", rooms=" + rooms + "]";
 	}
 
 

@@ -22,7 +22,7 @@ public class Bed {
 	private boolean isOccupied;
 
 	public Bed() {
-		
+		super();
 	}
 
 	public Bed(int id, int roomId, boolean isOccupied) {

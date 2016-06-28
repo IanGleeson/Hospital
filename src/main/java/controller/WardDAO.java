@@ -78,7 +78,8 @@ public class WardDAO {
 	protected List<Ward> viewWard(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		@SuppressWarnings("unchecked")
-		List<Ward> ward= (List<Ward>) session.createQuery("From Ward").list();
+		String sql="select Ward.DeptId,Department.Name,Ward.Name from Ward, Department where Ward.DeptId=Department.Id";
+		List<Ward> ward= (List<Ward>) session.createQuery(sql).list();
 		return ward;
 		
 	}

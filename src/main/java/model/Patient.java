@@ -1,7 +1,8 @@
 package model;
 
+import java.sql.Date;
+import java.time.LocalDate;
 
-import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -28,7 +29,7 @@ public class Patient {
 	private String surname;
 	@Column
 	//@Temporal(TemporalType.DATE)
-	private Date dob;
+	private LocalDate dob;
 	@Column
 	private boolean gender;
 	@Column
@@ -42,13 +43,13 @@ public class Patient {
 	@Column
 	private int deptId;
 	@Column
-	private Date admissionDate;
+	private LocalDate admissionDate;
 	@Column
-	private Date dischargeDate;
+	private LocalDate dischargeDate;
 	@Column
 	private int bedId;
 	@Column
-	private Date appointment;
+	private LocalDate appointment;
 	@Column
 	private boolean alive;
 	@OneToMany(cascade = CascadeType.ALL)
@@ -65,9 +66,9 @@ public class Patient {
 	public Patient(){}
 	
 	
-	public Patient(int id, String forename, String surname, Date dob, boolean gender, String address, String phone,
-			String nextOfKin, int doctorId, int deptId, Date admissionDate, Date dischargeDate, int bedId,
-			Date appointment, boolean alive, Set<Prescription> prescriptions, Set<Note> patientNotes,
+	public Patient(int id, String forename, String surname, LocalDate dob, boolean gender, String address, String phone,
+			String nextOfKin, int doctorId, int deptId, LocalDate admissionDate, LocalDate dischargeDate, int bedId,
+			LocalDate appointment, boolean alive, Set<Prescription> prescriptions, Set<Note> patientNotes,
 			PatientType patientType, boolean inpatient) {
 		this.id = id;
 		this.forename = forename;
@@ -109,10 +110,10 @@ public class Patient {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	public Date getDob() {
+	public LocalDate getDob() {
 		return dob;
 	}
-	public void setDob(Date dob) {
+	public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
 	public boolean isGender() {
@@ -151,16 +152,16 @@ public class Patient {
 	public void setDeptId(int deptId) {
 		this.deptId = deptId;
 	}
-	public Date getAdmissionDate() {
+	public LocalDate getAdmissionDate() {
 		return admissionDate;
 	}
-	public void setAdmissionDate(Date admissionDate) {
+	public void setAdmissionDate(LocalDate admissionDate) {
 		this.admissionDate = admissionDate;
 	}
-	public Date getDischargeDate() {
+	public LocalDate getDischargeDate() {
 		return dischargeDate;
 	}
-	public void setDischargeDate(Date dischargeDate) {
+	public void setDischargeDate(LocalDate dischargeDate) {
 		this.dischargeDate = dischargeDate;
 	}
 	public int getBedId() {
@@ -169,10 +170,10 @@ public class Patient {
 	public void setBedId(int bedId) {
 		this.bedId = bedId;
 	}
-	public Date getAppointment() {
+	public LocalDate getAppointment() {
 		return appointment;
 	}
-	public void setAppointment(Date appointment) {
+	public void setAppointment(LocalDate appointment) {
 		this.appointment = appointment;
 	}
 	public boolean isAlive() {

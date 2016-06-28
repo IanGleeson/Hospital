@@ -17,11 +17,12 @@
 		</c:when>
 		<c:otherwise>
 		<table>
-				<tr><th>Room Id</th><th>Ward Id</th></tr>
+				<tr><th>Room Id</th><th>Ward Id</th><th>Type</th></tr>
 				<c:forEach var="room" items="${roomsList}">
 					<tr>
 						<td>${room.id}</td>
 						<td>${room.wardId}</td>
+						<td>${room.type}</td>
 					</tr>
 				</c:forEach>
 
