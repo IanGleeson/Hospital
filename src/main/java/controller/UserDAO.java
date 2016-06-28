@@ -14,6 +14,7 @@ import model.User;
 public class UserDAO {
 
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+	boolean logIn = false;
 	
 	protected User getUserById(int id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -56,13 +57,13 @@ public class UserDAO {
 		}
 	}
 
-	protected void deleteUser(int userId) {
+	protected void deleteUser(User user) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
 		
 		try {
 			tx = session.beginTransaction();	
-			session.delete(userId);  
+			session.delete(user);  
 			tx.commit();						
 		} catch (HibernateException e) {
 			if (tx != null)
@@ -91,7 +92,7 @@ public class UserDAO {
 	protected boolean login(String username, String password) {
 		List<User> listOfUsers = new ArrayList<>();
 		Session session = sessionFactory.openSession();
-		boolean logIn = false;
+		logIn = false;
 		
 		try {
 			Query query = session.createQuery("FROM Person WHERE username = :username OR password = :password");
@@ -100,7 +101,6 @@ public class UserDAO {
 			if (query.list() != null) {
 				logIn = true;
 			}
-			
 		} catch(HibernateException e) {
 			e.printStackTrace();
 		}
@@ -109,8 +109,20 @@ public class UserDAO {
 	}
 
 	protected void changePassword(User user) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
 		
+		try {
+			tx = session.beginTransaction();	
+			session.update(user);  
+			tx.commit();						
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {				
+			session.close();
+		}
 	}
-
 }
 

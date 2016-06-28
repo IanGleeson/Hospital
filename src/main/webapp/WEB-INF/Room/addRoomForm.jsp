@@ -7,9 +7,23 @@
 <title>Add Room</title>
 </head>
 <body>
-	<h1>Add Room</h1>
-	<a href="<c:url value="WEB-INF/view/addRoomForm.jsp">
-			 <c:param name="roomId" value="${room.id}"/>
-			 </c:url>">Add Room</a>
+	<h2>Add Room</h2>
+
+	<form action="RoomServlet?action=viewRoom" method="POST">
+
+		<p>Ward:</p>
+		<p>
+			<input type="text" name="ward" value="${room.ward}" size="49">
+		</p>
+
+		<p>Type:</p>
+		<p>
+			<input type="text" name="type" value="${room.type}" size="49">
+		</p>
+
+		<p>
+			<input type="submit" value="Submit" />
+		</p>
+	</form>
 </body>
 </html>

@@ -22,6 +22,7 @@
 					<tr>
 						<td>${bed.id}</td>
 						<td>${bed.roomId}</td>
+						<td>${bed.wardId}</td>
 					</tr>
 				</c:forEach>
 
