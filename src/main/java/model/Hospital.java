@@ -11,9 +11,7 @@ public class Hospital {
 	private int deptId;
 	private String deptName;
 	
-	public Hospital() {
-		
-	}
+	public Hospital() {}
 
 	public Hospital(int id, int roomId, int wardId, String wardName, int type, String roomType, int deptId,
 			String deptName) {
