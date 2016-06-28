@@ -21,9 +21,7 @@ public class BedServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BedServlet() {
-        super();
-        
+    public BedServlet() {      
         // TODO Auto-generated constructor stub
         bedDAO = new BedDAO();
     }
@@ -63,8 +61,9 @@ public class BedServlet extends HttpServlet {
 
 	private void viewBeds(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
 		
-		List<Bed> listOfBeds = bedDAO.viewBed();
-		request.setAttribute("bedsList",listOfBeds);
+		List<Bed> bedsList = bedDAO.viewBed();
+		request.setAttribute("bedsList",bedsList);
+		System.out.println(bedsList);
 		request.getRequestDispatcher("WEB-INF/Bed/viewBed.jsp").forward(request, response);
 		
 		

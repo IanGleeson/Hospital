@@ -13,39 +13,38 @@ import javax.persistence.Id;
 public class Bed {
 
 	@Id @GeneratedValue
-	private int Id;
+	private int id;
 	
 	@Column
-	private int RoomId;
+	private int roomId;
 
 	@Column
 	private boolean isOccupied;
 
 	public Bed() {
-		super();
+		
 	}
 
 	public Bed(int id, int roomId, boolean isOccupied) {
-		super();
-		Id = id;
-		RoomId = roomId;
+		this.id = id;
+		this.roomId = roomId;
 		this.isOccupied = isOccupied;
 	}
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public int getRoomId() {
-		return RoomId;
+		return roomId;
 	}
 
 	public void setRoomId(int roomId) {
-		RoomId = roomId;
+		this.roomId = roomId;
 	}
 
 	public boolean isOccupied() {
@@ -58,7 +57,7 @@ public class Bed {
 
 	@Override
 	public String toString() {
-		return "Bed [Id=" + Id + ", RoomId=" + RoomId + ", isOccupied=" + isOccupied + "]";
+		return "Bed [Id=" + id + ", RoomId=" + roomId + ", isOccupied=" + isOccupied + "]";
 	}
 
 	@Override
@@ -70,9 +69,9 @@ public class Bed {
 		if (getClass() != obj.getClass())
 			return false;
 		Bed other = (Bed) obj;
-		if (Id != other.Id)
+		if (id != other.id)
 			return false;
-		if (RoomId != other.RoomId)
+		if (roomId != other.roomId)
 			return false;
 		if (isOccupied != other.isOccupied)
 			return false;
