@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1>Add Room</h1>
-<a   href="DepartmentServlet?action=addRoom">AddRoom</a>
+<a   href="WEB-INF/view/addRoomForm.jsp">AddRoom</a>
 </body>
 </html>
