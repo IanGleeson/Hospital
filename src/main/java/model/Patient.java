@@ -1,6 +1,7 @@
 package model;
 
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.type.descriptor.java.LocalDateJavaDescriptor;
 @Entity
 public class Patient {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -24,7 +27,7 @@ public class Patient {
 	@Column
 	private String surname;
 	@Column
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
 	private Date dob;
 	@Column
 	private boolean gender;
