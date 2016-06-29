@@ -28,6 +28,17 @@
   </li>
 </ul>
 
+<div><h1>Search</h1></div>
+<div>Departments</div>
+<div>
+<form action="BedServlet?action=showAddForm" method="POST">
+	<select name="deptOption" id="deptOption" onchange="this.form.submit()">
+	  <c:forEach var="department" items="${departmentList}">
+		 <option value ="${department.id}"> ${department.name}</option>
+	  </c:forEach>
+	</select>
+	</form>
+</div>
 
 
 
