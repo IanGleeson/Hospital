@@ -7,18 +7,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.Type;
+
 
 
 @Entity
 public class Bed {
 
 	@Id @GeneratedValue
-	private int id;
+	private int Id;
 	
 	@Column
-	private int roomId;
+	private int RoomId;
 
 	@Column
+	@Type(type="true_false")
 	private boolean isOccupied;
 
 	public Bed() {
@@ -26,25 +29,25 @@ public class Bed {
 	}
 
 	public Bed(int id, int roomId, boolean isOccupied) {
-		this.id = id;
-		this.roomId = roomId;
+		this.Id = id;
+		this.RoomId = roomId;
 		this.isOccupied = isOccupied;
 	}
 
 	public int getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.Id = id;
 	}
 
 	public int getRoomId() {
-		return roomId;
+		return RoomId;
 	}
 
 	public void setRoomId(int roomId) {
-		this.roomId = roomId;
+		this.RoomId = roomId;
 	}
 
 	public boolean isOccupied() {
@@ -57,7 +60,7 @@ public class Bed {
 
 	@Override
 	public String toString() {
-		return "Bed [Id=" + id + ", RoomId=" + roomId + ", isOccupied=" + isOccupied + "]";
+		return "Bed [Id=" + Id + ", RoomId=" + RoomId + ", isOccupied=" + isOccupied + "]";
 	}
 
 	@Override
@@ -69,9 +72,9 @@ public class Bed {
 		if (getClass() != obj.getClass())
 			return false;
 		Bed other = (Bed) obj;
-		if (id != other.id)
+		if (Id != other.Id)
 			return false;
-		if (roomId != other.roomId)
+		if (RoomId != other.RoomId)
 			return false;
 		if (isOccupied != other.isOccupied)
 			return false;

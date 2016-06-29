@@ -17,7 +17,7 @@
         <property name="connection.pool_size">1</property>
 
         <!-- SQL dialect, e.g. some dbs take an int, some take an Integer -->
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
 
         <!-- Disable the second-level cache  -->
         <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
@@ -29,7 +29,7 @@
         <!-- Drop and re-create the database schema on startup, 'create' will create
         any tables that are needed -->
         
-        <!-- <property name="hibernate.hbm2ddl.auto">create</property>-->
+       <!--  <property name="hibernate.hbm2ddl.auto">create</property> -->
 
         <!-- Mention here ALL the model classes along with their package name -->
         <mapping class="model.Bill"/>

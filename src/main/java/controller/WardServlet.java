@@ -77,6 +77,7 @@ public class WardServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		List<Ward> wardList = wardDAO.viewWard();
+		
 
 		request.setAttribute("wardList", wardList);
 		//System.out.println(wardList);
