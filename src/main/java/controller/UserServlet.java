@@ -34,10 +34,14 @@ public class UserServlet extends HttpServlet {
 
 		switch (action) {
 		case "showAddUserForm":
-			request.getRequestDispatcher("WEB-INF/view/Users/addUser.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/View/Users/addUser.jsp").forward(request, response);
 			break;
 		case "showUpdateUserForm":
-			request.getRequestDispatcher("WEB-INF/view/Users/updateUser.jsp").forward(request, response);
+			int userId = Integer.parseInt(request.getParameter("userId"));
+			User user = userDAO.getUserById(userId);
+			System.out.println(user);
+			request.setAttribute("user", user);
+			request.getRequestDispatcher("WEB-INF/View/Users/updateUser.jsp").forward(request, response);
 			break;
 		case "addUser":
 			addUser(request, response);
@@ -75,27 +79,30 @@ public class UserServlet extends HttpServlet {
 		
 		User user = new User(0, username, password, usertype);
 		userDAO.addUser(user);
+		response.sendRedirect("User?action=viewAll");
 	}
 	
 	protected void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		User user = userDAO.getUserById(userId);
-		
+		user.setUsername(request.getParameter("username"));
+		user.setPassword(request.getParameter("password"));
+		user.setUserType(UserType.valueOf(request.getParameter("usertype")));
 		userDAO.updateUser(user);
-		request.getRequestDispatcher("").forward(request, response);
+		response.sendRedirect("User?action=viewAll");
 	}
 	
 	protected void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		User user = userDAO.getUserById(userId);
 		userDAO.deleteUser(user);
-		request.getRequestDispatcher("").forward(request, response);
+		response.sendRedirect("User?action=viewAll");
 	}
 	
 	protected void viewAllUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<User> allUsers = userDAO.viewAllUsers();
-		request.setAttribute("allUsers", allUsers);
-		request.getRequestDispatcher("WEB-INF/view/Users/viewUsers.jsp").forward(request, response);
+		request.setAttribute("listOfUsers", allUsers);
+		request.getRequestDispatcher("WEB-INF/View/Users/viewUsers.jsp").forward(request, response);
 	}
 	
 	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

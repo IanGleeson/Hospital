@@ -9,10 +9,9 @@
 		<header>Add User</header>
 		<span class="back"><a href="User">Back</a></span>
 		<form action="User?action=addUser" method="post">
-			<input type="text" name=user placeholder="Username">
-			<input type="text" name=pass placeholder="Password">
-			<input type="text" name=name placeholder="Name">
-			<select>
+			<input type="text" name=username placeholder="Username">
+			<input type="text" name=password placeholder="Password">
+			<select name="usertype">
 				<option value="doctor">Doctor</option>
 				<option value="admin">Admin</option>
 				<option value="HR">HR</option>
