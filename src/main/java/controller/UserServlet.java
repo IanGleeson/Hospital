@@ -34,14 +34,14 @@ public class UserServlet extends HttpServlet {
 
 		switch (action) {
 		case "showAddUserForm":
-			request.getRequestDispatcher("WEB-INF/View/Users/addUser.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/view/Users/addUser.jsp").forward(request, response);
 			break;
 		case "showUpdateUserForm":
 			int userId = Integer.parseInt(request.getParameter("userId"));
 			User user = userDAO.getUserById(userId);
 			System.out.println(user);
 			request.setAttribute("user", user);
-			request.getRequestDispatcher("WEB-INF/View/Users/updateUser.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/view/Users/updateUser.jsp").forward(request, response);
 			break;
 		case "addUser":
 			addUser(request, response);
@@ -102,7 +102,7 @@ public class UserServlet extends HttpServlet {
 	protected void viewAllUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<User> allUsers = userDAO.viewAllUsers();
 		request.setAttribute("listOfUsers", allUsers);
-		request.getRequestDispatcher("WEB-INF/View/Users/viewUsers.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/view/Users/viewUsers.jsp").forward(request, response);
 	}
 	
 	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
