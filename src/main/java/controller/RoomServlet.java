@@ -34,7 +34,7 @@ public class RoomServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		if(action==null){
-			action="viewRoom";
+			action="addRoom";
 		}
 		switch (action) {
 		case "addRoom": 		
@@ -61,19 +61,19 @@ public class RoomServlet extends HttpServlet {
 		
 	}
 	
-	private void addRoom(HttpServletRequest request, HttpServletResponse response) {
-		Room room = new Room();
+	private void addRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/*	Room room = new Room();
 		room.setWardId(1);
 		room.setType(1);
 		roomDAO.addRoom(room);
 		System.out.println("Room Added to the database");
-		
+	*/
+		request.getRequestDispatcher("WEB-INF/Room/addRoom.jsp").forward(request, response);
 	}
 	
 	private void viewRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("WEB-INF/view/viewRoom.jsp").forward(request, response);
 		List<Room> roomsList = roomDAO.viewRoom();
-		
+		request.getRequestDispatcher("WEB-INF/Room/viewRoom.jsp").forward(request, response);
 		
 	}
 	/**

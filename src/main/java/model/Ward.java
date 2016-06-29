@@ -95,7 +95,9 @@ public class Ward {
 	 * @param deptId the deptId to set
 	 */
 	public void setDeptId(int deptId) {
+
 		this.DeptId = deptId;
+
 	}
 
 
