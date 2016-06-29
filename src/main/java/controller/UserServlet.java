@@ -37,6 +37,10 @@ public class UserServlet extends HttpServlet {
 			request.getRequestDispatcher("WEB-INF/view/Users/addUser.jsp").forward(request, response);
 			break;
 		case "showUpdateUserForm":
+			int userId = Integer.parseInt(request.getParameter("userId"));
+			User user = userDAO.getUserById(userId);
+			System.out.println(user);
+			request.setAttribute("user", user);
 			request.getRequestDispatcher("WEB-INF/view/Users/updateUser.jsp").forward(request, response);
 			break;
 		case "addUser":
@@ -75,26 +79,29 @@ public class UserServlet extends HttpServlet {
 		
 		User user = new User(0, username, password, usertype);
 		userDAO.addUser(user);
+		response.sendRedirect("User?action=viewAll");
 	}
 	
 	protected void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		User user = userDAO.getUserById(userId);
-		
+		user.setUsername(request.getParameter("username"));
+		user.setPassword(request.getParameter("password"));
+		user.setUserType(UserType.valueOf(request.getParameter("usertype").toUpperCase()));
 		userDAO.updateUser(user);
-		request.getRequestDispatcher("").forward(request, response);
+		response.sendRedirect("User?action=viewAll");
 	}
 	
 	protected void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		User user = userDAO.getUserById(userId);
 		userDAO.deleteUser(user);
-		request.getRequestDispatcher("").forward(request, response);
+		response.sendRedirect("User?action=viewAll");
 	}
 	
 	protected void viewAllUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<User> allUsers = userDAO.viewAllUsers();
-		request.setAttribute("allUsers", allUsers);
+		request.setAttribute("listOfUsers", allUsers);
 		request.getRequestDispatcher("WEB-INF/view/Users/viewUsers.jsp").forward(request, response);
 	}
 	

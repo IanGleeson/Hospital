@@ -3,20 +3,14 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Add User</title>
+		<title>Log In</title>
 	</head>
 	<body>
-		<header>Add User</header>
-		<span class="back"><a href="User">Back</a></span>
-		<form action="User?action=addUser" method="post">
+		<header></header>
+		<form action="User?action=logIn">
 			<input type="text" name=username placeholder="Username">
 			<input type="text" name=password placeholder="Password">
-			<select>
-				<option value="doctor">Doctor</option>
-				<option value="admin">Admin</option>
-				<option value="HR">HR</option>
-			</select>
-			<input type="submit" value="Add">
+			<input type="submit" value="Log In">
 		</form>
 	</body>
 </html>

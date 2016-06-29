@@ -9,15 +9,15 @@
 		<header>Update User</header>
 		<span class="back"><a href="User">Back</a></span>
 		<form action="User?action=updateUser" method="post">
-			<input type="text" name=user value=${ user.username }>
-			<input type="text" name=pass value=${ user.password }>
-			<input type="text" name=name value=${ user.name }>
-			<select>
-				<option value="doctor">Doctor</option>
-				<option value="admin">Admin</option>
-				<option value="HR">HR</option>
+			<input type="hidden" name=userId value=${ user.id }>
+			<input type="text" name=username value=${ user.username }>
+			<input type="text" name=password value=${ user.password }>
+			<select name="usertype">
+				<option value="doctor" ${user.userType == 'DOCTOR' ? 'selected' : ''}>Doctor</option>
+				<option value="admin" ${user.userType == 'ADMIN' ? 'selected' : ''}>Admin</option>
+				<option value="HR" ${user.userType == 'HR' ? 'selected' : ''}>HR</option>
 			</select>
-			<input type="submit" value="Add">
+			<input type="submit" value="Update User">
 		</form>
 	</body>
 </html>
