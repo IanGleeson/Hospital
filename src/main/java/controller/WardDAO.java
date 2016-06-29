@@ -78,11 +78,20 @@ public class WardDAO {
 	protected List<Ward> viewWard(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		@SuppressWarnings("unchecked")
-		String sql="select Ward.DeptId,Department.Name,Ward.Name from Ward, Department where Ward.DeptId=Department.Id";
-		List<Ward> ward= (List<Ward>) session.createQuery(sql).list();
+		/*String sql="FROM  Ward.deptId,Department.name,Ward.name from Ward, Department where Ward.deptId=Department.id";*/
+		List<Ward> ward= (List<Ward>) session.createQuery("from Ward").list();
+	/*	List<Department> department= (List<Department>) session.createQuery("from Department").list();*/
 		return ward;
 		
 	}
+/*	protected List<Department> viewDepartment(){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		@SuppressWarnings("unchecked")
+		String sql="FROM  Ward.deptId,Department.name,Ward.name from Ward, Department where Ward.deptId=Department.id";
+		List<Department> department= (List<Department>) session.createQuery("from Department").list();
+		return department;
+		
+	}*/
 	protected Ward viewAllWard(int wardId){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Ward ward = session.get(Ward.class, wardId);
