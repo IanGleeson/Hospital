@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -14,22 +15,25 @@ public class Prescription {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@Column
-	private Date prescriptionDate;
-	
+	private LocalDate prescriptionDate;
+	@Column
+	private String content;
+
 	public Prescription(){}
-	
-	
-	
-	
-	
-	public Prescription(int id, Date prescriptionDate) {
+
+	public Prescription(int id, LocalDate prescriptionDate, String content) {
 		this.id = id;
 		this.prescriptionDate = prescriptionDate;
+		this.content = content;
 	}
 
+	public String getContent() {
+		return content;
+	}
 
-
-
+	public void setContent(String content) {
+		this.content = content;
+	}
 
 	public int getId() {
 		return id;
@@ -37,21 +41,25 @@ public class Prescription {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Date getPrescriptionDate() {
+	public LocalDate getPrescriptionDate() {
 		return prescriptionDate;
 	}
-	public void setPrescriptionDate(Date prescriptionDate) {
+	public void setPrescriptionDate(LocalDate prescriptionDate) {
 		this.prescriptionDate = prescriptionDate;
 	}
 
 
 
 
-
 	@Override
 	public String toString() {
-		return "Prescription [id=" + id + ", prescriptionDate=" + prescriptionDate + "]";
+		return "Prescription [id=" + id + ", prescriptionDate=" + prescriptionDate + ", content=" + content + "]";
 	}
+
+
+
+
+
 	
 	
 	
