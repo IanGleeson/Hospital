@@ -90,12 +90,11 @@ public class UserDAO {
 	}
 
 	protected boolean login(String username, String password) {
-		List<User> listOfUsers = new ArrayList<>();
 		Session session = sessionFactory.openSession();
 		logIn = false;
 		
 		try {
-			Query query = session.createQuery("FROM Person WHERE username = :username OR password = :password");
+			Query query = session.createQuery("FROM User WHERE username = :username OR password = :password");
 			query.setParameter(0, username);
 			query.setParameter(1, password);
 			if (query.list() != null) {

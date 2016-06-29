@@ -76,14 +76,18 @@ public class BedDAO {
 		return false;
 		
 	}
-	protected List<Hospital> viewBed(){
+	protected List<Bed> viewBed(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		@SuppressWarnings("unchecked")
-		//String sql ="select B.Id,B.RoomId,R.WardId from model.Bed B, model.Room R where B.RoomId=R.Id ";
-		String sql ="from Bed B, Room R left join fetch R.wardId";
+		String sql ="from Bed";
 		System.out.println(sql);
-		List<Hospital> hospital= (List<Hospital>) session.createQuery(sql).list();
-		return hospital;
+		List<Bed> bed = (List<Bed>) session.createQuery(sql).list();
+		/*for(Hospital h : hospital){
+			System.out.println(h.getBedId());
+			System.out.println(h.getWardId());
+			System.out.println(h.getType());
+		}*/
+		return bed;
 		
 	}
 	protected Bed viewAllBed(int bedId){

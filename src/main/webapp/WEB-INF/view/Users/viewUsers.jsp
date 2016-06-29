@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Insert title here</title>
+		<title>Viewing Users</title>
 	</head>
 	<body>
 		<header></header>
@@ -23,12 +23,12 @@
 							<td>${User.name}</td>
 							<td>&euro;${User.usertype}</td>
 							<td>
-							<a href="<c:url value="UserServlet?action=delete">
+							<a href="<c:url value="User?action=delete">
 									 <c:param name="userId" value="${User.id}"/>
 									 </c:url>">Delete</a>
 							</td>
 							<td>
-							<a href="<c:url value="UserServlet?action=showUpdateForm">
+							<a href="<c:url value="User?action=showUpdateForm">
 									 <c:param name="userId" value="${User.id}"/>
 									 </c:url>">Update</a>
 							</td>
@@ -37,8 +37,12 @@
 				</table>
 			</c:otherwise>
 		</c:choose>
-		<input type="button" name = "addUser" value = "Add User">
-		<input type="button" name = "deleteUser" value = "Delete selected User">
-		<input type="button" name = "updateUser" value = "Update selected User">
+		<a href="<c:url value="User?action=showAddUserForm"></c:url>">Add User</a>
+		<a href="<c:url value="User?action=showUpdateUserForm">
+				<c:param name="userId" value="${user.id}"/>
+				</c:url>">Update User</a>
+		<a href="<c:url value="User?action=deleteUser">
+				<c:param name="userId" value="${user.id}"/>
+				</c:url>">Delete User</a>
 	</body>
 </html>
