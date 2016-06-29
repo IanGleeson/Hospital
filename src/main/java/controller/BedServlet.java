@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Bed;
+import model.Department;
 import model.Hospital;
+import model.Ward;
 
 /**
  * Servlet implementation class BedServlet
@@ -19,12 +21,16 @@ import model.Hospital;
 public class BedServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private BedDAO bedDAO;
+    private DepartmentDAO departmentDAO;
+    private WardDAO wardDAO;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public BedServlet() {      
         // TODO Auto-generated constructor stub
         bedDAO = new BedDAO();
+        departmentDAO = new DepartmentDAO();
+        wardDAO = new WardDAO();
     }
 
 	/**
@@ -37,7 +43,8 @@ public class BedServlet extends HttpServlet {
 		}
 		switch (action) {
 		
-		case "showBedForm":
+		case "showAddForm":
+			showAddForm(request, response);
 			break;
 		case "addBed":
 			addBed(request,response);
@@ -50,6 +57,29 @@ public class BedServlet extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
+	
+	private void showAddForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+		// Get the bed list
+		
+		List<Department> departmentList = departmentDAO.viewDepartment();
+		
+		String strDeptOption = request.getParameter("deptOption");
+		int deptOption = 0;
+		if(strDeptOption!=null){
+			deptOption = Integer.parseInt(strDeptOption);
+		}
+		System.out.println("deptOptoin:"+deptOption	);
+		if(deptOption!=0){
+			List<Ward> wardList = wardDAO.viewWardByDeptId(deptOption);
+		}
+		
+		request.setAttribute("departmentList", departmentList);
+		
+		request.getRequestDispatcher("WEB-INF/view/Bed/addBed.jsp").forward(request, response);
+		
+		
+	}
+	
 	private void addBed(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Bed bed = new Bed();
 		bed.setOccupied(false);
@@ -62,13 +92,13 @@ public class BedServlet extends HttpServlet {
 
 	private void viewBeds(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
 		// Get the bed list
-		List<Hospital> bedsList = bedDAO.viewBed();
+		List<Bed> bedsList = bedDAO.viewBed();
 		// With the help of roomId get the Room list
 		
 		//
 		request.setAttribute("bedsList",bedsList);
 		//System.out.println(bedsList);
-		request.getRequestDispatcher("WEB-INF/Bed/viewBed.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/view/Bed/viewBed.jsp").forward(request, response);
 		
 		
 	}

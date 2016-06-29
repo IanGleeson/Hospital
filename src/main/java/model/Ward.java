@@ -36,7 +36,7 @@ public class Ward {
 
 
 
-	public Ward(int id, String name, int deptId, Set<Room> rooms) {
+	public Ward(int id, String name, int deptId) {
 		super();
 		this.id = id;
 		this.name = name;
