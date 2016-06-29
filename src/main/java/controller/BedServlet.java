@@ -62,7 +62,7 @@ public class BedServlet extends HttpServlet {
 
 	private void viewBeds(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
 		// Get the bed list
-		List<Hospital> bedsList = bedDAO.viewBed();
+		List<Bed> bedsList = bedDAO.viewBed();
 		// With the help of roomId get the Room list
 		
 		//

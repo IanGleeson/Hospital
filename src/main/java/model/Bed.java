@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.Type;
+
 
 
 @Entity
@@ -19,6 +21,7 @@ public class Bed {
 	private int RoomId;
 
 	@Column
+	@Type(type="true_false")
 	private boolean isOccupied;
 
 	public Bed() {
