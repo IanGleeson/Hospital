@@ -3,14 +3,15 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Insert title here</title>
+		<title>Update User</title>
 	</head>
 	<body>
-		<header>Add User</header>
-		<form action="UserServlet?action=addUser" method="post">
-			<input type="text" name=user placeholder="Username">
-			<input type="text" name=pass placeholder="Password">
-			<input type="text" name=name placeholder="Name">
+		<header>Update User</header>
+		<span class="back"><a href="User">Back</a></span>
+		<form action="User?action=updateUser" method="post">
+			<input type="text" name=user value=${ user.username }>
+			<input type="text" name=pass value=${ user.password }>
+			<input type="text" name=name value=${ user.name }>
 			<select>
 				<option value="doctor">Doctor</option>
 				<option value="admin">Admin</option>
