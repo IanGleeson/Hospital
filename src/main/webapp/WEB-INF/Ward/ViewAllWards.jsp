@@ -15,7 +15,7 @@
 
 <ul>
    
-  <li ><a href="Ward?action=addWardForm">Add Wards</a></li>
+  <li ><font size=4><a href="Ward?action=addWardForm">Add Wards</a></li>
     	 
 </ul>
 
@@ -46,14 +46,19 @@
 							<c:forEach var="ward" items="${wardList}">
 						      	<tr bgcolor=#D6C2E6>
 									<td align="center"><font size=4>${ward.id}</font></td>
-									<td align="center"><font size=4>${ward.deptId}</font></td>
+									
+									<!-- Getting department name from department table  -->
+									<td align="center"><font size=4>
+										${mapOfDepartment.get(ward.deptId)}
+									</font></td>
+									
 									<td align="center"><font size=4>${ward.name}</font></td>
 									
-									<td align="center"><font size=4><a	href="<c:url value="WardServlet?action=showUpdateForm">
+									<td align="center"><font size=4><a	href="<c:url value="Ward?action=showUpdateForm">
 								 	<c:param name="wardId" value="${ward.id}"/>
 								 	</c:url>">Update</a></font></td>
 								 	
-									<td align="center"><font size=4><a href="<c:url value="WardServlet?action=delete">
+									<td align="center"><font size=4><a href="<c:url value="Ward?action=delete">
 								 	<c:param name="wardId" value="${ward.id}"/>
 								 	</c:url>">Delete</a></font></td>
 								</tr>
