@@ -87,7 +87,7 @@ public class UserServlet extends HttpServlet {
 		User user = userDAO.getUserById(userId);
 		user.setUsername(request.getParameter("username"));
 		user.setPassword(request.getParameter("password"));
-		user.setUserType(UserType.valueOf(request.getParameter("usertype")));
+		user.setUserType(UserType.valueOf(request.getParameter("usertype").toUpperCase()));
 		userDAO.updateUser(user);
 		response.sendRedirect("User?action=viewAll");
 	}
