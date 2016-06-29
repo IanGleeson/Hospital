@@ -21,7 +21,7 @@
   <li><a href="<c:url value="BedServlet?action=viewAll"/>">View Beds</a></li>
  
   
-  <li><a href="<c:url value="BedServlet?action=addBed"/>">Add Bed</a></li>
+  <li><a href="<c:url value="BedServlet?action=showAddForm"/>">Add Bed</a></li>
   
   <li><a href="#news">Lay out</a></li>
   
