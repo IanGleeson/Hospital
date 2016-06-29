@@ -12,6 +12,7 @@
 			<a href="DepartmentServlet?action=viewAllDepartment">Manage Departments</a>
 			<a href="PatientServlet?action=viewAllPatients">Manage Patients</a>
 			<a href="DoctorServlet?action=viewAllDoctors">Manage Personnel</a>
+			<a href="User">Manage Users</a>
 		</div>
 	</body>
 </html>

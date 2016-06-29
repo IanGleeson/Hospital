@@ -7,10 +7,11 @@
 	</head>
 	<body>
 		<header></header>
-		<form action="User?action=logIn">
-			<input type="text" name=username placeholder="Username">
-			<input type="text" name=password placeholder="Password">
+		<form action="User?action=login" method="post">
+			Username:<input type="text" name=username placeholder="Username">
+			Password:<input type="text" name=password placeholder="Password">
 			<input type="submit" value="Log In">
 		</form>
+		<span name="loginMsg" value=${ failedLogInMsg }></span>
 	</body>
 </html>
