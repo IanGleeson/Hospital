@@ -1,141 +1,107 @@
 package model;
 
-public class Hospital {
-	
-	private int id;
-	private int roomId;
-	private int wardId;
-	private String wardName;
-	private int type;
-	private String roomType;
-	private int deptId;
-	private String deptName;
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+
+@Entity
+@Table(name = "deptLayout")
+public class Hospital implements Serializable{
+	@Id
+	@Column
+	private int BedId;
+	@Column
+	@Type(type="true_false")
+	private boolean Occupied;
+	//@Id
+	//@Column
+	//private int RoomId;
+	//@Column
+	//private int Type;
+	@Column
+	private String RoomType;
+	@Column
+	private BigDecimal Cost;
+	@Column
+	private String WardName;
+	@Column
+	private String DeptName;
 	
 	public Hospital() {}
 
-	public Hospital(int id, int roomId, int wardId, String wardName, int type, String roomType, int deptId,
-			String deptName) {
-		
-		this.id = id;
-		this.roomId = roomId;
-		this.wardId = wardId;
-		this.wardName = wardName;
-		this.type = type;
-		this.roomType = roomType;
-		this.deptId = deptId;
-		this.deptName = deptName;
+	public Hospital(int bedId, boolean occupied, String roomType, BigDecimal cost,
+			String wardName, String deptName) {
+	
+		BedId = bedId;
+		Occupied = occupied;
+	
+		RoomType = roomType;
+		Cost = cost;
+		WardName = wardName;
+		DeptName = deptName;
 	}
 
-	public int getId() {
-		return id;
+	public int getBedId() {
+		return BedId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setBedId(int bedId) {
+		BedId = bedId;
 	}
 
-	public int getRoomId() {
-		return roomId;
+	public boolean isOccupied() {
+		return Occupied;
 	}
 
-	public void setRoomId(int roomId) {
-		this.roomId = roomId;
+	public void setOccupied(boolean occupied) {
+		Occupied = occupied;
 	}
 
-	public int getWardId() {
-		return wardId;
-	}
-
-	public void setWardId(int wardId) {
-		this.wardId = wardId;
-	}
-
-	public String getWardName() {
-		return wardName;
-	}
-
-	public void setWardName(String wardName) {
-		this.wardName = wardName;
-	}
-
-	public int getType() {
-		return type;
-	}
-
-	public void setType(int type) {
-		this.type = type;
-	}
 
 	public String getRoomType() {
-		return roomType;
+		return RoomType;
 	}
 
 	public void setRoomType(String roomType) {
-		this.roomType = roomType;
+		RoomType = roomType;
 	}
 
-	public int getDeptId() {
-		return deptId;
+	public BigDecimal getCost() {
+		return Cost;
 	}
 
-	public void setDeptId(int deptId) {
-		this.deptId = deptId;
+	public void setCost(BigDecimal cost) {
+		Cost = cost;
+	}
+
+	public String getWardName() {
+		return WardName;
+	}
+
+	public void setWardName(String wardName) {
+		WardName = wardName;
 	}
 
 	public String getDeptName() {
-		return deptName;
+		return DeptName;
 	}
 
 	public void setDeptName(String deptName) {
-		this.deptName = deptName;
-	}
-
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Hospital other = (Hospital) obj;
-		if (deptId != other.deptId)
-			return false;
-		if (deptName == null) {
-			if (other.deptName != null)
-				return false;
-		} else if (!deptName.equals(other.deptName))
-			return false;
-		if (id != other.id)
-			return false;
-		if (roomId != other.roomId)
-			return false;
-		if (roomType == null) {
-			if (other.roomType != null)
-				return false;
-		} else if (!roomType.equals(other.roomType))
-			return false;
-		if (type != other.type)
-			return false;
-		if (wardId != other.wardId)
-			return false;
-		if (wardName == null) {
-			if (other.wardName != null)
-				return false;
-		} else if (!wardName.equals(other.wardName))
-			return false;
-		return true;
+		DeptName = deptName;
 	}
 
 	@Override
 	public String toString() {
-		return "Hospital [id=" + id + ", roomId=" + roomId + ", wardId=" + wardId + ", wardName=" + wardName + ", type="
-				+ type + ", roomType=" + roomType + ", deptId=" + deptId + ", deptName=" + deptName + "]";
+		return "Hospital [BedId=" + BedId + ", Occupied=" + Occupied + ", RoomId=" 
+				+ ", RoomType=" + RoomType + ", Cost=" + Cost + ", WardName=" + WardName + ", DeptName=" + DeptName
+				+ "]";
 	}
-	
-	
 	
 	
 

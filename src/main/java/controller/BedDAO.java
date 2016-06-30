@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 
 import model.Bed;
 import model.Hospital;
+import model.RoomType;
 
 public class BedDAO {
 
@@ -86,6 +87,29 @@ public class BedDAO {
 		return bed;
 		
 	}
+	
+	protected List<Hospital> viewHospital(){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		@SuppressWarnings("unchecked")
+		String hql ="from deptLayout";
+		System.out.println(hql);
+		List<Hospital> hospital = (List<Hospital>) session.createQuery(hql).list();
+	
+		return hospital;
+		
+	}
+	
+	protected List<RoomType> getRoomType(){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		@SuppressWarnings("unchecked")
+		String hql ="from RoomType_View";
+		System.out.println(hql);
+		List<RoomType> roomType = (List<RoomType>) session.createQuery(hql).list();
+	
+		return roomType;
+		
+	}
+	
 	protected Bed viewAllBed(int bedId){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Bed bed = session.get(Bed.class, bedId);

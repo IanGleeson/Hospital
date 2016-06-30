@@ -44,7 +44,7 @@
 				<c:forEach var="bed" items="${hospList}">
 					<tr>
 						<td>${bed.bedid}</td>
-						<td>${bed.occupied}</td>
+						
 						<td>${bed.roomId}</td>
 						
 						<td bgcolor="lightgreen">

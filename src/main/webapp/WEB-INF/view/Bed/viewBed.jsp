@@ -24,7 +24,7 @@
   
   <li><a href="<c:url value="BedServlet?action=showAddForm"/>">Add Bed</a></li>
   
-  <li><a href="#news">Lay out</a></li>
+  <li><a href="BedServlet?action=bedLayout">Lay out</a></li>
   
   <li>
   	  <c:if test="${username != null}">

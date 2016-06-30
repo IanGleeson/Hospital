@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Bed;
 import model.Department;
 import model.Hospital;
+import model.RoomType;
 import model.Ward;
 
 /**
@@ -42,7 +43,9 @@ public class BedServlet extends HttpServlet {
 			action="viewBeds";
 		}
 		switch (action) {
-		
+		case "bedLayout":
+			bedLayout(request, response);
+			break;
 		case "showAddForm":
 			showAddForm(request, response);
 			break;
@@ -57,6 +60,15 @@ public class BedServlet extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
+	
+	private void bedLayout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//List<Hospital> hospList = bedDAO.viewHospital();
+		List<RoomType> roomTypeList = bedDAO.getRoomType();
+		request.setAttribute("roomTypeList", roomTypeList);
+		request.getRequestDispatcher("WEB-INF/view/Bed/bedLayout.jsp").forward(request, response);
+	}
+	
 	
 	private void showAddForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
 		// Get the bed list
