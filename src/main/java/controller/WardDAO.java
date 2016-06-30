@@ -100,4 +100,12 @@ public class WardDAO {
 		
 	}
 	
+	
+	protected List<Ward> viewWardByDeptId(int deptId){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		@SuppressWarnings("unchecked")
+		List<Ward> ward= (List<Ward>) session.createQuery("from Ward where deptId =:"+deptId).list();
+		return ward;
+	}
+	
 }

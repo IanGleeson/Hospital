@@ -45,7 +45,7 @@
         <mapping class="model.Room"/>
         <mapping class="model.Ward"/>
         <mapping class="model.Department"/>
-
+		<mapping class="model.Doctor"/>
         
         
 		<!-- List of XML mapping files if not using annotations in the POJO  -->

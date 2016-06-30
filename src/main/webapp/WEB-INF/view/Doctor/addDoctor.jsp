@@ -11,6 +11,7 @@
 <body>
 <h2>Add a Doctor</h2>
 <form action="DoctorServlet?action=addDoctor" method="POST">
+<input type = "hidden" name = "id" value="${doctor.id}">
 	<p>First Name</p>
 	<input type="text" name="firstName" value="${doctor.firstName}"></p> 
 	
