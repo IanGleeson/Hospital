@@ -9,7 +9,7 @@
 <body>
 	<h2>Add Room</h2>
 
-	<form action="RoomServlet?action=viewRoom" method="POST">
+	<form action="Room?action=viewRoom" method="POST">
 
 		<p>Ward:</p>
 		 <select name="ward" onchange="${room.ward}">
@@ -34,7 +34,7 @@
     	</select>
 
 		<p>
-			<input type="submit" value="Submit"/>
+			<input type="submit" value="Submit" />
 		</p>
 	</form>
 </body>

@@ -75,6 +75,7 @@ public class RoomServlet extends HttpServlet {
 	
 	private void viewRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Room> roomsList = roomDAO.viewRoom();
+		request.setAttribute("roomList", roomsList);
 		request.getRequestDispatcher("WEB-INF/view/Room/viewRoom.jsp").forward(request, response);
 		
 	}
