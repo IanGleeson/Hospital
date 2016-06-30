@@ -60,7 +60,7 @@ public class RoomServlet extends HttpServlet {
 	private void deleteRoom(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int id = Integer.valueOf(request.getParameter("roomId"));
 		roomDAO.deleteRoom(id);
-		response.sendRedirect("RoomServlet?action=viewRoom");
+		response.sendRedirect("Room?action=viewRoom");
 		
 	}
 	
