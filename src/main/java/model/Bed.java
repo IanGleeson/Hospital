@@ -21,8 +21,8 @@ public class Bed {
 	private int RoomId;
 
 	@Column
-	@Type(type="true_false")
-	private boolean isOccupied;
+	//@Type(type="true_false")
+	private Boolean Occupied;
 
 	public Bed() {
 		super();
@@ -31,7 +31,7 @@ public class Bed {
 	public Bed(int id, int roomId, boolean isOccupied) {
 		this.Id = id;
 		this.RoomId = roomId;
-		this.isOccupied = isOccupied;
+		this.Occupied = isOccupied;
 	}
 
 	public int getId() {
@@ -51,16 +51,16 @@ public class Bed {
 	}
 
 	public boolean isOccupied() {
-		return isOccupied;
+		return Occupied;
 	}
 
 	public void setOccupied(boolean isOccupied) {
-		this.isOccupied = isOccupied;
+		this.Occupied = isOccupied;
 	}
 
 	@Override
 	public String toString() {
-		return "Bed [Id=" + Id + ", RoomId=" + RoomId + ", isOccupied=" + isOccupied + "]";
+		return "Bed [Id=" + Id + ", RoomId=" + RoomId + ", isOccupied=" + Occupied + "]";
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class Bed {
 			return false;
 		if (RoomId != other.RoomId)
 			return false;
-		if (isOccupied != other.isOccupied)
+		if (Occupied != other.Occupied)
 			return false;
 		return true;
 	}
