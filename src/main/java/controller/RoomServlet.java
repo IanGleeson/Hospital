@@ -71,12 +71,12 @@ public class RoomServlet extends HttpServlet {
 		roomDAO.addRoom(room);
 		System.out.println("Room Added to the database");
 	*/
-		request.getRequestDispatcher("WEB-INF/Room/addRoom.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/view/Room/addRoom.jsp").forward(request, response);
 	}
 	
 	private void viewRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Room> roomsList = roomDAO.viewRoom();
-		request.getRequestDispatcher("WEB-INF/Room/viewRoom.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/view/Room/viewRoom.jsp").forward(request, response);
 		
 	}
 	/**
