@@ -40,6 +40,9 @@ public class RoomServlet extends HttpServlet {
 		case "addRoom": 		
 			addRoom(request,response);
 			break;
+		case "addRoomForm": 		
+			request.getRequestDispatcher("WEB-INF/Room/addRoomForm.jsp").forward(request, response);
+			break;
 		case "deleteRoom": 		
 			deleteRoom(request,response);
 			break;	
