@@ -60,22 +60,22 @@ public class RoomServlet extends HttpServlet {
 	private void deleteRoom(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int id = Integer.valueOf(request.getParameter("roomId"));
 		roomDAO.deleteRoom(id);
-		response.sendRedirect("RoomServlet?action=viewRoom");
+		response.sendRedirect("Room?action=viewRoom");
 		
 	}
 	
 	private void addRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	/*	Room room = new Room();
+		Room room = new Room();
 		room.setWardId(1);
 		room.setType(1);
 		roomDAO.addRoom(room);
 		System.out.println("Room Added to the database");
-	*/
-		request.getRequestDispatcher("WEB-INF/view/Room/addRoom.jsp").forward(request, response);
+	request.getRequestDispatcher("WEB-INF/view/Room/addRoom.jsp").forward(request, response);
 	}
 	
 	private void viewRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Room> roomsList = roomDAO.viewRoom();
+		request.setAttribute("roomList", roomsList);
 		request.getRequestDispatcher("WEB-INF/view/Room/viewRoom.jsp").forward(request, response);
 		
 	}
