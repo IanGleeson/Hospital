@@ -9,7 +9,7 @@
 <body>
 	<h1>Add Room</h1>
 	<a
-		href="<c:url value="WEB-INF/Room/addRoomForm.jsp">
+		href="<c:url value="RoomServlet?action=viewRoomForm">
 			 <c:param name="roomId" value="${room.id}"/>
 			 </c:url>">Add Room</a>
 </body>

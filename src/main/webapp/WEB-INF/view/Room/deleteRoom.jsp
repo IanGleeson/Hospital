@@ -15,9 +15,6 @@
 	<p><input type="submit" value="Delete Room"/></p> 
 </form>
 </body>
-	
-	
-	 
-	
+
 </body>
 </html>
