@@ -1,8 +1,10 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -15,25 +17,11 @@ import model.Department;
 
 public class DepartmentDAO {
 	
-	//private static SessionFactory sessionFactory;
+	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+	
 	
 	public DepartmentDAO(){
-		
-/*		 A Configuration hooks up to the hibernate.cfg.xml file
-		 * to read the properties. The configure() method uses
-		 * the mapping and properties in that resource/ config file. 
-		Configuration config = new Configuration().configure();
-		
-		config.addAnnotatedClass(model.Department.class);
-		
-		 config.getProperties() gets all the mappings/ properties 
-		 * from the hibernate config file. 
-		StandardServiceRegistryBuilder builder = 
-				new StandardServiceRegistryBuilder().
-				applySettings(config.getProperties());
-		
-		 A SessionFactory is used to create each Session instance 
-		sessionFactory = config.buildSessionFactory(builder.build());*/
+
 		
 	}
 
@@ -99,11 +87,12 @@ public class DepartmentDAO {
 		return false;
 		
 	}
-	protected List<Department> viewDepartment(){
+	@SuppressWarnings("unchecked")
+	protected List<Department> viewDepartment(){	
+		
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		@SuppressWarnings("unchecked")
 		List<Department> department= (List<Department>) session.createQuery("From Department").list();
-		return department;
+	    return department;
 		
 	}
 	protected Department viewAllDepartment(int departmentId){
