@@ -10,7 +10,7 @@
 <body>
 	<h1>Add Room</h1>
 	<a
-		href="<c:url value="RoomServlet?action=addRoomForm">
+		href="<c:url value="Room?action=addRoomForm">
 			 <c:param name="roomId" value="${room.id}"/>
 			 </c:url>">Add Room</a>
 </body>
