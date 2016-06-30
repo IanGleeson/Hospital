@@ -69,9 +69,12 @@ public class BedServlet extends HttpServlet {
 			deptOption = Integer.parseInt(strDeptOption);
 		}
 		System.out.println("deptOptoin:"+deptOption	);
-		if(deptOption!=0){
+		/*if(deptOption!=0){
 			List<Ward> wardList = wardDAO.viewWardByDeptId(deptOption);
-		}
+			request.setAttribute("wardList", wardList);
+		}*/
+		
+		
 		
 		request.setAttribute("departmentList", departmentList);
 		

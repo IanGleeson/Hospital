@@ -82,11 +82,7 @@ public class BedDAO {
 		String sql ="from Bed";
 		System.out.println(sql);
 		List<Bed> bed = (List<Bed>) session.createQuery(sql).list();
-		/*for(Hospital h : hospital){
-			System.out.println(h.getBedId());
-			System.out.println(h.getWardId());
-			System.out.println(h.getType());
-		}*/
+	
 		return bed;
 		
 	}
