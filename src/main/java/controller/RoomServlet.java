@@ -44,12 +44,6 @@ public class RoomServlet extends HttpServlet {
 		case "addRoom": 		
 			addRoom(request,response);
 			break;
-		case "addRoomForm":
-			List<Ward> listOfWards =  wardDAO.viewWard();
-			request.setAttribute("listOfWards", listOfWards);
-			System.out.println(listOfWards);
-			request.getRequestDispatcher("WEB-INF/view/Room/addRoomForm.jsp").forward(request, response);
-			break;
 		case "deleteRoom": 		
 			deleteRoom(request,response);
 			break;	
@@ -77,12 +71,19 @@ public class RoomServlet extends HttpServlet {
 //		room.setType(1);
 //		roomDAO.addRoom(room);
 //		System.out.println("Room Added to the database");
+		List<Ward> listOfWards =  wardDAO.viewWard();
+		request.setAttribute("listOfWards", listOfWards);
+		System.out.println(listOfWards);
+		List<Room> roomsList = roomDAO.viewRoom();
+		request.setAttribute("roomList", roomsList);
+		System.out.println(roomsList);
 	request.getRequestDispatcher("WEB-INF/view/Room/addRoom.jsp").forward(request, response);
 	}
 	
 	private void viewRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Room> roomsList = roomDAO.viewRoom();
 		request.setAttribute("roomList", roomsList);
+		System.out.println(roomsList);
 		request.getRequestDispatcher("WEB-INF/view/Room/viewRoom.jsp").forward(request, response);
 		
 	}

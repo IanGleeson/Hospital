@@ -9,9 +9,24 @@
 </head>
 <body>
 	<h1>Add Room</h1>
-	<a
-		href="<c:url value="Room?action=addRoomForm">
-			 <c:param name="roomId" value="${room.id}"/>
-			 </c:url>">Add Room</a>
+	<form action="Room?action=viewRoom" method="POST">
+
+		<p>Ward:</p>
+		<select name="ward">
+			<c:forEach var="ward" items="${listOfWards}">
+				<option value=${ ward.id }>${ ward.name }</option>
+			</c:forEach>
+		</select>
+
+		<p>Type:</p>
+		<select name="type">
+			<c:forEach var="type" items="${roomsList}">
+				<option value=${ room.id }>${ room.type }</option>
+			</c:forEach>
+		</select>
+		<p>
+			<input type="submit" value="Submit" />
+		</p>
+	</form>
 </body>
 </html>
