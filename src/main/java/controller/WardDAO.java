@@ -87,7 +87,7 @@ public class WardDAO {
 	protected List<Department> viewDepartment(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		@SuppressWarnings("unchecked")
-		String sql="FROM  Ward.deptId,Department.name,Ward.name from Ward, Department where Ward.deptId=Department.id";
+		
 		List<Department> department= (List<Department>) session.createQuery("from Department").list();
 		return department;
 		

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Bed;
 import model.Department;
 import model.Hospital;
+//import model.RoomType;
 import model.Ward;
 
 /**
@@ -42,7 +43,9 @@ public class BedServlet extends HttpServlet {
 			action="viewBeds";
 		}
 		switch (action) {
-		
+		case "bedLayout":
+			bedLayout(request, response);
+			break;
 		case "showAddForm":
 			showAddForm(request, response);
 			break;
@@ -58,6 +61,15 @@ public class BedServlet extends HttpServlet {
 	}
 
 	
+	private void bedLayout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//List<Hospital> hospList = bedDAO.viewHospital();
+		//List<RoomType> roomTypeList = bedDAO.getRoomType();
+		//request.setAttribute("roomTypeList", roomTypeList);
+		request.getRequestDispatcher("WEB-INF/view/Bed/bedLayout.jsp").forward(request, response);
+	}
+	
+	
 	private void showAddForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
 		// Get the bed list
 		
@@ -69,9 +81,12 @@ public class BedServlet extends HttpServlet {
 			deptOption = Integer.parseInt(strDeptOption);
 		}
 		System.out.println("deptOptoin:"+deptOption	);
-		if(deptOption!=0){
+		/*if(deptOption!=0){
 			List<Ward> wardList = wardDAO.viewWardByDeptId(deptOption);
-		}
+			request.setAttribute("wardList", wardList);
+		}*/
+		
+		
 		
 		request.setAttribute("departmentList", departmentList);
 		

@@ -1,8 +1,8 @@
 package model;
 
-import java.sql.Date;
 import java.time.LocalDate;
-
+import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,10 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-import org.hibernate.type.descriptor.java.LocalDateJavaDescriptor;
+import org.hibernate.annotations.Type;
 @Entity
 public class Patient {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -28,10 +26,9 @@ public class Patient {
 	@Column
 	private String surname;
 	@Column
-	//@Temporal(TemporalType.DATE)
 	private LocalDate dob;
 	@Column
-	private boolean gender;
+	private Boolean gender;
 	@Column
 	private String address;
 	@Column
@@ -50,26 +47,29 @@ public class Patient {
 	private int bedId;
 	@Column
 	private LocalDate appointment;
-	@Column
-	private boolean alive;
+	@Type(type = "true_false")
+	private Boolean alive;
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="patientId")
 	private Set<Prescription> prescriptions;
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="patientId")
 	private Set<Note> patientNotes;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="patientId")
+	private Set<Bill> patientBills;
+	
 	@Enumerated(EnumType.STRING)
 	private PatientType patientType;
-	@Column
-	private boolean inpatient;	
+	@Type(type = "true_false")
+	private Boolean inpatient;	
 	
 	public Patient(){}
 	
-	
-	public Patient(int id, String forename, String surname, LocalDate dob, boolean gender, String address, String phone,
+	public Patient(int id, String forename, String surname, LocalDate dob, Boolean gender, String address, String phone,
 			String nextOfKin, int doctorId, int deptId, LocalDate admissionDate, LocalDate dischargeDate, int bedId,
-			LocalDate appointment, boolean alive, Set<Prescription> prescriptions, Set<Note> patientNotes,
-			PatientType patientType, boolean inpatient) {
+			LocalDate appointment, Boolean alive, Set<Prescription> prescriptions, Set<Note> patientNotes, PatientType patientType, Boolean inpatient) {
 		this.id = id;
 		this.forename = forename;
 		this.surname = surname;
@@ -86,11 +86,22 @@ public class Patient {
 		this.appointment = appointment;
 		this.alive = alive;
 		this.prescriptions = prescriptions;
-		this.patientNotes = patientNotes;
-		this.patientType = patientType;
-		this.inpatient = inpatient;
+        this.patientNotes = patientNotes;
+        this.patientType = patientType;
+        this.inpatient = inpatient;
+	}
+	
+	
+	
+	
+	
+	public Set<Note> getPatientNotes() {
+		return patientNotes;
 	}
 
+	public void setPatientNotes(Set<Note> patientNotes) {
+		this.patientNotes = patientNotes;
+	}
 
 	public int getId() {
 		return id;
@@ -116,12 +127,15 @@ public class Patient {
 	public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
-	public boolean isGender() {
+	
+	public Boolean getGender() {
 		return gender;
 	}
-	public void setGender(boolean gender) {
+
+	public void setGender(Boolean gender) {
 		this.gender = gender;
 	}
+
 	public String getAddress() {
 		return address;
 	}
@@ -176,37 +190,39 @@ public class Patient {
 	public void setAppointment(LocalDate appointment) {
 		this.appointment = appointment;
 	}
-	public boolean isAlive() {
+
+	public Boolean getAlive() {
 		return alive;
 	}
-	public void setAlive(boolean alive) {
+
+	public void setAlive(Boolean alive) {
 		this.alive = alive;
 	}
+
+	public Boolean getInpatient() {
+		return inpatient;
+	}
+
+	public void setInpatient(Boolean inpatient) {
+		this.inpatient = inpatient;
+	}
+
 	public Set<Prescription> getPrescriptions() {
 		return prescriptions;
 	}
 	public void setPrescriptions(Set<Prescription> prescriptions) {
 		this.prescriptions = prescriptions;
 	}
-	public Set<Note> getPatientNotes() {
-		return patientNotes;
-	}
-	public void setPatientNotes(Set<Note> patientNotes) {
-		this.patientNotes = patientNotes;
-	}
+
+
+
 	public PatientType getPatientType() {
 		return patientType;
 	}
+
 	public void setPatientType(PatientType patientType) {
 		this.patientType = patientType;
 	}
-	public boolean isInpatient() {
-		return inpatient;
-	}
-	public void setInpatient(boolean inpatient) {
-		this.inpatient = inpatient;
-	}
-
 
 	@Override
 	public String toString() {
@@ -217,7 +233,9 @@ public class Patient {
 				+ ", prescriptions=" + prescriptions + ", patientNotes=" + patientNotes + ", patientType=" + patientType
 				+ ", inpatient=" + inpatient + "]";
 	}
+
 	
+
 	
 
 	

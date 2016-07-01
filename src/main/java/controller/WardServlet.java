@@ -80,9 +80,6 @@ public class WardServlet extends HttpServlet {
 		String wardName=request.getParameter("wardName");
 					
 		Ward ward=new Ward(0, wardName, deptId);
-		//ward.setId(0);
-//		ward.setDeptId(deptId);
-//		ward.setName(wardName);
 		System.out.println(deptId);
 		System.out.println(wardName);
 		wardDAO.addWard(ward);

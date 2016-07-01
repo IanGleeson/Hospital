@@ -27,8 +27,17 @@ public class DoctorServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("You are in the DO GET!");
+		
 		String action = request.getParameter("action");
+		if(action==null){
+			action = "viewAll";
+		}
 		switch(action){
+		case "showInsertForm":
+			System.out.println("You are in the showInsertForm in the DoctorServlet and you're about to go to the jsp");
+			request.getRequestDispatcher("WEB-INF/View/addDoctor.jsp");
+			System.out.println("Your response.sendRedirect method in the showInsertForm of the switch statement of the DoctorServlet is NOT working!!!");
+			break;
 		case "addDoctor":
 			addDoctor(request,response);
 			break;
@@ -58,18 +67,21 @@ public class DoctorServlet extends HttpServlet {
 		public void addDoctor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");
-			String gender = request.getParameter("gender");
+			//String gender = request.getParameter("gender");
+			
 			boolean isMale;
-			if(gender.equals("M")){
-			 isMale = true;
-			}
-				else isMale = false;
+			isMale = true;
+//			if(gender.equals("M")){
+//			 isMale = true;
+//			}
+//				else isMale = false;
 			
 			String address = request.getParameter("address");
 			String phoneNumber = request.getParameter("phoneNumber");
 			String qualification = request.getParameter("qualification");
 			String deptId = request.getParameter("deptId");
-			int departmentId = Integer.valueOf(deptId);
+		//	int departmentId = Integer.valueOf(deptId);
+			int departmentId = 32;
 			Doctor dockie = new Doctor();
 			dockie.setFirstName(firstName);
 			dockie.setLastName(lastName);
@@ -79,7 +91,7 @@ public class DoctorServlet extends HttpServlet {
 			dockie.setQualification(qualification);
 			dockie.setDeptId(departmentId);
 			int integer = doctorDAO.addDoctor(dockie);
-			response.sendRedirect("BookServlet?action=viewAll");
+			response.sendRedirect("DoctorServlet?action=viewAll");
 			
 	}
 
@@ -110,7 +122,7 @@ public class DoctorServlet extends HttpServlet {
 		List<Doctor> listOfDoctors = null;
 		listOfDoctors = doctorDAO.getAllDoctors();
 		request.setAttribute("listOfDoctors", listOfDoctors);
-		request.getRequestDispatcher("WEB-INF/view/viewDoctors.jsp").
+		request.getRequestDispatcher("WEB-INF/View/viewDoctors.jsp").
 				forward(request, response);
 		return listOfDoctors;
 		}	
@@ -119,7 +131,7 @@ public class DoctorServlet extends HttpServlet {
 		int doctorId = Integer.parseInt(request.getParameter("doctorId"));
 		quack = doctorDAO.getDoctorDetailsById(doctorId);
 		request.setAttribute("doctor", quack);
-		request.getRequestDispatcher("WEB-INF/view/viewDoctors.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/View/viewDoctors.jsp").forward(request, response);
 		return quack;
 		}
 		
@@ -128,7 +140,7 @@ public class DoctorServlet extends HttpServlet {
 		String lastName = request.getParameter("lastName");
 		quack = doctorDAO.getDoctorDetailsByLastname(lastName);
 		request.setAttribute("doctor", quack);
-		request.getRequestDispatcher("WEB-INF/view/viewDoctors.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/View/viewDoctors.jsp").forward(request, response);
 		
 		response.sendRedirect("DoctorServlet?action=viewAll");
 		return quack;
@@ -138,13 +150,13 @@ public class DoctorServlet extends HttpServlet {
 		String department = request.getParameter("department");
 		quack = doctorDAO.getDoctorDetailsByDepartment(department);
 		request.setAttribute("doctor", quack);
-		request.getRequestDispatcher("WEB-INF/view/viewDoctors.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/View/viewDoctors.jsp").forward(request, response);
 		return quack;
 		}
 		public void deleteDoctor(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		int doctorId = Integer.valueOf(request.getParameter("doctorId"));
 		doctorDAO.deleteDoctor(doctorId);
-		response.sendRedirect("WEB-INF/view/viewDoctors.jsp");
+		response.sendRedirect("WEB-INF/View/viewDoctors.jsp");
 		}
 		
 			protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
