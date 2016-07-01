@@ -11,7 +11,7 @@
 		<form action="User?action=addUser" method="post">
 			<input type="text" name=username placeholder="Username">
 			<input type="text" name=password placeholder="Password">
-			<select>
+			<select name="usertype">
 				<option value="doctor">Doctor</option>
 				<option value="admin">Admin</option>
 				<option value="HR">HR</option>

@@ -7,7 +7,10 @@
 		<title>Viewing Users</title>
 	</head>
 	<body>
-		<header></header>
+		<header>
+			<span class="back"><a href="index.jsp">Back</a></span>
+			<c:if test="loggedIn == true"><a href="<c:url value="User?action=logout"></c:url>">Log Out</a></c:if>
+		</header>
 		<c:choose>
 			<c:when test="${listOfUsers.isEmpty()}">
 				<h2>There are no users in the database</h2>

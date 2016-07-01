@@ -9,15 +9,12 @@
 <title>Delete Room</title>
 </head>
 <body>
-<form action="RoomServlet?action=deleteRoom" method="POST">
+<form action="Room?action=deleteRoom" method="POST">
 	<p>Room Type</p>
 	<input type="text" name="id" value="${room.id}">
 	<p><input type="submit" value="Delete Room"/></p> 
 </form>
 </body>
-	
-	
-	 
-	
+
 </body>
 </html>

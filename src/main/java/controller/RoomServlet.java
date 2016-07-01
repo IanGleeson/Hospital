@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Bed;
 import model.Room;
+import model.Ward;
+import controller.WardDAO;
 
 /**
  * Servlet implementation class RoomServlet
@@ -23,9 +25,11 @@ public class RoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private RoomDAO roomDAO;
+	private WardDAO wardDAO;
 
     public RoomServlet() {
         roomDAO = new RoomDAO();
+        wardDAO = new WardDAO();
     }
 
 	/**
@@ -39,6 +43,12 @@ public class RoomServlet extends HttpServlet {
 		switch (action) {
 		case "addRoom": 		
 			addRoom(request,response);
+			break;
+		case "addRoomForm":
+			List<Ward> listOfWards =  wardDAO.viewWard();
+			request.setAttribute("listOfWards", listOfWards);
+			System.out.println(listOfWards);
+			request.getRequestDispatcher("WEB-INF/view/Room/addRoomForm.jsp").forward(request, response);
 			break;
 		case "deleteRoom": 		
 			deleteRoom(request,response);
@@ -57,23 +67,23 @@ public class RoomServlet extends HttpServlet {
 	private void deleteRoom(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int id = Integer.valueOf(request.getParameter("roomId"));
 		roomDAO.deleteRoom(id);
-		response.sendRedirect("RoomServlet?action=viewRoom");
+		response.sendRedirect("Room?action=viewRoom");
 		
 	}
 	
 	private void addRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	/*	Room room = new Room();
-		room.setWardId(1);
-		room.setType(1);
-		roomDAO.addRoom(room);
-		System.out.println("Room Added to the database");
-	*/
-		request.getRequestDispatcher("WEB-INF/Room/addRoom.jsp").forward(request, response);
+//		Room room = new Room();
+//		room.setWardId(1);
+//		room.setType(1);
+//		roomDAO.addRoom(room);
+//		System.out.println("Room Added to the database");
+	request.getRequestDispatcher("WEB-INF/view/Room/addRoom.jsp").forward(request, response);
 	}
 	
 	private void viewRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Room> roomsList = roomDAO.viewRoom();
-		request.getRequestDispatcher("WEB-INF/Room/viewRoom.jsp").forward(request, response);
+		request.setAttribute("roomList", roomsList);
+		request.getRequestDispatcher("WEB-INF/view/Room/viewRoom.jsp").forward(request, response);
 		
 	}
 	/**

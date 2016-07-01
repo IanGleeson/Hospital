@@ -46,11 +46,8 @@
         <mapping class="model.Ward"/>
         <mapping class="model.Department"/>
 		<mapping class="model.Doctor"/>
-        
-		<mapping class="model.Doctor"/>
         <mapping class="model.Hospital"/>
        <!--  <mapping class="model.RoomType"/> -->
-        
 		<!-- List of XML mapping files if not using annotations in the POJO  -->
         <!-- <mapping resource="Ticket.hbm.xml"/>  -->
     </session-factory>

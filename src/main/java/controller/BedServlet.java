@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Bed;
 import model.Department;
 import model.Hospital;
-//import model.RoomType;
+
 import model.Ward;
 
 /**
@@ -64,8 +64,7 @@ public class BedServlet extends HttpServlet {
 	private void bedLayout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//List<Hospital> hospList = bedDAO.viewHospital();
-		//List<RoomType> roomTypeList = bedDAO.getRoomType();
-		//request.setAttribute("roomTypeList", roomTypeList);
+
 		request.getRequestDispatcher("WEB-INF/view/Bed/bedLayout.jsp").forward(request, response);
 	}
 	

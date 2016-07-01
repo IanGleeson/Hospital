@@ -14,8 +14,13 @@ import model.User;
 public class UserDAO {
 
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-	boolean logIn = false;
+	private boolean loggedIn = false;
 	
+	
+	public boolean isLogIn() {
+		return loggedIn;
+	}
+
 	protected User getUserById(int id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		User user = session.get(User.class, id);
@@ -91,20 +96,20 @@ public class UserDAO {
 
 	protected boolean login(String username, String password) {
 		Session session = sessionFactory.openSession();
-		logIn = false;
+		loggedIn = false;
 		
 		try {
-			Query query = session.createQuery("FROM User WHERE username = :username OR password = :password");
-			query.setParameter(0, username);
-			query.setParameter(1, password);
+			Query<User> query = session.createQuery("FROM User WHERE username = :username OR password = :password");
+			query.setParameter("username", username);
+			query.setParameter("password", password);
 			if (query.list() != null) {
-				logIn = true;
+				loggedIn = true;
 			}
 		} catch(HibernateException e) {
 			e.printStackTrace();
 		}
 		session.close();
-		return logIn;
+		return loggedIn;
 	}
 
 	protected void changePassword(User user) {

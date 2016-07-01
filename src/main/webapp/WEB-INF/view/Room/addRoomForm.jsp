@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,17 +10,35 @@
 <body>
 	<h2>Add Room</h2>
 
-	<form action="RoomServlet?action=viewRoom" method="POST">
+	<form action="Room?action=viewRoom" method="POST">
 
 		<p>Ward:</p>
-		<p>
-			<input type="text" name="ward" value="${room.ward}" size="49">
-		</p>
+		<select name="ward">
+			<c:forEach var="ward" items="${listOfWards}">
+				<option value=${ ward.name }>
+			</c:forEach>
+		</select>
 
+		<!-- <select name="ward" onchange="${room.ward}">
+				<option value="dropdown">Please select one
+				<option value="belle">Belle
+				<option value="sarabi">Sarabi
+				<option value="pocahontas">Pocahontas
+				<option value="aladdin">Aladdin
+				<option value="demetrius">Demetrius
+				<option value="rapunzel">Rapunzel
+				<option value="hercules">Hercules
+				<option value="aurora">Aurora
+			</select>
+		 -->
 		<p>Type:</p>
-		<p>
-			<input type="text" name="type" value="${room.type}" size="49">
-		</p>
+		<select name="type" onchange="${room.type}">
+			<option value="dropdown">Please select one
+			<option value="public">Public
+			<option value="semiPrivate">Semi-Private
+			<option value="private">Private
+			<option value="dayroom">Dayroom
+		</select>
 
 		<p>
 			<input type="submit" value="Submit" />

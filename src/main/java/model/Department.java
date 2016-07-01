@@ -20,7 +20,7 @@ public class Department {
 	private int Id;
 	@Column
 	private String Name;
-	
+		
    @OneToMany(cascade=CascadeType.ALL)
    @JoinColumn(name="DeptId")
    private Set<Ward> wards = new HashSet<>();	
@@ -28,6 +28,16 @@ public class Department {
    public Department() {
 	
 	}
+
+   
+   
+public Department(int id, String name) {
+	super();
+	Id = id;
+	Name = name;
+}
+
+
 
 /**
  * @return the id
@@ -40,7 +50,7 @@ public int getId() {
  * @param id the id to set
  */
 public void setId(int id) {
-	Id = id;
+	id = id;
 }
 
 /**

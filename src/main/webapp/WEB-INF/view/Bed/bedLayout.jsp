@@ -35,17 +35,18 @@
 
 
 <c:choose>
-		<c:when test="${bedsList.isEmpty()}">
+		<c:when test="${hospList.isEmpty()}">
 			<h2>There are no beds in the database</h2>
 		</c:when>
 		<c:otherwise>
 		<table>
 				<tr><th>Bed Id</th><th>Room Id</th><th>Occupied</th><th>Delete</th><th>Update</th></tr>
-				<c:forEach var="bed" items="${bedsList}">
+				<c:forEach var="bed" items="${hospList}">
 					<tr>
-						<td>${bed.id}</td>
+						<td>${bed.bedid}</td>
+						
 						<td>${bed.roomId}</td>
-						<td>${bed.occupied}</td>
+						
 						<td bgcolor="lightgreen">
 						<a href="<c:url value="BedServlet?action=delete">
 								 <c:param name="bedId" value="${bed.id}"/>

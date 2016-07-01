@@ -26,6 +26,16 @@
 						<td>${room.id}</td>
 						<td>${room.wardId}</td>
 						<td>${room.type}</td>
+						<td>
+						<a href="<c:url value="Room?action=deleteRoom">
+								 <c:param name="roomId" value="${room.id}"/>
+								 </c:url>">Delete Room</a>
+						</td>
+						<td>
+						<a href="<c:url value="Room?action=addRoom">
+								 <c:param name="roomId" value="${room.id}"/>
+								 </c:url>">Add Room</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>

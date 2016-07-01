@@ -8,7 +8,9 @@ import org.hibernate.Transaction;
 
 import model.Bed;
 import model.Hospital;
-//import model.RoomType;
+ 
+import model.RoomType;
+
 
 public class BedDAO {
 
@@ -99,7 +101,8 @@ public class BedDAO {
 		
 	}
 	
-	/*protected List<RoomType> getRoomType(){
+
+	protected List<RoomType> getRoomType(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		@SuppressWarnings("unchecked")
 		String hql ="from RoomType_View";
@@ -108,7 +111,8 @@ public class BedDAO {
 	
 		return roomType;
 		
-	}*/
+	}
+
 	
 	protected Bed viewAllBed(int bedId){
 		Session session = HibernateUtil.getSessionFactory().openSession();
