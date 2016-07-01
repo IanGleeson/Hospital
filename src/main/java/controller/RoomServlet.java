@@ -17,6 +17,7 @@ import model.Bed;
 import model.Room;
 import model.Ward;
 import controller.WardDAO;
+import controller.RoomTypeAndCostDAO;
 
 /**
  * Servlet implementation class RoomServlet
@@ -38,7 +39,7 @@ public class RoomServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		if(action==null){
-			action="addRoom";
+			action="viewRoom";
 		}
 		switch (action) {
 		case "addRoom": 		
@@ -80,6 +81,9 @@ public class RoomServlet extends HttpServlet {
 	request.getRequestDispatcher("WEB-INF/view/Room/addRoom.jsp").forward(request, response);
 	}
 	
+	private void getRoomType(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
 	private void viewRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Room> roomsList = roomDAO.viewRoom();
 		request.setAttribute("roomList", roomsList);

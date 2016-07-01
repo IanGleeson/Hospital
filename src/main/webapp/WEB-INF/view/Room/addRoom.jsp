@@ -21,7 +21,7 @@
 		<p>Type:</p>
 		<select name="type">
 			<c:forEach var="type" items="${roomsList}">
-				<option value=${ room.id }>${ room.type }</option>
+				<option value=${ room.id }>${ room.Type }</option>
 			</c:forEach>
 		</select>
 		<p>

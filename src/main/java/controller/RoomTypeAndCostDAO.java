@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import model.Bed;
 import model.RoomTypeAndCost;
 
 public class RoomTypeAndCostDAO {
@@ -73,6 +74,7 @@ protected RoomTypeAndCostDAO(){}
 		
 		return false;
 		
+
 	}*/
 	protected List<RoomTypeAndCost> viewRoomTypeAndCost(){
 		Session session = HibernateUtil.getSessionFactory().openSession();

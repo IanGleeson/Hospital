@@ -78,7 +78,9 @@ public class RoomDAO {
 	}
 	protected List<Room> viewRoom(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		@SuppressWarnings("unchecked")
+		
+		String sql="FROM  Ward.deptId,Department.name,Ward.name from Ward, Department where Ward.deptId=Department.id";
+		@SuppressWarnings({ "unchecked", "deprecation" })
 		List<Room> roomsList= (List<Room>) session.createQuery("From Room").list();
 		return roomsList;
 		
