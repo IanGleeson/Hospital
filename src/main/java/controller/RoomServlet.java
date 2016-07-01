@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Bed;
 import model.Room;
+import model.Ward;
+import controller.WardDAO;
 
 /**
  * Servlet implementation class RoomServlet
@@ -23,9 +25,11 @@ public class RoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private RoomDAO roomDAO;
+	private WardDAO wardDAO;
 
     public RoomServlet() {
         roomDAO = new RoomDAO();
+        wardDAO = new WardDAO();
     }
 
 	/**
@@ -40,7 +44,10 @@ public class RoomServlet extends HttpServlet {
 		case "addRoom": 		
 			addRoom(request,response);
 			break;
-		case "addRoomForm": 		
+		case "addRoomForm":
+			List<Ward> listOfWards =  wardDAO.viewWard();
+			request.setAttribute("listOfWards", listOfWards);
+			System.out.println(listOfWards);
 			request.getRequestDispatcher("WEB-INF/view/Room/addRoomForm.jsp").forward(request, response);
 			break;
 		case "deleteRoom": 		
@@ -65,11 +72,11 @@ public class RoomServlet extends HttpServlet {
 	}
 	
 	private void addRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Room room = new Room();
-		room.setWardId(1);
-		room.setType(1);
-		roomDAO.addRoom(room);
-		System.out.println("Room Added to the database");
+//		Room room = new Room();
+//		room.setWardId(1);
+//		room.setType(1);
+//		roomDAO.addRoom(room);
+//		System.out.println("Room Added to the database");
 	request.getRequestDispatcher("WEB-INF/view/Room/addRoom.jsp").forward(request, response);
 	}
 	
