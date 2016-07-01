@@ -10,8 +10,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
-@Entity
-@Table(name = "deptLayout")
+@Entity(name = "deptLayout")
 public class Hospital implements Serializable{
 	@Id
 	@Column

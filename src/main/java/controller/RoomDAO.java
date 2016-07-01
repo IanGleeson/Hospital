@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -89,5 +90,13 @@ public class RoomDAO {
 		return room;
 		
 	}
-	
+	protected List<Room> viewRoomByWardId(int wardId){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Query query = session.createQuery("from Room WHERE WardId=:wardId");
+		query.setParameter("wardId", wardId);
+		List<Room> roomsList  = (List<Room>) query.list();
+		session.close();
+		return roomsList;
+		
+	}
 }

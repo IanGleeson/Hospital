@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -71,14 +73,15 @@ protected RoomTypeAndCostDAO(){}
 		
 		return false;
 		
-	}
-	protected List<Bed> viewBed(){
+	}*/
+	protected List<RoomTypeAndCost> viewRoomTypeAndCost(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		@SuppressWarnings("unchecked")
-		List<Bed> bed= (List<Bed>) session.createQuery("From Bed").list();
-		return bed;
+		List<RoomTypeAndCost> roomTypeAndCost= (List<RoomTypeAndCost>) session.createQuery("From RoomTypeAndCost").list();
+		return roomTypeAndCost;
 		
 	}
+	/*
 	protected Bed viewAllBed(int bedId){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Bed bed = session.get(Bed.class, bedId);
