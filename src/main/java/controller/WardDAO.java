@@ -21,6 +21,7 @@ public class WardDAO {
 			tx = session.beginTransaction();
 			wardId=(Integer)session.save(ward);
 			tx.commit();
+			return true;
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();

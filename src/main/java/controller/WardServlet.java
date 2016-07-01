@@ -48,7 +48,7 @@ public class WardServlet extends HttpServlet {
 			updateWardForm(request, response);
 			break;
 		default:
-			viewWard(request,response);
+			viewAllWards(request,response);
 			//request.getRequestDispatcher("WEB-INF/Ward/ViewAllWards.jsp").forward(request, response);
 			break;
 		}
@@ -62,31 +62,65 @@ public class WardServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		int id=Integer.valueOf(request.getParameter("wardId"));
 		wardDAO.deleteWard(id);
-		response.sendRedirect("Ward?action=viewAll");
+		response.sendRedirect("Ward?action=viewAllWards");
 	}
 	
 	private void updateWard (HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
+		
+		
 	}
 	
-	private void updateWardForm(HttpServletRequest request, HttpServletResponse response) {
+	private void updateWardForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int id = Integer.parseInt(request.getParameter("wardId"));
+		
+		
+		
+		List<Ward> wardList = wardDAO.viewWard();
+		List<Department> departmentList =wardDAO.viewDepartment();
+		
+		
+		request.setAttribute("departmentList", departmentList);
+		
+
+		request.getRequestDispatcher("WEB-INF/view/Ward/UpdateWard.jsp").forward(request, response);
 		
 	}
 	private void addWard(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/*request.getRequestDispatcher("WEB-INF/Ward/AddWard.jsp").forward(request, response);*/
 		int deptId=Integer.parseInt(request.getParameter("selectOption"));
 		String wardName=request.getParameter("wardName");
-					
+		String message = "";
+		List<Ward> wardList = wardDAO.viewWard();
+		boolean isFound=false;
+		
+		for(Ward w:wardList){
+			if(w.getName().equals(wardName)){
+				message=" Ward " +wardName + " already exists";
+				
+				isFound=true;
+			}
+		}
+		if(isFound==false){
 		Ward ward=new Ward(0, wardName, deptId);
-		System.out.println(deptId);
-		System.out.println(wardName);
-		wardDAO.addWard(ward);
+
+		if(wardDAO.addWard(ward))
+		{
+		message=" Ward " +wardName + " added..";
+		}else
+		{
+			message=" Ward " +wardName + " cannot add!! Some error Occured";
+		}
+		
+		
 		System.out.println("New ward added "+ward);
-		
-		response.sendRedirect("Ward?action=viewAll");
-		
+		}
+		request.setAttribute("message", message);
+		viewAllWards(request,response);
+//		response.sendRedirect("Ward?action=viewAll");
+
 	}
 	
 	private void addWardForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -97,11 +131,11 @@ public class WardServlet extends HttpServlet {
 		request.setAttribute("departmentList", departmentList);
 		
 
-		request.getRequestDispatcher("WEB-INF/Ward/AddWard.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/view/Ward/AddWard.jsp").forward(request, response);
 		
 	}
 		
-	private void viewWard(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void viewAllWards(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
 		List<Ward> wardList = wardDAO.viewWard();
@@ -120,7 +154,7 @@ public class WardServlet extends HttpServlet {
 		for(Ward w : wardList){
 			System.out.println(w);
 		}
-		request.getRequestDispatcher("/WEB-INF/Ward/ViewAllWards.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/Ward/ViewAllWards.jsp").forward(request, response);
 		
 		
 	}
