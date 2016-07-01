@@ -1,9 +1,12 @@
 package controller;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import model.Bed;
 import model.RoomTypeAndCost;
 
 public class RoomTypeAndCostDAO {
@@ -72,6 +75,7 @@ protected RoomTypeAndCostDAO(){}
 		return false;
 		
 	}
+	*/
 	protected List<Bed> viewBed(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		@SuppressWarnings("unchecked")
@@ -79,6 +83,7 @@ protected RoomTypeAndCostDAO(){}
 		return bed;
 		
 	}
+	/*
 	protected Bed viewAllBed(int bedId){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Bed bed = session.get(Bed.class, bedId);
