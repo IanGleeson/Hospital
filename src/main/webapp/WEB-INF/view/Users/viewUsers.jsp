@@ -9,7 +9,7 @@
 	<body>
 		<header>
 			<span class="back"><a href="index.jsp">Back</a></span>
-			<c:if test="loggedIn == true"><a href="<c:url value="User?action=logout"></c:url>">Log Out</a></c:if>
+			<c:if test="${ loggedin == true}"><a href="<c:url value="User?action=logout"></c:url>">Log Out</a></c:if>
 		</header>
 		<c:choose>
 			<c:when test="${listOfUsers.isEmpty()}">

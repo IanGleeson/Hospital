@@ -47,12 +47,8 @@
         <mapping class="model.Department"/>
 		<mapping class="model.Doctor"/>
         <mapping class="model.Hospital"/>
-<<<<<<< HEAD
         <mapping class="model.RoomType"/>
         
-=======
-       <!--  <mapping class="model.RoomType"/> -->
->>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
 		<!-- List of XML mapping files if not using annotations in the POJO  -->
         <!-- <mapping resource="Ticket.hbm.xml"/>  -->
     </session-factory>
