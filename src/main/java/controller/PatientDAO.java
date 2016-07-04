@@ -1,7 +1,7 @@
 package controller;
 
 import java.util.List;
-
+import java.util.Set;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import model.Bill;
 import model.Note;
 import model.Patient;
 import model.PatientType;
@@ -36,6 +37,56 @@ public class PatientDAO {
 		} finally {
 			session.close();
 		}
+	}
+	
+	protected void addNote(Note note){
+		
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		
+
+		try {
+			tx = session.beginTransaction();
+			
+			session.save(note);
+			System.out.println("Note n: " + note);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		
+	}
+	
+	protected void updateNote(Note note) {
+
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+	
+
+		try {
+
+			tx = session.beginTransaction();
+			session.update(note);
+			tx.commit();
+
+		} catch (HibernateException e) {
+			if (tx != null) {
+
+				tx.rollback();
+
+			}
+			e.printStackTrace();
+		} finally {
+
+			session.close();
+		}
+
 	}
 
 	protected void updatePatient(Patient p) {
@@ -68,8 +119,9 @@ public class PatientDAO {
 		Session session = sessionFactory.openSession();
 
 		String hql = "From Patient";
+		Query query = session.createQuery(hql);
 		@SuppressWarnings("unchecked")
-		List<Patient> allPatients = (List<Patient>) session.createQuery(hql);
+		List<Patient> allPatients = (List<Patient>) query.list();
 		System.out.println("This is all patients " + allPatients);
 		session.close();
 
@@ -104,6 +156,8 @@ public class PatientDAO {
 
 		return notes;
 	}
+	
+
 
 	protected List<Prescription> getPrescriptionsById(int patientId) {
 
@@ -118,47 +172,47 @@ public class PatientDAO {
 		return prescriptions;
 	}
 
-	protected void deletePrescriptionById(int patientId) {
-
-		Session session = sessionFactory.openSession();
-		Transaction tx = null;
-
-		try {
-			tx = session.beginTransaction();
-			String hql = "delete From Prescription where patientId=:patientId";
-			Query query = session.createQuery(hql);
-			query.setParameter("patientId", patientId);
-			query.executeUpdate();
-		} catch (HibernateException e) {
-			if (tx != null) {
-				tx.rollback();
-			}
-			e.printStackTrace();
-
-		} finally {
-			session.close();
-		}
-	}
-	protected void deleteNoteById(int patientId) {
-
-		Session session = sessionFactory.openSession();
-		Transaction tx = null;
-
-		try {
-			tx = session.beginTransaction();
-			String hql = "delete From Note where patientId=:patientId";
-			Query query = session.createQuery(hql);
-			query.setParameter("patientId", patientId);
-			query.executeUpdate();
-		} catch (HibernateException e) {
-			if (tx != null) {
-				tx.rollback();
-			}
-			e.printStackTrace();
-
-		} finally {
-			session.close();
-		}
-	}
+//	protected void deletePrescriptionById(int patientId) {
+//
+//		Session session = sessionFactory.openSession();
+//		Transaction tx = null;
+//
+//		try {
+//			tx = session.beginTransaction();
+//			String hql = "delete From Prescription where patientId=:patientId";
+//			Query query = session.createQuery(hql);
+//			query.setParameter("patientId", patientId);
+//			query.executeUpdate();
+//		} catch (HibernateException e) {
+//			if (tx != null) {
+//				tx.rollback();
+//			}
+//			e.printStackTrace();
+//
+//		} finally {
+//			session.close();
+//		}
+//	}
+//	protected void deleteNoteById(int patientId) {
+//
+//		Session session = sessionFactory.openSession();
+//		Transaction tx = null;
+//
+//		try {
+//			tx = session.beginTransaction();
+//			String hql = "delete From Note where patientId=:patientId";
+//			Query query = session.createQuery(hql);
+//			query.setParameter("patientId", patientId);
+//			query.executeUpdate();
+//		} catch (HibernateException e) {
+//			if (tx != null) {
+//				tx.rollback();
+//			}
+//			e.printStackTrace();
+//
+//		} finally {
+//			session.close();
+//		}
+//	}
 
 }

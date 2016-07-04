@@ -27,8 +27,8 @@ public class Patient {
 	private String surname;
 	@Column
 	private LocalDate dob;
-	@Column
-	private Boolean gender;
+	@Enumerated(EnumType.STRING)
+	private Gender gender;
 	@Column
 	private String address;
 	@Column
@@ -52,10 +52,13 @@ public class Patient {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="patientId")
 	private Set<Prescription> prescriptions;
+	
+	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="patientId")
 	private Set<Note> patientNotes;
 	
+	//@OneToMany(mappedBy="patient", cascade = CascadeType.ALL)
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="patientId")
 	private Set<Bill> patientBills;
@@ -67,9 +70,9 @@ public class Patient {
 	
 	public Patient(){}
 	
-	public Patient(int id, String forename, String surname, LocalDate dob, Boolean gender, String address, String phone,
+	public Patient(int id, String forename, String surname, LocalDate dob, Gender gender, String address, String phone,
 			String nextOfKin, int doctorId, int deptId, LocalDate admissionDate, LocalDate dischargeDate, int bedId,
-			LocalDate appointment, Boolean alive, Set<Prescription> prescriptions, Set<Note> patientNotes, PatientType patientType, Boolean inpatient) {
+			LocalDate appointment, Boolean alive, Set<Prescription> prescriptions, PatientType patientType, Boolean inpatient, Set<Note> patientNotes) {
 		this.id = id;
 		this.forename = forename;
 		this.surname = surname;
@@ -86,8 +89,29 @@ public class Patient {
 		this.appointment = appointment;
 		this.alive = alive;
 		this.prescriptions = prescriptions;
-        this.patientNotes = patientNotes;
+        this.patientNotes= patientNotes;
         this.patientType = patientType;
+        this.inpatient = inpatient;
+	}
+	public Patient(int id, String forename, String surname, LocalDate dob, Gender gender, String address, String phone,
+			String nextOfKin, int doctorId, int deptId, LocalDate admissionDate, LocalDate dischargeDate, int bedId,
+			LocalDate appointment, Boolean alive,  PatientType patientType, Boolean inpatient) {
+		this.id = id;
+		this.forename = forename;
+		this.surname = surname;
+		this.dob = dob;
+		this.gender = gender;
+		this.address = address;
+		this.phone = phone;
+		this.nextOfKin = nextOfKin;
+		this.doctorId = doctorId;
+		this.deptId = deptId;
+		this.admissionDate = admissionDate;
+		this.dischargeDate = dischargeDate;
+		this.bedId = bedId;
+		this.appointment = appointment;
+		this.alive = alive;
+		 this.patientType = patientType;
         this.inpatient = inpatient;
 	}
 	
@@ -95,6 +119,15 @@ public class Patient {
 	
 	
 	
+	
+	public Set<Bill> getPatientBills() {
+		return patientBills;
+	}
+
+	public void setPatientBills(Set<Bill> patientBills) {
+		this.patientBills = patientBills;
+	}
+
 	public Set<Note> getPatientNotes() {
 		return patientNotes;
 	}
@@ -128,11 +161,11 @@ public class Patient {
 		this.dob = dob;
 	}
 	
-	public Boolean getGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
-	public void setGender(Boolean gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 
