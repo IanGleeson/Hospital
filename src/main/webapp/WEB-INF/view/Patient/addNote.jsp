@@ -13,7 +13,7 @@
       <input type="hidden" name="patientId" value="${patientId}">
 	  <h2>Note:</h2>
 	  <p>
-	       <textarea rows="5" cols="50" name="content" required></textarea>
+	       <textarea rows="5" cols="50" name="content"></textarea>
 	   </p>
 	  <input type="submit" value="Add Note">
   </form>

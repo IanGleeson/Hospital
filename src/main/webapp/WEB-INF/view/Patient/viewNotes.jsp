@@ -9,12 +9,6 @@
 </head>
 <body>
 <h1>Notes for ${patient.forename} ${patient.surname}</h1>
-         
-         <c:choose>
-		<c:when test="${patientNotes.isEmpty()}">
-			<h2>There are no notes for this patient</h2>
-		</c:when>
-         <c:otherwise>
           <table>
 				<tr>
 					<th>Date</th>
@@ -26,9 +20,7 @@
 						<td>${note.content}</td>
 				    </tr>	
 				   </c:forEach>
-		  </table> 
-		  </c:otherwise>
-		  </c:choose>	
+		  </table> 	
     
 </body>
 </html>

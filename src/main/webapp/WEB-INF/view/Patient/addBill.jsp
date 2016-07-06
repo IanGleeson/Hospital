@@ -55,10 +55,10 @@ Room type: <select id="roomType" name=roomType onchange="calculateTotal();">
    <input type="hidden" id="numNights" value ="${nightsStayed}"  readonly name="nightsStayed" size="5" onkeyup="calculateTotal();">
  </p>
  <p>
-   Doctor fee: <input type="number" id="doctorFee" name="doctorFee" size="5" min="0" max="10000" onkeyup="calculateTotal();">
+   Doctor fee: <input type="text" id="doctorFee" name="doctorFee" size="5" onkeyup="calculateTotal();">
    </p>
    <p>
-   Miscellaneous fee: <input type="number" id="miscFee" name="miscFee" size="5" min="0" max="10000" onkeyup="calculateTotal();">
+   Miscellaneous fee: <input type="text" id="miscFee" name="miscFee" size="5" onkeyup="calculateTotal();">
    </p>
    <p>Additional information</p>
 <p>

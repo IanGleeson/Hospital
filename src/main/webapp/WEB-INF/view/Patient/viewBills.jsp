@@ -40,12 +40,7 @@
 
 
 
-<c:choose>
-	<c:when test="${patientBills.isEmpty()}">
-	
-		<h2>There are no bills for this patient</h2>
-	</c:when>
-	<c:otherwise>
+
 
 <table border="1">
 				<tr>
@@ -70,7 +65,7 @@
 				    </tr>	
 				   </c:forEach>
 		  </table> 	 
-</c:otherwise>
-</c:choose>
+
+
 </body>
 </html>
