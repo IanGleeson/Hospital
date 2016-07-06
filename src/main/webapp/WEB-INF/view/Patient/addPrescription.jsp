@@ -13,7 +13,7 @@
        <input type="hidden" name="patientId" value="${patient.id}">
 	  <h2>Prescription:</h2>
 	  <p>
-	       <textarea name ="content" rows="5" cols="50"></textarea>
+	       <textarea name ="content" rows="5" cols="50" required></textarea>
 	   </p>
 	  <input type="submit" value="Add Prescription">
   </form>

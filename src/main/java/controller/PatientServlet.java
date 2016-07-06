@@ -26,7 +26,7 @@ import model.Prescription;
 public class PatientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PatientDAO patientDAO = new PatientDAO();
-	
+
 	public PatientServlet() {
 
 	}
@@ -72,75 +72,62 @@ public class PatientServlet extends HttpServlet {
 		case "addPrescription":
 			addPrescription(request, response);
 			break;
-		
+
 		case "viewPrescriptions":
 			viewPrescriptions(request, response);
 			break;
-		
+
 		default:
 			viewAllPatients(request, response);
 			break;
 		}
 
-		
 	}
 
 	protected void viewNotes(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		int patientId = Integer.valueOf(request.getParameter("patientId"));
 		List<Note> patientNotes = patientDAO.getNotesById(patientId);
 		Patient p = patientDAO.getPatientById(patientId);
-		
+
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-     	List<String> formattedNoteDateList = new ArrayList<>();
-		
-		for (Note note: patientNotes) {
+		List<String> formattedNoteDateList = new ArrayList<>();
+
+		for (Note note : patientNotes) {
 			formattedNoteDateList.add(note.getNoteDate().format(formatter));
 		}
-		
-		
 
-		
-		
-		//request.setAttribute("patientId", patientId);
 		request.setAttribute("patientNotes", patientNotes);
 		request.setAttribute("formattedNoteDateList", formattedNoteDateList);
 		request.setAttribute("patient", p);
 
-
 		request.getRequestDispatcher("WEB-INF/view/Patient/viewNotes.jsp").forward(request, response);
 
 	}
-	
+
 	protected void viewPrescriptions(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		int patientId = Integer.valueOf(request.getParameter("patientId"));
 		List<Prescription> patientPrescriptions = patientDAO.getPrescriptionsById(patientId);
 		Patient p = patientDAO.getPatientById(patientId);
-		
+
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-     	List<String> formattedPrescriptionDateList = new ArrayList<>();
-		
-		for (Prescription prescription: patientPrescriptions) {
+		List<String> formattedPrescriptionDateList = new ArrayList<>();
+
+		for (Prescription prescription : patientPrescriptions) {
 			formattedPrescriptionDateList.add(prescription.getPrescriptionDate().format(formatter));
 		}
-		
-		
 
-		
-		
-		//request.setAttribute("patientId", patientId);
 		request.setAttribute("patientPrescriptions", patientPrescriptions);
 		request.setAttribute("formattedPrescriptionDateList", formattedPrescriptionDateList);
 		request.setAttribute("patient", p);
 
-
 		request.getRequestDispatcher("WEB-INF/view/Patient/viewPrescriptions.jsp").forward(request, response);
 
 	}
-	
+
 	protected void updatePatient(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -182,12 +169,11 @@ public class PatientServlet extends HttpServlet {
 		Set<Prescription> patientPrescriptions = new HashSet<Prescription>();
 
 		patientPrescriptions.add(prescription);
-	
 
 		Patient p = new Patient(patientId, forename, surname, dob, gender, address, phone, nextOfKin, doctorId, deptId,
-				admissionDate, dischargeDate, bedId, appointment, alive, patientPrescriptions,
-				patientType, inpatient, patientNotes);
-		
+				admissionDate, dischargeDate, bedId, appointment, alive, patientPrescriptions, patientType, inpatient,
+				patientNotes);
+
 		patientDAO.updatePatient(p);
 		response.sendRedirect("PatientServlet?action=viewAllPatients");
 
@@ -233,7 +219,7 @@ public class PatientServlet extends HttpServlet {
 			formattedAdmissionList.add(patient.getAdmissionDate().format(formatter));
 			formattedDischargeList.add(patient.getDischargeDate().format(formatter));
 			formattedAppointmentList.add(patient.getAppointment().format(formatter));
-		
+
 		}
 
 		request.setAttribute("formattedDobList", formattedDobList);
@@ -269,28 +255,31 @@ public class PatientServlet extends HttpServlet {
 		boolean inpatient = Boolean.parseBoolean(request.getParameter("isInpatient"));
 		String type = request.getParameter("patientType");
 		PatientType patientType = PatientType.valueOf(type);
-
-//		String notes = request.getParameter("notes");
-//		Note patientNote = new Note();
-//		patientNote.setContent(notes);
-//		patientNote.setNoteDate(LocalDate.now());
-//		Set<Note> patientNotes = new HashSet<Note>();
-//		patientNotes.add(patientNote);
-//
-//		String presc = request.getParameter("prescription");
-//		Prescription prescription = new Prescription();
-//		prescription.setContent(presc);
-//		prescription.setPrescriptionDate(LocalDate.now());
-//		Set<Prescription> patientPrescriptions = new HashSet<Prescription>();
-//
-//		patientPrescriptions.add(prescription);
-
-		Patient p = new Patient(0, forename, surname, dob, gender, address, phone, nextOfKin, doctorId, deptId, admissionDate, dischargeDate, bedId, appointment, alive,patientType, inpatient);
 		
-	patientDAO.addPatient(p);
-
-	patientDAO.updatePatient(p);
+		Set<Note> patientNotes = new HashSet<Note>();
+		String notes = request.getParameter("notes");
 		
+		if(notes.length()!=0){
+		Note patientNote = new Note();
+		patientNote.setContent(notes);
+		patientNote.setNoteDate(LocalDate.now());
+		patientNotes.add(patientNote);
+		}
+		
+		String presc = request.getParameter("prescription");
+		Set<Prescription> patientPrescriptions = new HashSet<Prescription>();
+		
+		if(presc.length()!= 0){
+		Prescription prescription = new Prescription();
+		prescription.setContent(presc);
+		prescription.setPrescriptionDate(LocalDate.now());
+		patientPrescriptions.add(prescription);
+		}
+
+		Patient p = new Patient(0, forename, surname, dob, gender, address, phone, nextOfKin, doctorId, deptId,
+				admissionDate, dischargeDate, bedId, appointment, alive, patientPrescriptions, patientType, inpatient,
+				patientNotes);
+		patientDAO.addPatient(p);
 		response.sendRedirect("PatientServlet?action=viewAllPatients");
 
 	}
@@ -299,37 +288,34 @@ public class PatientServlet extends HttpServlet {
 			throws ServletException, IOException {
 		int patientId = Integer.valueOf(request.getParameter("patientId"));
 		Patient p = patientDAO.getPatientById(patientId);
-			
-		
 		request.setAttribute("patient", p);
 		request.setAttribute("patientId", patientId);
 		request.getRequestDispatcher("WEB-INF/view/Patient/addNote.jsp").forward(request, response);
 	}
+
 	protected void addNote(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		LocalDate noteDate = LocalDate.now();
 		int patientId = Integer.parseInt(request.getParameter("patientId"));
-		Patient p =patientDAO.getPatientById(patientId);
+		Patient p = patientDAO.getPatientById(patientId);
 		String content = request.getParameter("content");
 		Note note = new Note(0, noteDate, content);
 		Set<Note> patientNotes = p.getPatientNotes();
 		patientNotes.add(note);
 		patientDAO.updatePatient(p);
 		response.sendRedirect("PatientServlet?action=viewAllPatients");
-	
+
 	}
-	
-	
+
 	protected void showAddPrescriptionForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int patientId = Integer.valueOf(request.getParameter("patientId"));
 		Patient p = patientDAO.getPatientById(patientId);
-			
-		
 		request.setAttribute("patient", p);
 		request.setAttribute("patientId", patientId);
 		request.getRequestDispatcher("WEB-INF/view/Patient/addPrescription.jsp").forward(request, response);
 	}
+
 	protected void addPrescription(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		LocalDate prescriptionDate = LocalDate.now();
@@ -341,6 +327,6 @@ public class PatientServlet extends HttpServlet {
 		patientPrescriptions.add(prescription);
 		patientDAO.updatePatient(p);
 		response.sendRedirect("PatientServlet?action=viewAllPatients");
-	
+
 	}
 }
