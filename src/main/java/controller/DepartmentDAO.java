@@ -33,6 +33,7 @@ public class DepartmentDAO {
 			tx = session.beginTransaction();
 			departmentId=(Integer)session.save(department);
 			tx.commit();
+			return true;
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
@@ -53,6 +54,7 @@ public class DepartmentDAO {
 			session.update(department);
 
 			tx.commit();
+			return true;
 
 		}catch (HibernateException e){
 			if(tx != null)
@@ -75,6 +77,7 @@ public class DepartmentDAO {
 			Department department = session.get(Department.class, departmentId);
 			session.delete(department);
 			tx.commit();
+			return true;
 
 		}catch (HibernateException e){
 			if(tx != null)
@@ -88,14 +91,15 @@ public class DepartmentDAO {
 		
 	}
 	@SuppressWarnings("unchecked")
-	protected List<Department> viewDepartment(){	
+	protected List<Department> viewAllDepartment(){	
 		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		List<Department> department= (List<Department>) session.createQuery("From Department").list();
 	    return department;
 		
 	}
-	protected Department viewAllDepartment(int departmentId){
+	protected Department viewDepartment(int departmentId){
+		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Department department = session.get(Department.class, departmentId);
 		session.close();

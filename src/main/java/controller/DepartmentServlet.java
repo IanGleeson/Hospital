@@ -50,6 +50,10 @@ public class DepartmentServlet extends HttpServlet {
 			addDepartment(request,response);
 			
 			break;
+		case "editDepartment":
+			updateDepartment(request,response);
+			
+			break;		
 		case "deleteDepartment":
 			deleteDepartment(request,response);
 			
@@ -64,67 +68,124 @@ public class DepartmentServlet extends HttpServlet {
 	}
 
 	private void deleteDepartment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int deptId =  Integer.parseInt(request.getParameter("deptId")) ;	
-		
-	
+		int deptId =  Integer.parseInt(request.getParameter("deptId")) ;
+		Department deparment = departmentDAO.viewDepartment(deptId);
+		String  message ="";
 		boolean departmentId = departmentDAO.deleteDepartment(deptId);
-		if(departmentId) System.out.println("Department Deleted ");
-		
-		response.sendRedirect("DepartmentServlet?action=viewAll");
+		if(departmentId) {System.out.println("Department Deleted ");
+		message = "Depatment Name "+deparment.getName() +"  deleted ";
+		}
+		else
+		message = "Depatment Name "+deparment.getName() +" not deleted ";
+		request.setAttribute("message", message);
+		viewAllDepartment(request,response);
 		
 	}
 	
-	private void updateDepartment(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void updateDepartment(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+		int deptId =  Integer.parseInt(request.getParameter("deptId")) ;
+		Department deparment = departmentDAO.viewDepartment(deptId);
+		String name =  request.getParameter("Departmentname") ;
+		String  message ="";
+		System.out.println("DeptID "+deptId+" Dept Name "+name);
+		
+		if (deparment.getName().equals(name)) message = "No change in Department name to update ";
+		else
+		if(!departmentNameExists(name)){	
+		Department updatedeparment = new Department(deptId,name);		
+		boolean departmentId = departmentDAO.updateDepartment(updatedeparment);
+		
+		if(departmentId){ System.out.println("Department "+deparment.getName() +" Upated to "+name);
+		
+		message = "Department "+deparment.getName() +" Upated to "+name;
+		}
+		else
+		message = "Depatment Name "+deparment.getName()  + " not Updated, error occured please try later..";
+		} else
+		message = name+" Department already exists.. ";
+		request.setAttribute("message", message);
+		viewAllDepartment(request,response);
 		
 	}
 	
 	private void addDepartment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String name = request.getParameter("Departmentname");
-		
+		String message = "";
+		if(!departmentNameExists(name)){	
 		Department deparment = new Department();
-		deparment.setName(name);
-		
+		deparment.setName(name);	
 	
 		boolean departmentId = departmentDAO.addDepartment(deparment);
-		if(departmentId) System.out.println("Department Inserted ");
+		if(departmentId) {System.out.println("Department Inserted ");
+        message = "New Depatment Name "+name + " added";
+		}
+		else
+			message = "Depatment Name "+name  + " not added, error occured please try later..";
+	    }
+		else
+	    message = "Depatment Name "+name + " Already Exists";
 		
-		response.sendRedirect("DepartmentServlet?action=viewAll");
+		request.setAttribute("message", message);
+		viewAllDepartment(request,response);
 		
 		
 	}
 	
+	private boolean departmentNameExists (String name){
+		List<Department> listOfDepartment = departmentDAO.viewAllDepartment();
+		  for(Department d : listOfDepartment){
+		        if(d.getName() != null && d.getName().contains(name)){
+		        	return true;	
+		          
+		    }
+		        }
+		
+		return false;
+		
+	}
+	
+	
 	private void viewAllDepartment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		/* Get the list of Department from the DAO */
-		List<Department> listOfDepartment = departmentDAO.viewDepartment();
+		List<Department> listOfDepartment = departmentDAO.viewAllDepartment();
 		
 		/* Assign the listOfDepartment to an attribute in the request object */
 		request.setAttribute("listOfDepartment", listOfDepartment);
 
 		
-		
 		List<Ward> wardList = wardDAO.viewWard();	
-				
 		Map<Integer, String> mapOfWards  = new HashMap<>();
-		for(Ward d:wardList){
-			mapOfWards.put(d.getId(), d.getName());
+		for(Department Dept:listOfDepartment){
+			mapOfWards.put(Dept.getId(), getWardNames(Dept.getId(),wardList));
+			getWardNames(Dept.getId(),wardList);
 		}
+				
 		
 		request.setAttribute("mapOfWards", mapOfWards);
 			
 	
-		request.getRequestDispatcher("WEB-INF/View/Department/ViewDepartment.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/view/Department/ViewDepartment.jsp").forward(request, response);
 
 		
 		
 	}
 	
+	private String getWardNames(int deptId,List<Ward> wardList){
+			String wards="";
+		for(Ward ward:wardList){
+			if(deptId==ward.getDeptId()){
+		 	wards += ward.getName() +", ";
+			}
+		}
+		return wards;
+	}
+	
 	private void viewDepartment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		request.getRequestDispatcher("WEB-INF/View/Department/ViewDepartment.jsp").
+		request.getRequestDispatcher("WEB-INF/iew/Department/ViewDepartment.jsp").
         forward(request, response);
 		
 	}

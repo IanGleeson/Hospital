@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <display-name>Archetype Created Web Application</display-name>
-  
   <welcome-file-list>
-  	<welcome-file>/WEB-INF/view/Users/login.jsp</welcome-file>
+    <welcome-file>/WEB-INF/view/Index/index.jsp</welcome-file>
   </welcome-file-list>
   
   <servlet>
@@ -15,7 +13,6 @@
     <servlet-name>DepartmentServlet</servlet-name>
     <url-pattern>/Department</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>PatientServlet</servlet-name>
     <servlet-class>controller.PatientServlet</servlet-class>
@@ -24,7 +21,6 @@
     <servlet-name>PatientServlet</servlet-name>
     <url-pattern>/Patient</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>WardServlet</servlet-name>
     <servlet-class>controller.WardServlet</servlet-class>
@@ -33,7 +29,6 @@
     <servlet-name>WardServlet</servlet-name>
     <url-pattern>/Ward</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>BedServlet</servlet-name>
     <servlet-class>controller.BedServlet</servlet-class>
@@ -42,7 +37,6 @@
     <servlet-name>BedServlet</servlet-name>
     <url-pattern>/Bed</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>RoomTypeAndCostServlet</servlet-name>
     <servlet-class>controller.RoomTypeAndCostServlet</servlet-class>
@@ -51,7 +45,6 @@
     <servlet-name>RoomTypeAndCostServlet</servlet-name>
     <url-pattern>/RoomTypeAndCost</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>RoomServlet</servlet-name>
     <servlet-class>controller.RoomServlet</servlet-class>
@@ -60,7 +53,6 @@
     <servlet-name>RoomServlet</servlet-name>
     <url-pattern>/Room</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>UserServlet</servlet-name>
     <servlet-class>controller.UserServlet</servlet-class>
@@ -69,5 +61,12 @@
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/User</url-pattern>
   </servlet-mapping>
-
+  <servlet>
+    <servlet-name>Page</servlet-name>
+    <servlet-class>controller.Page</servlet-class>
+  </servlet>
+  	<servlet-mapping>
+  		<servlet-name>Page</servlet-name>
+  		<url-pattern>/Index</url-pattern>
+	</servlet-mapping> 
 </web-app>
