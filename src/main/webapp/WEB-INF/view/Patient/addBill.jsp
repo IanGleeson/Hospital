@@ -1,14 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-
-</head>
+<jsp:include page="/WEB-INF/view/Index/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/view/Index/defaultmenu.jsp"></jsp:include>
 <body onpageshow="calculateTotal();">
 
 <c:choose>
@@ -55,10 +50,10 @@ Room type: <select id="roomType" name=roomType onchange="calculateTotal();">
    <input type="hidden" id="numNights" value ="${nightsStayed}"  readonly name="nightsStayed" size="5" onkeyup="calculateTotal();">
  </p>
  <p>
-   Doctor fee: <input type="number" id="doctorFee" name="doctorFee" size="5" min="0" max="10000" onkeyup="calculateTotal();">
+   Doctor fee: <input type="text" id="doctorFee" name="doctorFee" size="5" onkeyup="calculateTotal();">
    </p>
    <p>
-   Miscellaneous fee: <input type="number" id="miscFee" name="miscFee" size="5" min="0" max="10000" onkeyup="calculateTotal();">
+   Miscellaneous fee: <input type="text" id="miscFee" name="miscFee" size="5" onkeyup="calculateTotal();">
    </p>
    <p>Additional information</p>
 <p>
@@ -71,5 +66,4 @@ Room type: <select id="roomType" name=roomType onchange="calculateTotal();">
 
 </form>
 <script src="js/script.js"></script>
-</body>
-</html>
+<jsp:include page="/WEB-INF/view/Index/footer.jsp" ></jsp:include>

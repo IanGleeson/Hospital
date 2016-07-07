@@ -135,6 +135,8 @@ public class DepartmentServlet extends HttpServlet {
 	private boolean departmentNameExists (String name){
 		List<Department> listOfDepartment = departmentDAO.viewAllDepartment();
 		  for(Department d : listOfDepartment){
+			  System.out.println("Department :"+d.getId()+ " Wards: "+d.getWards());
+			  
 		        if(d.getName() != null && d.getName().contains(name)){
 		        	return true;	
 		          
@@ -150,6 +152,10 @@ public class DepartmentServlet extends HttpServlet {
 		
 		/* Get the list of Department from the DAO */
 		List<Department> listOfDepartment = departmentDAO.viewAllDepartment();
+		 for(Department d : listOfDepartment){
+			  System.out.println("Department :"+d.getId()+ " Wards: "+d.getWards());
+
+		        }
 		
 		/* Assign the listOfDepartment to an attribute in the request object */
 		request.setAttribute("listOfDepartment", listOfDepartment);

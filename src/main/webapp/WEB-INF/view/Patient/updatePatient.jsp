@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Update patient</title>
-</head>
-<body>
+<jsp:include page="/WEB-INF/view/Index/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/view/Index/defaultmenu.jsp"></jsp:include>
+
+
+
+<script src="js/script.js"></script>
 	<h1>Update patient</h1>
 
 	<form action="PatientServlet?action=updatePatient" method="post">
@@ -72,15 +71,21 @@
 			<input type="number" name="bedId" value="${patient.bedId}" min="0"
 				max="200" required>
 		</p>
-		<p>Doctor id</p>
-		<p>
-			<input type="number" name="doctorId" value="${patient.doctorId}"
-				min="0" max="200" required>
+		<p>Doctor</p>
+	<p>
+			<select name="doctor">
+				<c:forEach var="doctor" items="${allDoctors}" varStatus="count">
+					<option value="${doctor.id}">${doctor.firstName} ${doctor.lastName}</option>
+				</c:forEach>
+			</select> <br>
 		</p>
-		<p>Department Id</p>
+		<p>Department</p>
 		<p>
-			<input type="number" name="deptId" min="0" max="200"
-				value="${patient.deptId}" required>
+			<select name="department">
+				<c:forEach var="department" items="${allDepartments}" varStatus="count">
+					<option selected="selected" value="${department.id}">${department.name}</option>
+				</c:forEach>
+			</select> <br>
 		</p>
 
 		<p>
@@ -185,6 +190,6 @@
 
 	</form>
 
-	<script src="js/script.js"></script>
-</body>
-</html>
+	
+
+<jsp:include page="/WEB-INF/view/Index/footer.jsp" ></jsp:include>

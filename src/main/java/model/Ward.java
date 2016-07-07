@@ -172,7 +172,7 @@ public class Ward {
 	 */
 	@Override
 	public String toString() {
-		return "Ward [Id=" + Id + ", Name=" + Name + ", DeptId=" + DeptId + ", rooms=" + rooms + "]";
+		return "Ward [Id=" + Id + ", Name=" + Name + ", DeptId=" + DeptId + "]";
 	}
 
 

@@ -15,7 +15,8 @@ public class UserDAO {
 
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 	private boolean loggedIn = false;
-
+	
+	
 	public boolean isLogIn() {
 		return loggedIn;
 	}
@@ -30,16 +31,16 @@ public class UserDAO {
 	protected void addUser(User user) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
-
+		
 		try {
-			tx = session.beginTransaction();
-			session.save(user);
-			tx.commit();
+			tx = session.beginTransaction();	
+			session.save(user);  
+			tx.commit();						
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
 			e.printStackTrace();
-		} finally {
+		} finally {				
 			session.close();
 		}
 	}
@@ -47,16 +48,16 @@ public class UserDAO {
 	protected void updateUser(User user) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
-
+		
 		try {
-			tx = session.beginTransaction();
-			session.update(user);
-			tx.commit();
+			tx = session.beginTransaction();	
+			session.update(user);  
+			tx.commit();						
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
 			e.printStackTrace();
-		} finally {
+		} finally {				
 			session.close();
 		}
 	}
@@ -64,16 +65,16 @@ public class UserDAO {
 	protected void deleteUser(User user) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
-
+		
 		try {
-			tx = session.beginTransaction();
-			session.delete(user);
-			tx.commit();
+			tx = session.beginTransaction();	
+			session.delete(user);  
+			tx.commit();						
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
 			e.printStackTrace();
-		} finally {
+		} finally {				
 			session.close();
 		}
 	}
@@ -81,55 +82,51 @@ public class UserDAO {
 	protected List<User> viewAllUsers() {
 		List<User> listOfUsers = new ArrayList<>();
 		Session session = sessionFactory.openSession();
-
+		
 		try {
 			Query query = session.createQuery("FROM User");
-			listOfUsers = (List<User>) query.list();
-
-		} catch (HibernateException e) {
+			listOfUsers = (List<User>)query.list();
+			
+		} catch(HibernateException e) {
 			e.printStackTrace();
 		}
 		session.close();
 		return listOfUsers;
 	}
 
-	protected User login(String username, String password) {
+	protected boolean login(String username, String password) {
 		Session session = sessionFactory.openSession();
 		loggedIn = false;
-
-		Transaction tx = null;
-		User user = null;
+		
 		try {
-			tx = session.getTransaction();
-			tx.begin();
-			Query query = session.createQuery("from User where username='" + username + "' and password='" + password + "'");
-			user = (User) query.uniqueResult();
-			tx.commit();
-		} catch (Exception e) {
-			if (tx != null) {
-				tx.rollback();
+			Query<User> query = session.createQuery("FROM User WHERE username = :username OR password = :password");
+			query.setParameter("username", username);
+			query.setParameter("password", password);
+			if (query.list() != null) {
+				loggedIn = true;
 			}
+		} catch(HibernateException e) {
 			e.printStackTrace();
-		} finally {
-			session.close();
 		}
-		return user;
+		session.close();
+		return loggedIn;
 	}
 
 	protected void changePassword(User user) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
-
+		
 		try {
-			tx = session.beginTransaction();
-			session.update(user);
-			tx.commit();
+			tx = session.beginTransaction();	
+			session.update(user);  
+			tx.commit();						
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
 			e.printStackTrace();
-		} finally {
+		} finally {				
 			session.close();
 		}
 	}
 }
+

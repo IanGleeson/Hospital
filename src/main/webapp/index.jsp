@@ -10,11 +10,7 @@
 	<body>
 		<header>
 			<h2>${hospitalName} Hospital Management</h2>
-			<c:if test="${ loggedIn == true}">
-				<input type="hidden" name="userId" value=${ user.id }>
-				<span>Welcome, ${ user.username }</span>
-				<a href="<c:url value="User?action=logout"></c:url>">Log Out</a>
-			</c:if>
+			<c:if test="${ loggedin == true}"><a href="<c:url value="User?action=logout"></c:url>">Log Out</a></c:if>
 		</header>
 		<div class ="sidebar">
 			<a href="Department">Manage Departments</a>
