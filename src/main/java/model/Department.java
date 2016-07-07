@@ -85,8 +85,6 @@ public String getWardNames() {
 	return wardNames;
 }
 
-
-
 /**
  * @param wards the wards to set
  */
@@ -142,5 +140,4 @@ public String toString() {
 	return "Department [Id=" + Id + ", Name=" + Name + ", wards=" + wards + "]";
 }
 
-	
 }

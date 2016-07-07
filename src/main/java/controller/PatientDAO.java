@@ -172,47 +172,6 @@ public class PatientDAO {
 		return prescriptions;
 	}
 
-//	protected void deletePrescriptionById(int patientId) {
-//
-//		Session session = sessionFactory.openSession();
-//		Transaction tx = null;
-//
-//		try {
-//			tx = session.beginTransaction();
-//			String hql = "delete From Prescription where patientId=:patientId";
-//			Query query = session.createQuery(hql);
-//			query.setParameter("patientId", patientId);
-//			query.executeUpdate();
-//		} catch (HibernateException e) {
-//			if (tx != null) {
-//				tx.rollback();
-//			}
-//			e.printStackTrace();
-//
-//		} finally {
-//			session.close();
-//		}
-//	}
-//	protected void deleteNoteById(int patientId) {
-//
-//		Session session = sessionFactory.openSession();
-//		Transaction tx = null;
-//
-//		try {
-//			tx = session.beginTransaction();
-//			String hql = "delete From Note where patientId=:patientId";
-//			Query query = session.createQuery(hql);
-//			query.setParameter("patientId", patientId);
-//			query.executeUpdate();
-//		} catch (HibernateException e) {
-//			if (tx != null) {
-//				tx.rollback();
-//			}
-//			e.printStackTrace();
-//
-//		} finally {
-//			session.close();
-//		}
-//	}
+
 
 }

@@ -84,7 +84,7 @@ public class UserServlet extends HttpServlet {
 		}else{
 			User user = new User(0, username, password, usertype);
 			userDAO.addUser(user);
-			response.sendRedirect("User?action=viewAll");
+			viewAllUsers(request, response);
 		}
 	}
 	
@@ -95,14 +95,14 @@ public class UserServlet extends HttpServlet {
 		user.setPassword(request.getParameter("password"));
 		user.setUserType(UserType.valueOf(request.getParameter("usertype").toUpperCase()));
 		userDAO.updateUser(user);
-		response.sendRedirect("User?action=viewAll");
+		viewAllUsers(request, response);
 	}
 	
 	protected void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		User user = userDAO.getUserById(userId);
 		userDAO.deleteUser(user);
-		response.sendRedirect("User?action=viewAll");
+		viewAllUsers(request, response);
 	}
 	
 	protected void viewAllUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

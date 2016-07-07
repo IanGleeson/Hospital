@@ -16,11 +16,13 @@
 				<h2>There are no users in the database</h2>
 			</c:when>
 			<c:otherwise>
-				<table>
-					<thead>Id</thead>
-					<thead>Username</thead>
-					<thead>Password</thead>
-					<thead>Usertype</thead>
+				<table border="1">
+					<tr>
+						<th>Id</th>
+						<th>Username</th>
+						<th>Password</th>
+						<th>Usertype</th>
+					</tr>
 					<c:forEach var="user" items="${listOfUsers}">
 						<tr>
 							<td>${user.id}</td>
