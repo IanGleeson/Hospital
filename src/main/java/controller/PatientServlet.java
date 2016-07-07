@@ -102,12 +102,7 @@ public class PatientServlet extends HttpServlet {
 		for (Note note: patientNotes) {
 			formattedNoteDateList.add(note.getNoteDate().format(formatter));
 		}
-		
-		
 
-		
-		
-		//request.setAttribute("patientId", patientId);
 		request.setAttribute("patientNotes", patientNotes);
 		request.setAttribute("formattedNoteDateList", formattedNoteDateList);
 		request.setAttribute("patient", p);
@@ -140,12 +135,7 @@ public class PatientServlet extends HttpServlet {
 		for (Prescription prescription: patientPrescriptions) {
 			formattedPrescriptionDateList.add(prescription.getPrescriptionDate().format(formatter));
 		}
-		
-		
 
-		
-		
-		//request.setAttribute("patientId", patientId);
 		request.setAttribute("patientPrescriptions", patientPrescriptions);
 		request.setAttribute("formattedPrescriptionDateList", formattedPrescriptionDateList);
 		request.setAttribute("patient", p);
@@ -289,15 +279,31 @@ public class PatientServlet extends HttpServlet {
 		boolean inpatient = Boolean.parseBoolean(request.getParameter("isInpatient"));
 		String type = request.getParameter("patientType");
 		PatientType patientType = PatientType.valueOf(type);
-
-
-
-		Patient p = new Patient(0, forename, surname, dob, gender, address, phone, nextOfKin, doctorId, deptId, admissionDate, dischargeDate, bedId, appointment, alive,patientType, inpatient);
 		
-	patientDAO.addPatient(p);
-
-	patientDAO.updatePatient(p);
+		Set<Note> patientNotes = new HashSet<Note>();
+		String notes = request.getParameter("notes");
 		
+		if(notes.length()!=0){
+		Note patientNote = new Note();
+		patientNote.setContent(notes);
+		patientNote.setNoteDate(LocalDate.now());
+		patientNotes.add(patientNote);
+		}
+		
+		String presc = request.getParameter("prescription");
+		Set<Prescription> patientPrescriptions = new HashSet<Prescription>();
+		
+		if(presc.length()!= 0){
+		Prescription prescription = new Prescription();
+		prescription.setContent(presc);
+		prescription.setPrescriptionDate(LocalDate.now());
+		patientPrescriptions.add(prescription);
+		}
+
+		Patient p = new Patient(0, forename, surname, dob, gender, address, phone, nextOfKin, doctorId, deptId,
+				admissionDate, dischargeDate, bedId, appointment, alive, patientPrescriptions, patientType, inpatient,
+				patientNotes);
+		patientDAO.addPatient(p);
 		response.sendRedirect("PatientServlet?action=viewAllPatients");
 
 	}
