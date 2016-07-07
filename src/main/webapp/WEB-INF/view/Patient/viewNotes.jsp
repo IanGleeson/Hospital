@@ -4,7 +4,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="/WEB-INF/view/Index/header.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/view/Index/defaultmenu.jsp"></jsp:include>
+
 <h1>Notes for ${patient.forename} ${patient.surname}</h1>
+         
+         <c:choose>
+		<c:when test="${patientNotes.isEmpty()}">
+			<h2>There are no notes for this patient</h2>
+		</c:when>
+         <c:otherwise>
           <table>
 				<tr>
 					<th>Date</th>
@@ -16,6 +23,8 @@
 						<td>${note.content}</td>
 				    </tr>	
 				   </c:forEach>
-		  </table> 	
-   
+		  </table> 
+		  </c:otherwise>
+		  </c:choose>	
+    
 <jsp:include page="/WEB-INF/view/Index/footer.jsp" ></jsp:include>

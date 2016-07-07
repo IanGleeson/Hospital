@@ -5,7 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="/WEB-INF/view/Index/header.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/view/Index/defaultmenu.jsp"></jsp:include>
-<body onpageshow="calculateTotal();">
 
 <c:choose>
 <c:when test="${patient.patientType == 'PUBLIC' }">
@@ -36,7 +35,12 @@
 
 
 
-
+<c:choose>
+	<c:when test="${patientBills.isEmpty()}">
+	
+		<h2>There are no bills for this patient</h2>
+	</c:when>
+	<c:otherwise>
 
 <table border="1">
 				<tr>
@@ -61,6 +65,6 @@
 				    </tr>	
 				   </c:forEach>
 		  </table> 	 
-
-
+</c:otherwise>
+</c:choose>
 <jsp:include page="/WEB-INF/view/Index/footer.jsp" ></jsp:include>
