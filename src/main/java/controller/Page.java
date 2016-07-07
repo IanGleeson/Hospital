@@ -41,7 +41,7 @@ public class Page extends HttpServlet {
 
 			break;
 		default:
-			request.getRequestDispatcher("/WEB-INF/view/Index/index.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 			break;
 		}
 		response.getWriter().append("Served at: ").append(request.getContextPath());
