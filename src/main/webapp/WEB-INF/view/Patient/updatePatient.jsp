@@ -71,16 +71,19 @@
 			<input type="number" name="bedId" value="${patient.bedId}" min="0"
 				max="200" required>
 		</p>
-		<p>Doctor id</p>
-		<p>
-			<input type="number" name="doctorId" value="${patient.doctorId}"
-				min="0" max="200" required>
+		<p>Doctor</p>
+	<p>
+			<select name="doctor">
+				<c:forEach var="doctor" items="${allDoctors}" varStatus="count">
+					<option value="${doctor.id}">${doctor.firstName} ${doctor.lastName}</option>
+				</c:forEach>
+			</select> <br>
 		</p>
 		<p>Department</p>
 		<p>
 			<select name="department">
 				<c:forEach var="department" items="${allDepartments}" varStatus="count">
-					<option value="${department.id}">${department.name}</option>
+					<option selected="selected" value="${department.id}">${department.name}</option>
 				</c:forEach>
 			</select> <br>
 		</p>

@@ -6,7 +6,7 @@
 <script src="js/script.js"></script>
 <h1>Insert patient</h1>
 
-
+<h1>Doctors :${allDoctors}</h1>
 <form action="PatientServlet?action=addPatient" method="post" required>
 
 	<p>First name</p>
@@ -75,11 +75,14 @@
 			placeholder="Bed Id" required>
 	</p>
 
-	<p>Doctor id</p>
+	<p>Doctor</p>
 	<p>
-		<input type="number" name="doctorId" min="0" max="200"
-			placeholder="Doctor Id" required>
-	</p>
+			<select name="doctor">
+				<c:forEach var="doctor" items="${allDoctors}" varStatus="count">
+					<option value="${doctor.id}">${doctor.firstName} ${doctor.lastName}</option>
+				</c:forEach>
+			</select> <br>
+		</p>
 
 	<p>Department</p>
 

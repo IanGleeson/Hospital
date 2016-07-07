@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Bill;
 import model.Department;
+import model.Doctor;
 import model.Gender;
 import model.Note;
 import model.Patient;
@@ -28,6 +29,7 @@ public class PatientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PatientDAO patientDAO = new PatientDAO();
 	private DepartmentDAO departmentDAO = new DepartmentDAO();
+	private DoctorDAO doctorDAO = new DoctorDAO();
 	
 	public PatientServlet() {
 
@@ -117,7 +119,10 @@ public class PatientServlet extends HttpServlet {
 	
 	protected void showAddPatientForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<Department> allDepartments = departmentDAO.viewAllDepartment();	
+		List<Department> allDepartments = departmentDAO.viewAllDepartment();
+		List<Doctor> allDoctors = doctorDAO.getAllDoctors();	
+		request.setAttribute("allDoctors", allDoctors);
+				System.out.println("==============================" + allDoctors);
 		request.setAttribute("allDepartments", allDepartments);
 				System.out.println("--------------------------------" + allDepartments);
 		request.getRequestDispatcher("WEB-INF/view/Patient/insertPatient.jsp").forward(request, response);
@@ -166,7 +171,7 @@ public class PatientServlet extends HttpServlet {
 
 		String phone = request.getParameter("phoneNumber");
 		String nextOfKin = request.getParameter("nextOfKin");
-		int doctorId = Integer.valueOf(request.getParameter("doctorId"));
+		int doctorId = Integer.valueOf(request.getParameter("doctor"));
 		int deptId = Integer.valueOf(request.getParameter("department"));
 		LocalDate admissionDate = LocalDate.parse(request.getParameter("admissionDate"));
 		LocalDate dischargeDate = LocalDate.parse(request.getParameter("dischargeDate"));
@@ -213,10 +218,12 @@ public class PatientServlet extends HttpServlet {
 		request.setAttribute("patientNotes", patientNotes);
 		request.setAttribute("prescriptions", prescriptions);
 		List<Department> allDepartments = departmentDAO.viewAllDepartment();	
+		List<Doctor> allDoctors = doctorDAO.getAllDoctors();	
 		request.setAttribute("allDepartments", allDepartments);
-		System.out.println("--------------------------------" + allDepartments);
+		request.setAttribute("allDoctors", allDoctors);
+		System.out.println("==============================" + allDoctors);
 		request.setAttribute("patient", p);
-		System.out.println("patient:::::::::::::::::::::::::::::::::" + p);
+		
 
 		request.getRequestDispatcher("WEB-INF/view/Patient/updatePatient.jsp").forward(request, response);
 
@@ -271,9 +278,8 @@ public class PatientServlet extends HttpServlet {
 
 		String phone = request.getParameter("phoneNumber");
 		String nextOfKin = request.getParameter("nextOfKin");
-		int doctorId = Integer.valueOf(request.getParameter("doctorId"));
+		int doctorId = Integer.valueOf(request.getParameter("doctor"));
 		int deptId = Integer.valueOf(request.getParameter("department"));
-		System.out.println("&&&&&&&&&&&&&&&&&&&&" + deptId);
 		LocalDate admissionDate = LocalDate.parse(request.getParameter("admissionDate"));
 		LocalDate dischargeDate = LocalDate.parse(request.getParameter("dischargeDate"));
 		int bedId = Integer.valueOf(request.getParameter("bedId"));
