@@ -74,13 +74,13 @@ protected RoomTypeAndCostDAO(){}
 		
 		return false;
 		
-	}
-	*/
-	protected List<Bed> viewBed(){
+
+	}*/
+	protected List<RoomTypeAndCost> viewRoomTypeAndCost(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		@SuppressWarnings("unchecked")
-		List<Bed> bed= (List<Bed>) session.createQuery("From Bed").list();
-		return bed;
+		List<RoomTypeAndCost> roomTypeAndCost= (List<RoomTypeAndCost>) session.createQuery("From RoomTypeAndCost").list();
+		return roomTypeAndCost;
 		
 	}
 	/*

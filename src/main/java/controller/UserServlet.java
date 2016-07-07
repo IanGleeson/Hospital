@@ -71,10 +71,21 @@ public class UserServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		UserType usertype = UserType.valueOf(request.getParameter("usertype").toUpperCase());
+		String errMsg = "";
 		
-		User user = new User(0, username, password, usertype);
-		userDAO.addUser(user);
-		response.sendRedirect("User?action=viewAll");
+		if (username.length() < 6) {
+			errMsg = "Username must be at least six characters.";
+			request.setAttribute("errMsg", errMsg);
+			request.getRequestDispatcher("/WEB-INF/view/Users/addUser.jsp").forward(request, response);
+		}else if(password.length() < 6 || !password.matches(".+[A-Z].+") || !password.matches(".+[a-z].+") || !password.matches(".+[1-9].+")){
+			errMsg = "Password must be at least six characters, include upper and lowercase characters and at least one number";
+			request.setAttribute("errMsg", errMsg);
+			request.getRequestDispatcher("/WEB-INF/view/Users/addUser.jsp").forward(request, response);
+		}else{
+			User user = new User(0, username, password, usertype);
+			userDAO.addUser(user);
+			response.sendRedirect("User?action=viewAll");
+		}
 	}
 	
 	protected void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -104,6 +115,7 @@ public class UserServlet extends HttpServlet {
 		String user = request.getParameter("username");
 		String pass = request.getParameter("password");
 		if (userDAO.login(user, pass)) {
+			System.out.println("gets to login");
 			request.getSession().setAttribute("username", user);
 			request.setAttribute("loggedIn", true);
 			request.changeSessionId();
@@ -111,7 +123,7 @@ public class UserServlet extends HttpServlet {
 		}else{
 			request.setAttribute("loggedIn", false);
 			request.setAttribute("failedLogInMsg", "Username or password incorrect");
-			response.sendRedirect("User?action=login");
+			request.getRequestDispatcher("/WEB-INF/view/Users/login.jsp").forward(request, response);
 		}
 	}
 	

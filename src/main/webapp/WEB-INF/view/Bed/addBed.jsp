@@ -20,7 +20,7 @@
 <ul>
   <li><a href="<c:url value="BedServlet?action=viewAll"/>">View Beds</a></li>
   <li><a href="<c:url value="BedServlet?action=showAddForm"/>">Add Bed</a></li>
-  <li><a href="#news">Lay out</a></li>
+ <li><a href="BedServlet?action=bedLayout">Layout</a></li>
   <li>
   	  <c:if test="${username != null}">
 		<a href="<c:url value="#"/>">Logout</a>
@@ -29,14 +29,7 @@
 </ul>
 <form action="BedServlet?action=showAddForm" method="POST">
 <div><h1>Search</h1></div>
-<div>Departments</div>
-<div>
-	<select name="deptOption" id="deptOption" onchange="this.form.submit()">
-	  <c:forEach var="department" items="${departmentList}">
-		 <option value ="${department.id}"> ${department.name}</option>
-	  </c:forEach>
-	</select>
-</div>
+
 <div>Ward</div>
 <div>
 	<select name="wardOption" id="wardOption" onchange="this.form.submit()">
@@ -46,6 +39,21 @@
 	</select>
 
 </div>
+<p></p>
+<div>Room</div>
+<div>
+	<select name="roomOption" id="roomOption">
+	  <c:forEach var="room" items="${roomList}">
+		 <option value ="${room.id}"> ${room.type}</option>
+	  </c:forEach>
+	</select>
+
+</div>
+<p></p>
+<div><input type="checkbox" name="occupied" value="True">Is Bed Occupied?<br></div>
+<p></p>
+<div><input type="submit" value="Add Bed"/></div>
+
 
 </form>
 

@@ -6,11 +6,13 @@
 		<title>Add User</title>
 	</head>
 	<body>
-		<header>Add User</header>
-		<span class="back"><a href="User">Back</a></span>
+		<header>
+			<span class="back"><a href="User">Back</a></span>
+			Add User
+		</header>
 		<form action="User?action=addUser" method="post">
-			<input type="text" name=username placeholder="Username">
-			<input type="text" name=password placeholder="Password">
+			<input type="text" name=username placeholder="Username" required> <span>${ errMsg }</span>
+			<input type="text" name=password placeholder="Password" required>
 			<select name="usertype">
 				<option value="doctor">Doctor</option>
 				<option value="admin">Admin</option>

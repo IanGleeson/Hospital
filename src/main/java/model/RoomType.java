@@ -10,11 +10,12 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
-@Entity
-@Table(name = "RoomType_View")
+@Entity(name = "RoomType_View")
 public class RoomType {
+	
 	@Column
 	private String RoomType;
+	@Id
 	@Column
 	private int Id;
 	

@@ -35,7 +35,7 @@ public class HibernateUtil {
 		config.addAnnotatedClass(model.Room.class);
 		config.addAnnotatedClass(model.Doctor.class);
 		config.addAnnotatedClass(model.Hospital.class);
-		//config.addAnnotatedClass(model.RoomType.class);
+		config.addAnnotatedClass(model.RoomType.class);
 
 		
 		

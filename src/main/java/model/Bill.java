@@ -1,13 +1,13 @@
 package model;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.Type;
+
 
 @Entity
 public class Bill {
@@ -15,19 +15,19 @@ public class Bill {
 	@Id @GeneratedValue
 	private int id;
 	@Column
-	private Date billDate;
-	@Column
-	private int patientId;
+	private LocalDate billDate;
+	
 	@Column
 	private BigDecimal roomCharge;
 	@Column
+	int nightsStayed;
+	@Column
 	private BigDecimal doctorFee;
-	
-	
 	@Column
 	private String billNote;
 	@Column
 	private BigDecimal miscFee;
+
 	
 	
 	public Bill(){}
@@ -35,19 +35,76 @@ public class Bill {
 	
 	
 	
-	public Bill(int id, Date billDate, int patientId, BigDecimal roomCharge, BigDecimal doctorFee, String billNote,
-			BigDecimal miscFee) {
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public Bill(int id, LocalDate billDate, BigDecimal roomCharge, int nightsStayed, BigDecimal doctorFee,
+			String billNote, BigDecimal miscFee) {
 		this.id = id;
 		this.billDate = billDate;
-		this.patientId = patientId;
 		this.roomCharge = roomCharge;
+		this.nightsStayed = nightsStayed;
 		this.doctorFee = doctorFee;
 		this.billNote = billNote;
 		this.miscFee = miscFee;
+		
 	}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public int getNightsStayed() {
+		return nightsStayed;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setNightsStayed(int nightsStayed) {
+		this.nightsStayed = nightsStayed;
+	}
 
 	public int getId() {
 		return id;
@@ -55,18 +112,13 @@ public class Bill {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Date getBillDate() {
+	public LocalDate getBillDate() {
 		return billDate;
 	}
-	public void setBillDate(Date billDate) {
+	public void setBillDate(LocalDate billDate) {
 		this.billDate = billDate;
 	}
-	public int getPatientId() {
-		return patientId;
-	}
-	public void setPatientId(int patientId) {
-		this.patientId = patientId;
-	}
+	
 	public BigDecimal getRoomCharge() {
 		return roomCharge;
 	}
@@ -91,18 +143,11 @@ public class Bill {
 	public void setMiscFee(BigDecimal miscFee) {
 		this.miscFee = miscFee;
 	}
-
-
-
-
+	
 	@Override
 	public String toString() {
-		return "Bill [id=" + id + ", billDate=" + billDate + ", patientId=" + patientId + ", roomCharge=" + roomCharge
-				+ ", doctorFee=" + doctorFee + ", billNote=" + billNote + ", miscFee=" + miscFee + "]";
+		return "Bill [id=" + id + ", billDate=" + billDate + ", roomCharge=" + roomCharge + ", doctorFee=" + doctorFee
+				+ ", billNote=" + billNote + ", miscFee=" + miscFee + "]";
 	}
-	
-	
-	
-
 }
 
