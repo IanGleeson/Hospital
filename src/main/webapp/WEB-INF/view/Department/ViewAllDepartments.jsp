@@ -33,8 +33,17 @@
 						<td>${department.name}</td>	
 						<td>${department.wards.size()}</td>				
                         <td><c:forEach var="ward" items="${department.wards}" varStatus="loop"> 
-                        	${ward.name}  
-                        	${!loop.last ? ',' : ''} 
+                        	${ward.name}-- Rooms(${ward.rooms.size()})
+                        	<br/>--------------------------------------<br/>
+                        	
+                            <c:forEach var="room" items="${ward.rooms}" varStatus="loop2"> 
+                            
+                        	${room.type==3 ? 'Private' : room.type==1 ? 'Public' : room.type==2 ? 'Semi-Private' : ''} --No: Beds (${room.beds.size()})--<c:forEach var="bed" items="${room.beds}" varStatus="loop3"> ${bed.occupied?'Occupied':'Free'} ${!loop3.last ? ', ' : ''} </c:forEach>                        	                       	
+                        	  
+                        	${!loop2.last ? '<br/>' : ''} 
+                        	 </c:forEach>
+                        	 <br/>--------------------------------------<br/>
+                        	 ${!loop.last ? '<br/>' : ''} 
                         </c:forEach>
                         </td>	
 					</tr>

@@ -29,6 +29,9 @@ public class UserServlet extends HttpServlet {
 		System.out.println("action is " + action);
 
 		switch (action) {
+		case "showLoginForm":
+			request.getRequestDispatcher("/WEB-INF/view/Users/login.jsp").forward(request, response);
+			break;
 		case "showAddUserForm":
 			request.getRequestDispatcher("/WEB-INF/view/Users/addUser.jsp").forward(request, response);
 			break;
@@ -52,7 +55,7 @@ public class UserServlet extends HttpServlet {
 			break;
 		case "logout":
 			request.getSession().invalidate();
-			request.getRequestDispatcher("/WEB-INF/view/Users/login.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 			break;
 		case "changePassword":
 			changePassword(request, response);
@@ -115,11 +118,10 @@ public class UserServlet extends HttpServlet {
 		String user = request.getParameter("username");
 		String pass = request.getParameter("password");
 		if (userDAO.login(user, pass)) {
-			System.out.println("gets to login");
 			request.getSession().setAttribute("username", user);
 			request.setAttribute("loggedIn", true);
 			request.changeSessionId();
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}else{
 			request.setAttribute("loggedIn", false);
 			request.setAttribute("failedLogInMsg", "Username or password incorrect");
