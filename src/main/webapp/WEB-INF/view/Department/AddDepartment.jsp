@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add Department</title>
-</head>
-<body>
 <h1>Add Department</h1>
-</body>
-</html>
+ <div class="col-xs-12">
+<form class="form-horizontal" role="form" action="Department?action=addDepartment" method="post">
+ <div class="form-group">
+<label for="Deptname" class="col-sm-2 control-label">Department Name:</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="Deptname" name="Departmentname" required>
+                        </div>
+             </div>            
+                    <div class="pull-right">
+                            <button type="submit" class="btn btn-primary btn-lg">Add Department</button>
+                    </div>
+</form>
+</div>
+
