@@ -152,16 +152,12 @@ public class DepartmentServlet extends HttpServlet {
 		
 		/* Get the list of Department from the DAO */
 		List<Department> listOfDepartment = departmentDAO.viewAllDepartment();
-		 for(Department d : listOfDepartment){
-			  System.out.println("Department :"+d.getId()+ " Wards: "+d.getWards());
-
-		        }
 		
 		/* Assign the listOfDepartment to an attribute in the request object */
 		request.setAttribute("listOfDepartment", listOfDepartment);
 
 		
-		List<Ward> wardList = wardDAO.viewWard();	
+/*		List<Ward> wardList = wardDAO.viewWard();	
 		Map<Integer, String> mapOfWards  = new HashMap<>();
 		for(Department Dept:listOfDepartment){
 			mapOfWards.put(Dept.getId(), getWardNames(Dept.getId(),wardList));
@@ -169,7 +165,7 @@ public class DepartmentServlet extends HttpServlet {
 		}
 				
 		
-		request.setAttribute("mapOfWards", mapOfWards);
+		request.setAttribute("mapOfWards", mapOfWards);*/
 			
 	
 		request.getRequestDispatcher("WEB-INF/view/Department/ViewDepartment.jsp").forward(request, response);
