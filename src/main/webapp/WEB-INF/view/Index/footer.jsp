@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+         </div> 
          <footer class="row row-footer">
                 <div class="container">
                     <div>             
@@ -47,6 +48,7 @@
             </script>
             <!-- Include all compiled plugins (below), or include individual files as needed -->
             <script src="/HospitalManagementSystem/js/bootstrap.min.js"></script>
+     
         </body>
 
         </html>
