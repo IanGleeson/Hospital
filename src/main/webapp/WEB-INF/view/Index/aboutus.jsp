@@ -18,11 +18,9 @@
         </header>
            <div class="container">
                    <ol class="breadcrumb">
-                       <li><a href="index.html">Home</a></li>
-                       <li class="active">About Us</li>
-                       <li><a href="signup.html">Sign Up</a></li>
-                       <li><a href="contact.html">Contact Us</a></li>
-                       <li><a href="login.html">Login</a></li>
+                       <li><a href="index.jsp">Home</a></li>
+				       <li class="active"><a href="Index?action=aboutUs">About Us</a></li>                
+				       <li><a href="Index?action=contactUs">Contact Us</a></li>
                    </ol>
              </div>
              <div class="container">
