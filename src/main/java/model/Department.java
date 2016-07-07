@@ -50,7 +50,7 @@ public int getId() {
  * @param id the id to set
  */
 public void setId(int id) {
-	id = id;
+	Id = id;
 }
 
 /**
@@ -73,6 +73,19 @@ public void setName(String name) {
 public Set<Ward> getWards() {
 	return wards;
 }
+
+/**
+ * @return the wards Names
+ */
+public String getWardNames() {
+	String wardNames="";
+	for(Ward ward:wards){		
+	 	wardNames += ward.getName() +", ";		
+	}
+	return wardNames;
+}
+
+
 
 /**
  * @param wards the wards to set
@@ -129,5 +142,4 @@ public String toString() {
 	return "Department [Id=" + Id + ", Name=" + Name + ", wards=" + wards + "]";
 }
 
-	
 }
