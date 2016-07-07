@@ -85,8 +85,6 @@ public String getWardNames() {
 	return wardNames;
 }
 
-
-
 /**
  * @param wards the wards to set
  */

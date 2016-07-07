@@ -5,7 +5,7 @@
 <jsp:include page="/WEB-INF/view/Index/header.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/view/Index/defaultmenu.jsp"></jsp:include>
 
-<p style="color:red;"><c:out value="${message}"/></p>
+
 
 <!--  
 <h1>Add Department</h1>
@@ -75,8 +75,11 @@
        </div>
        </div>
    </nav>
-<header class="jumbotron">
-   <div class="container">
+    
+   
+
+  
+   <header class="jumbotron">
     <div class="row row-header">
         <div class="col-xs-12 btn btn-primary btn-block" type="button">
             What would you like to do?
@@ -84,14 +87,14 @@
             </div>
 
         </div>
-       </div>
-      
-</header>
+        </header>
     
-       
-    <div id="tab1" class="container">  
+      
 
-
+    
+<p style="color:red;"><c:out value="${message}"/></p> 
+   
+<div id="tab1">  
 <div class="row row-content">
 <ul  class="nav nav-pills">
             <li class="active">  <a  href="#1b" data-toggle="tab">Departments</a></li>
@@ -128,7 +131,8 @@
 <c:forEach var="department" items="${listOfDepartment}">
 					<tr>
 					    <th scope="row"><c:out value="${count}"/><c:set var="count" value="${count + 1}" scope="page"/></th>
-						<td>${department.name}</td>					
+						<td>${department.name}----
+						(${department.getWardNames()})</td>					
                         <td>${mapOfWards.get(department.id)}</td>	
 					</tr>
 </c:forEach>
