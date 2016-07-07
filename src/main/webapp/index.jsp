@@ -33,9 +33,9 @@
    </header>
    <div class="container">
    <ol class="breadcrumb">
-       <li class="active">Home</li>
-       <li><a href="Index?action=aboutUs">About Us</a></li>                
-       <li><a href="Index?action=contactUs">Contact Us</a></li>
+       <li><a href="User">Manage Users</a></li>   
+       <li><a href="Department">Manage Departments</a></li>                
+       <li><a href="Patient">Manage Personnel</a></li>
     </ol>
     <div class="row row-content">
         <div class="col-xs-12 col-sm-3 col-sm-push-9">

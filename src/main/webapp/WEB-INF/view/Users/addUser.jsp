@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <jsp:include page="/WEB-INF/view/Index/header.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/view/Index/defaultmenu.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/view/Index/superUserMenu.jsp"></jsp:include>
 <header>
 	<span class="back"><a href="User">Back</a></span> Add User
 </header>

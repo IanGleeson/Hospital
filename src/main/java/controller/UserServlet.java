@@ -115,10 +115,11 @@ public class UserServlet extends HttpServlet {
 	}
 	
 	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String user = request.getParameter("username");
-		String pass = request.getParameter("password");
-		if (userDAO.login(user, pass)) {
-			request.getSession().setAttribute("username", user);
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		//User user = userDAO.getUserById(id);
+		if (userDAO.login(username, password)) {
+			//request.getSession().setAttribute("user", user);
 			request.setAttribute("loggedIn", true);
 			request.changeSessionId();
 			request.getRequestDispatcher("index.jsp").forward(request, response);
