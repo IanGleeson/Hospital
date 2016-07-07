@@ -42,7 +42,7 @@ public class WardDAO {
 			session.update(ward);
 
 			tx.commit();
-
+			return true;
 		}catch (HibernateException e){
 			if(tx != null)
 				tx.rollback();
@@ -52,6 +52,14 @@ public class WardDAO {
 		}
 		return false;
 		
+	}
+
+	protected Ward getWardById(int id) {
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Ward w = session.get(Ward.class, id);
+		session.close();
+		return w;
 	}
 	
 	protected boolean deleteWard(int wardId){
@@ -76,7 +84,7 @@ public class WardDAO {
 		return false;
 		
 	}
-	protected List<Ward> viewWard(){
+	protected List<Ward> viewAllWard(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		@SuppressWarnings("unchecked")
 		/*String sql="FROM  Ward.deptId,Department.name,Ward.name from Ward, Department where Ward.deptId=Department.id";*/
@@ -93,7 +101,7 @@ public class WardDAO {
 		return department;
 		
 	}
-	protected Ward viewAllWard(int wardId){
+	protected Ward viewWard(int wardId){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Ward ward = session.get(Ward.class, wardId);
 		session.close();

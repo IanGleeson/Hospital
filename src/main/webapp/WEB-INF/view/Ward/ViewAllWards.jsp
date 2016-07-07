@@ -59,6 +59,7 @@
 								<td align="center"><font size=4><a
 										href="<c:url value="Ward?action=updateWardForm">
 									 	<c:param name="wardId" value="${ward.id}"/>
+									 	<c:param name="departmentId" value="${ward.deptId}"/>
 									 	</c:url>">Update</a></font></td>
 	
 								<td align="center"><font size=4><a
