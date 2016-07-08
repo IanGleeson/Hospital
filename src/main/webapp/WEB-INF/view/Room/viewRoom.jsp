@@ -24,8 +24,7 @@
 				<c:forEach var="room" items="${roomsList}">
 					<tr>
 						<td>${room.id}</td>
-						<td>${room.wardId}</td>
-						<td>${room.type}</td>
+						<td>${room.roomType}</td>
 						<td>
 						<a href="<c:url value="Room?action=deleteRoom">
 								 <c:param name="roomId" value="${room.id}"/>

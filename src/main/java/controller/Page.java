@@ -35,14 +35,13 @@ public class Page extends HttpServlet {
 			break;
 		case "aboutUs":
 			request.getRequestDispatcher("/WEB-INF/view/Index/aboutus.jsp").forward(request, response);
-
 			break;
 		case "contactUs":
 			request.getRequestDispatcher("/WEB-INF/view/Index/contact.jsp").forward(request, response);
 
 			break;
 		default:
-			request.getRequestDispatcher("/WEB-INF/view/Index/index.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 			break;
 		}
 		response.getWriter().append("Served at: ").append(request.getContextPath());
