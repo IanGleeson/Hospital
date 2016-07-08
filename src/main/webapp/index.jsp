@@ -32,12 +32,13 @@
        </div>
    </header>
    <div class="container">
+   
    <ol class="breadcrumb">
        <li><a href="User">Manage Users</a></li>   
        <li><a href="Department">Manage Departments</a></li>                
        <li><a href="Patient">Manage Personnel</a></li>
-    </ol>
-    <div class="row row-content">
+   </ol>
+   <div class="row row-content">
         <div class="col-xs-12 col-sm-3 col-sm-push-9">
             <p style="padding:20px;"></p>
             <h3 align=center>Your health is our concern</h3>

@@ -73,7 +73,7 @@ public class RoomServlet extends HttpServlet {
 //		room.setType(1);
 //		roomDAO.addRoom(room);
 //		System.out.println("Room Added to the database");
-		List<Ward> listOfWards =  wardDAO.viewWard();
+		List<Ward> listOfWards =  wardDAO.viewAllWard();
 		request.setAttribute("listOfWards", listOfWards);
 		System.out.println(listOfWards);
 		List<RoomTypeAndCost> roomsList = roomDAO.viewRoom();
