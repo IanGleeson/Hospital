@@ -178,7 +178,7 @@ public class PatientServlet extends HttpServlet {
 		int deptId = Integer.valueOf(request.getParameter("department"));
 		LocalDate admissionDate = LocalDate.parse(request.getParameter("admissionDate"));
 		LocalDate dischargeDate = LocalDate.parse(request.getParameter("dischargeDate"));
-		int bedId = Integer.valueOf(request.getParameter("bedId"));
+		int bedId = Integer.valueOf(request.getParameter("bed"));
 		LocalDate appointment = LocalDate.parse(request.getParameter("appointment"));
 		boolean alive = Boolean.parseBoolean(request.getParameter("isAlive"));
 		boolean inpatient = Boolean.parseBoolean(request.getParameter("isInpatient"));
@@ -297,7 +297,7 @@ public class PatientServlet extends HttpServlet {
 		int deptId = Integer.valueOf(request.getParameter("department"));
 		LocalDate admissionDate = LocalDate.parse(request.getParameter("admissionDate"));
 		LocalDate dischargeDate = LocalDate.parse(request.getParameter("dischargeDate"));
-		int bedId = Integer.valueOf(request.getParameter("bedId"));
+		int bedId = Integer.valueOf(request.getParameter("bed"));
 		LocalDate appointment = LocalDate.parse(request.getParameter("appointment"));
 		boolean alive = Boolean.parseBoolean(request.getParameter("isAlive"));
 		System.out.println("THIS IS A BOOLEAN " + alive);
