@@ -10,23 +10,7 @@
  <link href="css/bootstrap-social.css" rel="stylesheet">
  <link href="css/mystyles.css" rel="stylesheet" >
  <title>Hospital Management Website</title>
- <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
- <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
- <!--[if lt IE 9]>
- <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
- <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
- <![endif]-->
-<!-- *******************************************************************
-  *                                                                 *
-  *  FILE NAME: html5-template.html                                 *
-  *  FOLDER NAME(s): Dropbox/CompletedProjects/root                 *
-  *  AUTHOR: Robert Garba                                           *
-  *  DATE: 22-06-2016                                               *
-  *                                                                 *
-  *  DESCRIPTION:                                                   *
-  *  This is an hospital management application.                    *
-  *                                                                 *
-  ******************************************************************* -->
+ 
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -79,40 +63,152 @@
         <a type="button" class="btn btn-primary" href="#">Log-Out</a>
         </div>
  <div class="row row-content">
-<div class="col-xs-12 col-sm-9 offset-1"><h3>Add User</h3></div>
+<div class="col-xs-12 col-sm-9 offset-1"><h3>Add Patient</h3></div>
 <div class="col-xs-12 col-sm-9 col-sm-offset-1">
-    <form class="form-horizontal" role="form">
-        <div class="form-group">
-            <label for="username" class="col-sm-2 control-label">User Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="username" name="username" placeholder="Enter User Name">
-            </div>
-            <label for="password" class="col-sm-2 control-label">Password</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="password" name="password" placeholder="Enter Password">
-            </div>
-            <label for="name" class="col-sm-2 control-label">Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter User Name">
-            </div>
-            <label for="usertypee" class="col-sm-2 control-label">User Type</label>
-            <div class="col-sm-5 col-sm-offset-5">
-            <select class="form-control">
-                                <option>Doctor</option>
-                                <option>Admin</option>
-                                <option>HR</option>
-                            </select>
-                        </div>
-            </div>
+ <form action="PatientServlet?action=addPatient" method="post" required>
 
-                        
-                        
-       
-        <div class="pull-right">
-                            <button type="submit" class="btn btn-primary">Add</button>
-                        </div>
-        
-                </form>
+	<p>First name</p>
+	<p>
+		<input type="text" name="forename" placeholder="first name" required
+			pattern="[a-zA-Z]{2,}"
+			oninvalid="setCustomValidity('Minimum length is 2 letters')"
+			oninput="setCustomValidity('')">
+	</p>
+
+	<p>Surname</p>
+	<p>
+		<input type="text" name="surname" placeholder="surname" required
+			pattern="[a-zA-Z]{2,}"
+			oninvalid="setCustomValidity('Minimum length is 2 letters')"
+			oninput="setCustomValidity('')">
+	</p>
+
+	<p>Phone number</p>
+	<p>
+		<input type="text" name="phoneNumber" placeholder="phone number"
+			required pattern="0[0-9]{6,14}"
+			oninvalid="setCustomValidity('Must have between 6 and 15 numbers')"
+			oninput="setCustomValidity('')">
+	</p>
+
+	<p>Address</p>
+	<p>
+		<textarea name="address" rows="5" cols="50" placeholder="address"
+			required maxlength="100" minlength="10"></textarea>
+	</p>
+
+	<p>Date of birth</p>
+	<p>
+		<input type="date" name="dob" placeholder="date of birth" id="dob"
+			required onchange="dobChecker();"> <span style="color: red;"
+			id="messageBday"></span>
+	</p>
+
+
+	<p>Admission date</p>
+	<p>
+		<input type="date" name="admissionDate" id="admissionDate"
+			placeholder="admission date" required
+			onchange="admissionDateChecker();"> <span style="color: red;"
+			id="messageAdmission"></span>
+	</p>
+
+	<p>Discharge date</p>
+	<p>
+		<input type="date" name="dischargeDate" id="dischargeDate"
+			placeholder="Discharge date" required
+			onchange="dischargeDateChecker();"> <span style="color: red;"
+			id="messageDischarge"></span>
+	</p>
+	<p>Appointment</p>
+	<p>
+		<input type="date" name="appointment" id="appointment"
+			placeholder="appointment" required
+			onchange="appointmentDateChecker();"> <span
+			style="color: red;" id="messageAppointment"></span>
+	</p>
+	<p>Bed id</p>
+	<p>
+		<input type="number" name="bedId" min="0" max="200"
+			placeholder="Bed Id" required>
+	</p>
+
+	<p>Doctor</p>
+	<p>
+			<select name="doctor">
+				<c:forEach var="doctor" items="${allDoctors}" varStatus="count">
+					<option value="${doctor.id}">${doctor.firstName} ${doctor.lastName}</option>
+				</c:forEach>
+			</select> <br>
+		</p>
+
+	<p>Department</p>
+
+	
+
+		<p>
+			<select name="department">
+				<c:forEach var="department" items="${allDepartments}" varStatus="count">
+					<option value="${department.id}">${department.name}</option>
+				</c:forEach>
+			</select> <br>
+		</p>
+
+
+	
+	<p>
+		<input type="radio" name="isInpatient" value="true" required>
+		In patient<br> <input type="radio" name="isInpatient"
+			value="false"> Out patient<br>
+	</p>
+	<p>
+		<input type="radio" name="isAlive" value="true" required>Alive<br>
+		<input type="radio" name="isAlive" value="false">Dead<br>
+	</p>
+	<p>
+		<input type="radio" name="gender" value="male" required> Male<br>
+		<input type="radio" name="gender" value="female"> Female<br>
+	</p>
+
+	<p>
+		<input type="textarea" name="nextOfKin"
+			placeholder="Next of kin details" required>
+	</p>
+
+	<p>
+		<input type="radio" name="patientType" value="PRIVATE" required>
+		Private<br> <input type="radio" name="patientType" value="PUBLIC">
+		Public<br> <input type="radio" name="patientType"
+			value="SEMI_PRIVATE"> Semi-private<br>
+	</p>
+
+
+	<!--<p>
+			<input type="button" name = "addNotes" value="Add Patient Notes">
+			<input type="button" name = "addPres" value="Add Patient Prescriptions">
+		</p>-->
+
+	<p>
+
+		<textarea name="notes" rows="5" cols="50" placeholder="patient notes"></textarea>
+
+	</p>
+	<p>
+
+		<textarea name="prescription" rows="5" cols="50"
+			placeholder="patient prescription"></textarea>
+
+	</p>
+	<p>
+		<input type="submit" value="Add patient">
+	</p>
+
+
+
+
+
+</form>
+
 
      </div>
     </div>
