@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Bed;
 import model.Bill;
 import model.Department;
 import model.Doctor;
@@ -30,6 +31,7 @@ public class PatientServlet extends HttpServlet {
 	private PatientDAO patientDAO = new PatientDAO();
 	private DepartmentDAO departmentDAO = new DepartmentDAO();
 	private DoctorDAO doctorDAO = new DoctorDAO();
+	private BedDAO bedDAO = new BedDAO();
 	
 	public PatientServlet() {
 
@@ -116,10 +118,21 @@ public class PatientServlet extends HttpServlet {
 			throws ServletException, IOException {
 		List<Department> allDepartments = departmentDAO.viewAllDepartment();
 		List<Doctor> allDoctors = doctorDAO.getAllDoctors();	
+		List <Bed> allBeds = bedDAO.viewBed();
+		request.setAttribute("allBeds", allBeds);
+		List<Bed> freeBeds = new ArrayList<Bed>();		
+		for(Bed bed: allBeds){
+			
+			if(bed.isOccupied() == false){
+				System.out.println("A Single bed: " + bed);
+				freeBeds.add(bed);
+			}
+			
+		}
+	
+		request.setAttribute("freeBeds", freeBeds);
 		request.setAttribute("allDoctors", allDoctors);
-				System.out.println("==============================" + allDoctors);
 		request.setAttribute("allDepartments", allDepartments);
-				System.out.println("--------------------------------" + allDepartments);
 		request.getRequestDispatcher("WEB-INF/view/Patient/insertPatient.jsp").forward(request, response);
 	}
 	protected void viewPrescriptions(HttpServletRequest request, HttpServletResponse response)
@@ -211,8 +224,20 @@ public class PatientServlet extends HttpServlet {
 		List<Doctor> allDoctors = doctorDAO.getAllDoctors();	
 		request.setAttribute("allDepartments", allDepartments);
 		request.setAttribute("allDoctors", allDoctors);
-		System.out.println("==============================" + allDoctors);
+		
 		request.setAttribute("patient", p);
+		List <Bed> allBeds = bedDAO.viewBed();
+		List<Bed> freeBeds = new ArrayList<Bed>();		
+		for(Bed bed: allBeds){
+			
+			if(bed.isOccupied() == false){
+				System.out.println("A Single bed: " + bed);
+				freeBeds.add(bed);
+			}
+			
+		}
+		
+		request.setAttribute("freeBeds", freeBeds);
 		
 
 		request.getRequestDispatcher("WEB-INF/view/Patient/updatePatient.jsp").forward(request, response);
