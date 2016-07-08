@@ -10,23 +10,6 @@
  <link href="css/bootstrap-social.css" rel="stylesheet">
  <link href="css/mystyles.css" rel="stylesheet" >
  <title>Hospital Management Website</title>
- <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
- <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
- <!--[if lt IE 9]>
- <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
- <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
- <![endif]-->
-<!-- *******************************************************************
-  *                                                                 *
-  *  FILE NAME: html5-template.html                                 *
-  *  FOLDER NAME(s): Dropbox/CompletedProjects/root                 *
-  *  AUTHOR: Robert Garba                                           *
-  *  DATE: 22-06-2016                                               *
-  *                                                                 *
-  *  DESCRIPTION:                                                   *
-  *  This is an hospital management application.                    *
-  *                                                                 *
-  ******************************************************************* -->
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

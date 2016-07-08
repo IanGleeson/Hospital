@@ -16,9 +16,10 @@
            <a class="navbar-brand" href="index.html">Hospital Management Application</a>
        </div>
        <div id="navbar" class="nav navbar-nav navbar-collapse collapse pull-right">
-           <a type="button" class="btn btn-info-outline">Welcome</a>
-           <a type="button" class="btn btn-success">Super User</a>
-           <a type="button" class="btn btn-primary " href="log-out.html"><span class="glyphicon glyphicon-user"></span>Log-Out</a>
+       <div class="col-xs-12 btn btn-primary btn-block" type="button">
+           <a type="button" class="btn btn-success">Manage Users</a>
+           <a type="button" class="btn btn-success">Manage Departments</a>
+           <a type="button" class="btn btn-success">Manage Personnel</a>          
        </div>
        </div>
    </nav>

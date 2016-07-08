@@ -1,160 +1,207 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import model.Bed;
 import model.Department;
-import model.Hospital;
-
-import model.Room;
-import model.RoomType;
-import model.RoomTypeAndCost;
-
-
-
 import model.Ward;
 
-/**
- * Servlet implementation class BedServlet
- */
-@WebServlet("/BedServlet")
-public class BedServlet extends HttpServlet {
+
+public class WardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private BedDAO bedDAO;
-    private DepartmentDAO departmentDAO;
-    private WardDAO wardDAO;
-    private RoomDAO roomDAO;
-    private RoomTypeAndCostDAO roomTypeAndCostDAO;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BedServlet() {      
-        // TODO Auto-generated constructor stub
-        bedDAO = new BedDAO();
-        departmentDAO = new DepartmentDAO();
+       
+	private WardDAO wardDAO;
+	
+    public WardServlet() {
         wardDAO = new WardDAO();
-        roomDAO = new RoomDAO();
-        roomTypeAndCostDAO = new RoomTypeAndCostDAO();
+        System.out.println("Database Created");
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String action = request.getParameter("action");
 		if(action==null){
-			action="viewBeds";
+			action="viewAll";
 		}
 		switch (action) {
-		case "bedLayout":
-			bedLayout(request, response);
+		case "addWardForm":
+			addWardForm(request,response);
 			break;
-		case "showAddForm":
-			showAddForm(request, response);
-			break;
-		case "addBed":
-			addBed(request,response);
+		case "addWard":
+			addWard(request,response);
 			break;
 		case "delete":
-			deleteBed(request,response);
+			deleteWard(request,response);
+			break;	
+		case "updateWard":
+			updateWard(request, response);
+			break;
+		case "updateWardForm":
+			updateWardForm(request, response);
 			break;
 		default:
-			viewBeds(request,response);
+			viewAllWards(request,response);
+			//request.getRequestDispatcher("WEB-INF/Ward/ViewAllWards.jsp").forward(request, response);
 			break;
 		}
+		
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	private void deleteBed(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String strBedId = request.getParameter("bedId");
-		boolean isDeleted = bedDAO.deleteBed(Integer.parseInt(strBedId));
-		request.getRequestDispatcher("WEB-INF/view/Bed/viewBed.jsp").forward(request, response);
+	
+	private void deleteWard(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// TODO Auto-generated method stub
+		int id=Integer.valueOf(request.getParameter("wardId"));
+		wardDAO.deleteWard(id);
+		response.sendRedirect("Ward?action=viewAllWards");
 	}
 	
-	private void bedLayout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		List<Hospital> hospList = bedDAO.viewHospital();
-		//List<RoomType> roomTypeList = bedDAO.getRoomType();
-		//request.setAttribute("roomTypeList", roomTypeList);
-
-		request.getRequestDispatcher("WEB-INF/view/Bed/bedLayout.jsp").forward(request, response);
-	}
-	
-	
-	private void showAddForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		// Get the bed list
+	private void updateWard (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		int id = Integer.parseInt(request.getParameter("wardId"));
+		int deptId = Integer.parseInt(request.getParameter("selectOption"));
+		String name= request.getParameter("wardName");
+		String departmentName="";
+		String message = "";
+		List<Ward> wardList = wardDAO.viewAllWard();
+		boolean isFound=false;
+		Ward ward=  wardDAO.viewWard(id);
+		Ward updateW=new Ward(id, name, deptId);
 		
-		List<Ward> wardList = wardDAO.viewWard();
-		request.setAttribute("wardList",wardList);
-		
-		String strWardOption = "16";//request.getParameter("wardOption");
-		System.out.println("wardOption= "+strWardOption);
-		List<Room> roomList = new ArrayList();
-		if(strWardOption!=null){
-			roomList = roomDAO.viewRoomByWardId(Integer.parseInt(strWardOption));
+		if(!ward.getName().equals(name)){
+	
+		for(Ward w:wardList){
 			
-			String strRoomOption = request.getParameter("roomOption");
-			
-			
-			String occupied = request.getParameter("occupied");
-			if(occupied==null){
-				occupied = "false";
+				if(w.getName().equals(name)){
+					message=" Ward Name " +name + " already exists..";			
+					isFound=true;
+				}
 			}
-			System.out.println("occupied = "+occupied);
+
+		}else if(ward.getDeptId()!=deptId){
 			
+			wardDAO.updateWard(updateW);
+			message=" Department " +name + " Updated..";
+		}
+	
+		if(isFound==false){
+			if(ward.getDeptId()!=deptId){
+				message=" Department " +name + " Updated..";
+			}
+
+			if(wardDAO.updateWard(updateW))
+				{
+				message +=" Ward " +name + " Updated..";
+				}else
+					{
+						message=" Ward " +name + " cannot add!! Some error Occured";
+					}
 			
-			
+			}
+		request.setAttribute("message", message);
+		viewAllWards(request,response); 
+		}	 
+	
+	private void updateWardForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		int id = Integer.parseInt(request.getParameter("wardId"));
+		int deptId = Integer.parseInt(request.getParameter("departmentId"));
+		String departmentName="";
+
+ 
+
+		List<Department> departmentList =wardDAO.viewDepartment();
+		for(Department d:departmentList){
+			if(d.getId()==deptId){
+				departmentName=d.getName();
+				System.out.println(departmentName);
+				request.setAttribute("departmentName", departmentName);
+			}
 		}
 		
-		request.setAttribute("roomList",roomList);
-		List<RoomTypeAndCost> roomTypeAndCostList = roomTypeAndCostDAO.viewRoomTypeAndCost();
+		Ward w= wardDAO.getWardById(id);
 		
-		Map<Integer, String> mapOfRoomTypeAndCost  = new HashMap<>();
-		for(RoomTypeAndCost RC :roomTypeAndCostList){
-			mapOfRoomTypeAndCost.put(RC.getId(), RC.getRoomType());
+		request.setAttribute("ward", w);
+		request.setAttribute("departmentList", departmentList);
+		
+
+		request.getRequestDispatcher("WEB-INF/view/Ward/UpdateWard.jsp").forward(request, response);
+		
+	}
+	private void addWard(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*request.getRequestDispatcher("WEB-INF/Ward/AddWard.jsp").forward(request, response);*/
+		int deptId=Integer.parseInt(request.getParameter("selectOption"));
+		String wardName=request.getParameter("wardName");
+		String message = "";
+		List<Ward> wardList = wardDAO.viewAllWard();
+		boolean isFound=false;
+		
+		for(Ward w:wardList){
+			if(w.getName().equals(wardName)){
+				message=" Ward " +wardName + " already exists";
+				
+				isFound=true;
+			}
+		}
+		if(isFound==false){
+		Ward ward=new Ward(0, wardName, deptId);
+
+		if(wardDAO.addWard(ward))
+		{
+		message=" Ward " +wardName + " added..";
+		}else
+		{
+			message=" Ward " +wardName + " cannot add!! Some error Occured";
 		}
 		
-		request.setAttribute("mapOfRoomTypeAndCost", mapOfRoomTypeAndCost);
+		
+		System.out.println("New ward added "+ward);
+		}
+		request.setAttribute("message", message);
+		viewAllWards(request,response);
+	}
+	
+	private void addWardForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		
+		List<Department> departmentList =wardDAO.viewDepartment();
+		
+		request.setAttribute("departmentList", departmentList);
+		
+
+		request.getRequestDispatcher("WEB-INF/view/Ward/AddWard.jsp").forward(request, response);
+		
+	}
+		
+	private void viewAllWards(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		List<Ward> wardList = wardDAO.viewAllWard();
+		
+		List<Department> departmentList =wardDAO.viewDepartment();
+		
+		Map<Integer, String> mapOfDepartment  = new HashMap<>();
+		for(Department d:departmentList){
+			mapOfDepartment.put(d.getId(), d.getName());
+		}
+		
+		request.setAttribute("mapOfDepartment", mapOfDepartment);
 		
 		request.setAttribute("wardList", wardList);
-		
-		
-		request.getRequestDispatcher("WEB-INF/view/Bed/addBed.jsp").forward(request, response);
-		
-		
-	}
-	
-	private void addBed(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Bed bed = new Bed();
-		bed.setOccupied(false);
-		bed.setRoomId(5);
-		bedDAO.addBed(bed);
-		System.out.println("Bed inserted");
-		
-		
-	}
-
-	private void viewBeds(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		// Get the bed list
-		List<Bed> bedsList = bedDAO.viewBed();
-		// With the help of roomId get the Room list
-		
-		//
-		request.setAttribute("bedsList",bedsList);
-		//System.out.println(bedsList);
-		request.getRequestDispatcher("WEB-INF/view/Bed/viewBed.jsp").forward(request, response);
+		//System.out.println(wardList);
+		for(Ward w : wardList){
+			System.out.println(w);
+		}
+		request.getRequestDispatcher("/WEB-INF/view/Ward/ViewAllWards.jsp").forward(request, response);
 		
 		
 	}
@@ -167,3 +214,6 @@ public class BedServlet extends HttpServlet {
 	}
 
 }
+
+
+
