@@ -25,7 +25,6 @@
 						class="glyphicon glyphicon-info-sign"></span>About Us</a></li>
 				<li><a href="Index?action=contactUs"><span
 						class="glyphicon glyphicon-envelope"></span>Contact Us</a></li>
-				<c:if test="${ loggedIn == true }"></c:if>
 				<c:choose>
 					<c:when test="${ loggedIn == true }">
 						<li><a href="/HospitalManagementSystem/User?action=logout">

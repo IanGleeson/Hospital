@@ -4,13 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <jsp:include page="/WEB-INF/view/Index/header.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/view/Index/defaultmenu.jsp"></jsp:include>
-<header>
-	<span class="back"><a href="index.jsp">Back</a></span>
-	<c:if test="${ loggedin == true}">
-		<a href="<c:url value="User?action=logout"></c:url>">Log Out</a>
-	</c:if>
-</header>
 
+<span class="back"><a href="index.jsp">Back</a></span>
+<br><br>
+<a href="<c:url value="User?action=showAddUserForm"></c:url>">Add User</a>
 <c:choose>
 	<c:when test="${listOfUsers.isEmpty()}">
 		<h2>There are no users in the database</h2>
@@ -22,6 +19,7 @@
 				<th>Username</th>
 				<th>Password</th>
 				<th>Usertype</th>
+				<th></th>
 			</tr>
 			<c:forEach var="user" items="${listOfUsers}">
 				<tr>
@@ -44,5 +42,5 @@
 		</table>
 	</c:otherwise>
 </c:choose>
-<a href="<c:url value="User?action=showAddUserForm"></c:url>">Add User</a>
+<br>
 <jsp:include page="/WEB-INF/view/Index/footer.jsp"></jsp:include>
