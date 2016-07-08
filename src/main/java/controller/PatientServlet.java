@@ -126,10 +126,12 @@ public class PatientServlet extends HttpServlet {
 			if(bed.isOccupied() == false){
 				System.out.println("A Single bed: " + bed);
 				freeBeds.add(bed);
+				
+				
 			}
 			
 		}
-	
+		//freeBeds.clear();
 		request.setAttribute("freeBeds", freeBeds);
 		request.setAttribute("allDoctors", allDoctors);
 		request.setAttribute("allDepartments", allDepartments);
@@ -298,6 +300,9 @@ public class PatientServlet extends HttpServlet {
 		LocalDate admissionDate = LocalDate.parse(request.getParameter("admissionDate"));
 		LocalDate dischargeDate = LocalDate.parse(request.getParameter("dischargeDate"));
 		int bedId = Integer.valueOf(request.getParameter("bed"));
+		Bed bed = bedDAO.getBedById(bedId);
+		bed.setOccupied(true);
+		bedDAO.updateBed(bed);
 		LocalDate appointment = LocalDate.parse(request.getParameter("appointment"));
 		boolean alive = Boolean.parseBoolean(request.getParameter("isAlive"));
 		System.out.println("THIS IS A BOOLEAN " + alive);

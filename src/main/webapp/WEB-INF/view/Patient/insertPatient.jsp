@@ -71,11 +71,18 @@
 	<p>Bed number</p>
 
 	<p>
+	<c:choose>
+	<c:when test="${freeBeds.isEmpty()}">
+	<h3>There are no free beds at present</h3>
+	</c:when>
+	<c:otherwise>
 		<select name="bed">
 			<c:forEach var="bed" items="${freeBeds}">
 				<option value="${bed.id}">${bed.id}</option>
 			</c:forEach>
 		</select> <br>
+		</c:otherwise>
+	</c:choose>
 	</p>
 
 
