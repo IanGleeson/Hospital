@@ -3,12 +3,14 @@ package controller;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import model.Bed;
 import model.Hospital;
- 
+import model.Patient;
+import model.Prescription;
 import model.RoomType;
 
 
@@ -120,6 +122,15 @@ public class BedDAO {
 		session.close();
 		return bed;
 		
+	}
+	
+	protected Bed getBedById(int Id){
+		
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		Bed bed = session.get(Bed.class, Id);
+		session.close();
+		return bed;
 	}
 	
 }

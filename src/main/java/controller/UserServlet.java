@@ -117,9 +117,8 @@ public class UserServlet extends HttpServlet {
 	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		//User user = userDAO.getUserById(id);
 		if (userDAO.login(username, password)) {
-			//request.getSession().setAttribute("user", user);
+			request.getSession().setAttribute("user", userDAO.getUser());
 			request.setAttribute("loggedIn", true);
 			request.changeSessionId();
 			request.getRequestDispatcher("index.jsp").forward(request, response);

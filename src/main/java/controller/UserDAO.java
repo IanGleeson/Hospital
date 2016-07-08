@@ -15,12 +15,17 @@ public class UserDAO {
 
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 	private boolean loggedIn = false;
+	private static User user;
 	
 	
 	public boolean isLogIn() {
 		return loggedIn;
 	}
-
+	
+	protected User getUser() {
+		return user;
+	}
+	
 	protected User getUserById(int id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		User user = session.get(User.class, id);
@@ -104,6 +109,7 @@ public class UserDAO {
 			query.setParameter("password", password);
 			if (query.list() != null) {
 				loggedIn = true;
+				user = query.uniqueResult();
 			}
 		} catch(HibernateException e) {
 			e.printStackTrace();

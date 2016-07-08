@@ -29,7 +29,7 @@
 				<c:choose>
 					<c:when test="${ loggedIn == true }">
 						<li><a href="/HospitalManagementSystem/User?action=logout">
-							<span class="glyphicon glyphicon-user"></span>${ username }(Logout) </a></li>
+							<span class="glyphicon glyphicon-user"></span>${ user.username }(Logout) </a></li>
 					</c:when>
 					<c:otherwise>
 						<li><a href="/HospitalManagementSystem/User?action=showLoginForm"><span
