@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import model.Room;
+import model.RoomTypeAndCost;
 import model.Ward;
 
 public class RoomDAO {
@@ -76,12 +77,11 @@ public class RoomDAO {
 		return false;
 		
 	}
-	protected List<Room> viewRoom(){
+	protected List<RoomTypeAndCost> viewRoom(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		
-		String sql="FROM  Ward.deptId,Department.name,Ward.name from Ward, Department where Ward.deptId=Department.id";
 		@SuppressWarnings({ "unchecked", "deprecation" })
-		List<Room> roomsList= (List<Room>) session.createQuery("From Room").list();
+		List<RoomTypeAndCost> roomsList= (List<RoomTypeAndCost>) session.createQuery("From RoomTypeAndCost").list();
 		return roomsList;
 		
 	}

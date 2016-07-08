@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Bed;
 import model.Room;
+import model.RoomTypeAndCost;
 import model.Ward;
 import controller.WardDAO;
 import controller.RoomTypeAndCostDAO;
@@ -39,7 +40,7 @@ public class RoomServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		if(action==null){
-			action="viewRoom";
+			action="addRoom";
 		}
 		switch (action) {
 		case "addRoom": 		
@@ -75,18 +76,15 @@ public class RoomServlet extends HttpServlet {
 		List<Ward> listOfWards =  wardDAO.viewWard();
 		request.setAttribute("listOfWards", listOfWards);
 		System.out.println(listOfWards);
-		List<Room> roomsList = roomDAO.viewRoom();
-		request.setAttribute("roomList", roomsList);
+		List<RoomTypeAndCost> roomsList = roomDAO.viewRoom();
+		request.setAttribute("roomsList", roomsList);
 		System.out.println(roomsList);
-	request.getRequestDispatcher("WEB-INF/view/Room/addRoom.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/view/Room/addRoom.jsp").forward(request, response);
 	}
 	
-	private void getRoomType(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
 	private void viewRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Room> roomsList = roomDAO.viewRoom();
-		request.setAttribute("roomList", roomsList);
+		List<RoomTypeAndCost> roomsList = roomDAO.viewRoom();
+		request.setAttribute("roomsList", roomsList);
 		System.out.println(roomsList);
 		request.getRequestDispatcher("WEB-INF/view/Room/viewRoom.jsp").forward(request, response);
 		
