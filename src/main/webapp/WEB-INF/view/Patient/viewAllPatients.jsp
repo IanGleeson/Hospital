@@ -6,17 +6,12 @@
 <jsp:include page="/WEB-INF/view/Index/header.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/view/Index/defaultmenu.jsp"></jsp:include>
 
-
-
-
-
 	<c:choose>
 		<c:when test="${allPatients.isEmpty()}">
 			<h2>There are no patients</h2>
 		</c:when>
 		<c:otherwise>
-
-			<table>
+			<table border="1">
 				<tr>
 					<th>id</th>
 					<th>First name</th>
@@ -58,7 +53,6 @@
 						<td>${patient.nextOfKin}</td>
 						<td>${patient.patientType}</td>
 						<td>${patient.alive}</td>
-
 
 						<td><a
 							href="<c:url value="PatientServlet?action=showUpdatePatientForm">

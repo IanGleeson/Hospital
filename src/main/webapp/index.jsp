@@ -32,12 +32,14 @@
        </div>
    </header>
    <div class="container">
-   <ol class="breadcrumb">
-       <li class="active">Home</li>
-       <li><a href="Index?action=aboutUs">About Us</a></li>                
-       <li><a href="Index?action=contactUs">Contact Us</a></li>
-    </ol>
-    <div class="row row-content">
+   
+  <div class="btn btn-group">
+       <a type="button" class="btn btn-primary" href="User">Manage Users</a>   
+       <a type="button" class="btn btn-primary" href="Department">Manage Departments</a>             
+       <a type="button" class="btn btn-primary" href="Patient">Manage Personnel</a>
+  </div>
+  
+   <div class="row row-content">
         <div class="col-xs-12 col-sm-3 col-sm-push-9">
             <p style="padding:20px;"></p>
             <h3 align=center>Your health is our concern</h3>

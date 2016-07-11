@@ -6,7 +6,6 @@
 <script src="js/script.js"></script>
 <h1>Insert patient</h1>
 
-<h1>Doctors :${allDoctors}</h1>
 <form action="PatientServlet?action=addPatient" method="post" required>
 
 	<p>First name</p>
@@ -69,35 +68,49 @@
 			onchange="appointmentDateChecker();"> <span
 			style="color: red;" id="messageAppointment"></span>
 	</p>
-	<p>Bed id</p>
+	<p>Bed number</p>
+
 	<p>
-		<input type="number" name="bedId" min="0" max="200"
-			placeholder="Bed Id" required>
+	<c:choose>
+	<c:when test="${freeBeds.isEmpty()}">
+	<h3>There are no free beds at present</h3>
+	</c:when>
+	<c:otherwise>
+		<select name="bed">
+			<c:forEach var="bed" items="${freeBeds}">
+				<option value="${bed.id}">${bed.id}</option>
+			</c:forEach>
+		</select> <br>
+		</c:otherwise>
+	</c:choose>
 	</p>
+
 
 	<p>Doctor</p>
 	<p>
-			<select name="doctor">
-				<c:forEach var="doctor" items="${allDoctors}" varStatus="count">
-					<option value="${doctor.id}">${doctor.firstName} ${doctor.lastName}</option>
-				</c:forEach>
-			</select> <br>
-		</p>
+		<select name="doctor">
+			<c:forEach var="doctor" items="${allDoctors}" varStatus="count">
+				<option value="${doctor.id}">${doctor.firstName}
+					${doctor.lastName}</option>
+			</c:forEach>
+		</select> <br>
+	</p>
 
 	<p>Department</p>
 
-	
-
-		<p>
-			<select name="department">
-				<c:forEach var="department" items="${allDepartments}" varStatus="count">
-					<option value="${department.id}">${department.name}</option>
-				</c:forEach>
-			</select> <br>
-		</p>
 
 
-	
+	<p>
+		<select name="department">
+			<c:forEach var="department" items="${allDepartments}"
+				varStatus="count">
+				<option value="${department.id}">${department.name}</option>
+			</c:forEach>
+		</select> <br>
+	</p>
+
+
+
 	<p>
 		<input type="radio" name="isInpatient" value="true" required>
 		In patient<br> <input type="radio" name="isInpatient"

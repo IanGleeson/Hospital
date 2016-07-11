@@ -14,8 +14,7 @@ import model.UserType;
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDAO userDAO;
-       
-   
+    
     public UserServlet() {
     	userDAO = new UserDAO();
     }
@@ -115,15 +114,15 @@ public class UserServlet extends HttpServlet {
 	}
 	
 	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String user = request.getParameter("username");
-		String pass = request.getParameter("password");
-		if (userDAO.login(user, pass)) {
-			request.getSession().setAttribute("username", user);
-			request.setAttribute("loggedIn", true);
-			request.changeSessionId();
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		if (userDAO.login(username, password)) {
+			//request.changeSessionId();
+			request.getSession().setAttribute("user", userDAO.getUser());
+			request.getSession().setAttribute("loggedIn", true);
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}else{
-			request.setAttribute("loggedIn", false);
+			request.getSession().setAttribute("loggedIn", false);
 			request.setAttribute("failedLogInMsg", "Username or password incorrect");
 			request.getRequestDispatcher("/WEB-INF/view/Users/login.jsp").forward(request, response);
 		}

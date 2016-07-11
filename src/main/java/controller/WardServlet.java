@@ -65,23 +65,72 @@ public class WardServlet extends HttpServlet {
 		response.sendRedirect("Ward?action=viewAllWards");
 	}
 	
-	private void updateWard (HttpServletRequest request, HttpServletResponse response) {
+	private void updateWard (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int id = Integer.parseInt(request.getParameter("wardId"));
+		int deptId = Integer.parseInt(request.getParameter("selectOption"));
+		String name= request.getParameter("wardName");
+		String departmentName="";
+		String message = "";
+		List<Ward> wardList = wardDAO.viewAllWard();
+		boolean isFound=false;
+		Ward ward=  wardDAO.viewWard(id);
+		Ward updateW=new Ward(id, name, deptId);
 		
-		
-		
-	}
+		if(!ward.getName().equals(name)){
+	
+		for(Ward w:wardList){
+			
+				if(w.getName().equals(name)){
+					message=" Ward Name " +name + " already exists..";			
+					isFound=true;
+				}
+			}
+
+		}else if(ward.getDeptId()!=deptId){
+			
+			wardDAO.updateWard(updateW);
+			message=" Department " +name + " Updated..";
+		}
+	
+		if(isFound==false){
+			if(ward.getDeptId()!=deptId){
+				message=" Department " +name + " Updated..";
+			}
+
+			if(wardDAO.updateWard(updateW))
+				{
+				message +=" Ward " +name + " Updated..";
+				}else
+					{
+						message=" Ward " +name + " cannot add!! Some error Occured";
+					}
+			
+			}
+		request.setAttribute("message", message);
+		viewAllWards(request,response); 
+		}	 
 	
 	private void updateWardForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int id = Integer.parseInt(request.getParameter("wardId"));
-		
-		
-		
-		List<Ward> wardList = wardDAO.viewWard();
+		int deptId = Integer.parseInt(request.getParameter("departmentId"));
+		String departmentName="";
+
+ 
+
 		List<Department> departmentList =wardDAO.viewDepartment();
+		for(Department d:departmentList){
+			if(d.getId()==deptId){
+				departmentName=d.getName();
+				System.out.println(departmentName);
+				request.setAttribute("departmentName", departmentName);
+			}
+		}
 		
+		Ward w= wardDAO.getWardById(id);
 		
+		request.setAttribute("ward", w);
 		request.setAttribute("departmentList", departmentList);
 		
 
@@ -93,7 +142,7 @@ public class WardServlet extends HttpServlet {
 		int deptId=Integer.parseInt(request.getParameter("selectOption"));
 		String wardName=request.getParameter("wardName");
 		String message = "";
-		List<Ward> wardList = wardDAO.viewWard();
+		List<Ward> wardList = wardDAO.viewAllWard();
 		boolean isFound=false;
 		
 		for(Ward w:wardList){
@@ -119,8 +168,6 @@ public class WardServlet extends HttpServlet {
 		}
 		request.setAttribute("message", message);
 		viewAllWards(request,response);
-//		response.sendRedirect("Ward?action=viewAll");
-
 	}
 	
 	private void addWardForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -138,7 +185,7 @@ public class WardServlet extends HttpServlet {
 	private void viewAllWards(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		List<Ward> wardList = wardDAO.viewWard();
+		List<Ward> wardList = wardDAO.viewAllWard();
 		
 		List<Department> departmentList =wardDAO.viewDepartment();
 		
