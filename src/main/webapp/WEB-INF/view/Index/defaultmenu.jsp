@@ -14,7 +14,7 @@
 		<a class="navbar-brand" href="index.jsp"><img src="/HospitalManagementSystem/img/logo.jpg" height=36 width=200></a>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="index.jsp"><span
+				<li><a href="index.jsp"><span
 						class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
 				<li><a href="Index?action=aboutUs"><span
 						class="glyphicon glyphicon-info-sign"></span>About Us</a></li>

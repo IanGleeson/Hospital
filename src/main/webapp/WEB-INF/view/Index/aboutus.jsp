@@ -16,13 +16,6 @@
                 </div>
             </div>
         </header>
-           <div class="container">
-                   <ol class="breadcrumb">
-                       <li><a href="index.jsp">Home</a></li>
-				       <li class="active"><a href="Index?action=aboutUs">About Us</a></li>                
-				       <li><a href="Index?action=contactUs">Contact Us</a></li>
-                   </ol>
-             </div>
              <div class="container">
                  <div><h3>About Us</h3></div>
                  <div class="container">
