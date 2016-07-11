@@ -16,6 +16,8 @@
            </head>
            <body>
 <jsp:include page="/WEB-INF/view/Index/defaultmenu.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/view/Index/superUserMenu.jsp"></jsp:include>
+
                <header class="jumbotron">
        <div class="container">
            <div class="row row-header">
