@@ -30,12 +30,13 @@
                      <div  class="col-xs-8">
                          <h2>Our History</h2>
                          <p>Welcome to Finglas Training Hospital. Our aim is to deliver the highest quality of care to our patients, excellent training to our students, and a friendly, stimulating and professional environment for staff. The information on this website is organised to meet the needs of different types of users. All suggestions for improvement are gratefully received.
-</p>
-<p>                        
-Finglas Training Hospital Hospital was planned, commissioned, and built from 2015 to 2016. It is one of the largest acute general hospitals in Ireland.  The Hospital opened its doors to the public on 29th November 2016.
-<p>Hospital has a bed complement of 820. We are the National Centre for Neurosurgery, Renal and Pancreatic Transplantation and Cochlear Implantation. The Hospital provides a 24-hour emergency service for its own catchment area of approximately 250,000. An average 60 patients per day are admitted for trauma or elective treatment, making it one of the busiest general Hospitals in the country.</p>
+						</p>
+						<p>Finglas Training Hospital Hospital was planned, commissioned, and built from 2015 to 2016. It is one of the largest acute general hospitals
+						 in Ireland.  The Hospital opened its doors to the public on 29th November 2016.</p>
+						<p>Hospital has a bed complement of 820. We are the National Centre for Neurosurgery, Renal and Pancreatic Transplantation and Cochlear
+						 Implantation. The Hospital provides a 24-hour emergency service for its own catchment area of approximately 250,000. An average 60 patients 
+						 per day are admitted for trauma or elective treatment, making it one of the busiest general Hospitals in the country.</p>
 
-                         
                          <div class="well">
                              <blockquote>
                                  <p>Health is wealth. Paying attention to your well being is the first step to happiness</p>
@@ -46,10 +47,10 @@ Finglas Training Hospital Hospital was planned, commissioned, and built from 201
                          </div>
                      </div>
                      <div class="col-xs-4"> 
-        <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Facts At a Glance</h3>
-                    </div>
+        			<div class="panel panel-primary">
+	                    <div class="panel-heading">
+	                        <h3 class="panel-title">Facts At a Glance</h3>
+	                    </div>
                     <div class="panel-body">
                         <dl class="dl-horizontal">
                             <dt>Started</dt>
@@ -62,8 +63,8 @@ Finglas Training Hospital Hospital was planned, commissioned, and built from 201
                             <dd>80</dd>
                        </dl>
                     </div>
-                </div>
-</div>
+                	</div>
+					</div>
                 </div>
     <div class="container">
     <div class="row row-content">
