@@ -12,11 +12,18 @@ import org.hibernate.Transaction;
 import model.User;
 
 public class UserDAO {
-
-	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+	
+	SessionFactory sessionFactory;
 	private boolean loggedIn = false;
 	private static User user;
 	
+	public UserDAO() {
+		try {
+			sessionFactory = HibernateUtil.getSessionFactory();
+		} catch (ExceptionInInitializerError e) {
+			throw e;
+		}
+	}
 	
 	public boolean isLogIn() {
 		return loggedIn;

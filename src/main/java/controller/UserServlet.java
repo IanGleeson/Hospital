@@ -14,12 +14,14 @@ import model.UserType;
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDAO userDAO;
-    
-    public UserServlet() {
-    	userDAO = new UserDAO();
-    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+    		userDAO = new UserDAO();
+		} catch (ExceptionInInitializerError e) {
+			request.setAttribute("serverDown", true);
+		}
+		
 		String action = request.getParameter("action");
 		if (action == null) {
 			action = "viewAllUsers";
