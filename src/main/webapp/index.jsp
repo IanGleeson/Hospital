@@ -23,7 +23,9 @@
            		<div class="row row-header">
                		<div class="col-xs-12 col-sm-8">
                    		<h1>Finglas Hospital</h1>
-                   		<p style="padding:40px;">When it comes to choosing a hospital, one thing is clear: quality counts. And a century-long tradition of providing medical care in a comfortable and convenient environment means peace of mind for the thousands of patients who are cared for by the doctors and nurses at The Finglas Hospital each year.
+                   		<p style="padding:40px;">When it comes to choosing a hospital, one thing is clear: quality counts. And a century-long tradition
+                   		 of providing medical care in a comfortable and convenient environment means peace of mind for the thousands of patients who are
+                   		  cared for by the doctors and nurses at The Finglas Hospital each year.
                    		</p>
                		</div>
                		<div class="col-xs-12 col-sm-4">
