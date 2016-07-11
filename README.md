@@ -5,5 +5,5 @@ This is a collaboration with some classmates to make a hospital management websi
 <h2>How to run</h2>
 Run by cloning the repo, importing it as a maven project and editing hibernate.cfg.xml's connection string to point to your own database
 
-<h4>Warning</h4>
+<h3>Dependencies</h3>
 sqljdbc4.jar(The Java-SQL connector) cannot be downloaded by Maven and must be added manually.
