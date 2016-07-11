@@ -19,7 +19,7 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 
-				<li class="active"><a href="index.jsp"><span
+				<li class="active"><a href=""><span
 						class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
 				<li><a href="Index?action=aboutUs"><span
 						class="glyphicon glyphicon-info-sign"></span>About Us</a></li>

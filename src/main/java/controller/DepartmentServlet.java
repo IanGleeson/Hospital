@@ -95,13 +95,14 @@ public class DepartmentServlet extends HttpServlet {
 		Department updatedeparment = new Department(deptId,name);		
 		boolean departmentId = departmentDAO.updateDepartment(updatedeparment);
 		
-		if(departmentId){ System.out.println("Department "+deparment.getName() +" Upated to "+name);
-		
+		if(departmentId){ 
+		System.out.println("Department "+deparment.getName() +" Upated to "+name);		
 		message = "Department "+deparment.getName() +" Upated to "+name;
 		}
 		else
 		message = "Depatment Name "+deparment.getName()  + " not Updated, error occured please try later..";
-		} else
+		} 
+		else
 		message = name+" Department already exists.. ";
 		request.setAttribute("message", message);
 		viewAllDepartment(request,response);
@@ -137,7 +138,7 @@ public class DepartmentServlet extends HttpServlet {
 		  for(Department d : listOfDepartment){
 			  System.out.println("Department :"+d.getId()+ " Wards: "+d.getWards());
 			  
-		        if(d.getName() != null && d.getName().contains(name)){
+		        if(d.getName() != null && d.getName().equals(name)){
 		        	return true;	
 		          
 		    }
