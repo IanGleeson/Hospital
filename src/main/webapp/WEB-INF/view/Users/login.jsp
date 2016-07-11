@@ -12,8 +12,7 @@
 				<h1>Finglas Hospital Management Application</h1>
 				<p style="padding: 40px;"></p>
 				<p>We take inspiration from the World's best clinics, and create
-					a unique fusion experience. Our treatments will tickle your
-					culinary senses!</p>
+					a unique fusion experience. Our treatments are unique!</p>
 			</div>
 			<div class="col-xs-12 col-sm-4"></div>
 		</div>
