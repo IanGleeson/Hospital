@@ -32,7 +32,7 @@
 			<h2>There are no beds in the database</h2>
 		</c:when>
 		<c:otherwise>
-		<table>
+		<table class="table">
 				<tr><th>Bed Id</th><th>Room Id</th><th>Occupied</th><th>Delete</th><th>Update</th></tr>
 				<c:forEach var="bed" items="${bedsList}">
 					<tr>
