@@ -13,7 +13,7 @@
   
    <header class="jumbotron">
     <div class="row row-header">
-        <div class="col-xs-12 btn btn-primary btn-block" type="button">
+        <div class="col-xs-12 btn btn-primary btn-block">
             What would you like to do?
             <h2>Here you will be able to add, update or delete Departments</h2>
             </div>
@@ -22,7 +22,6 @@
         </header>
     
       
-
     
 <p style="color:red;"><c:out value="${message}"/></p> 
    
