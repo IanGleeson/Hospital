@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-         </div> 
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	</div> 
          <footer class="row row-footer">
                 <div class="container">
                     <div>             
@@ -10,7 +10,9 @@
                                 <li><a href="/HospitalManagementSystem/Index?action=index">Home</a></li>
                                 <li><a href="/HospitalManagementSystem/Index?action=aboutUs">About Us</a></li>                                
                                 <li><a href="/HospitalManagementSystem/Index?action=contactUs">Contact Us</a></li>
-                                <li><a href="/HospitalManagementSystem/Index?action=login">login</a></li>                                              
+                                <c:if test="${ user == null }">
+                                	<li><a href="User?action=showLoginForm">Login</a></li>
+                                </c:if>                                           
                             </ul>
                         </div>
                         <div class="col-xs-6 col-sm-5">
