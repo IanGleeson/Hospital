@@ -22,7 +22,8 @@
 </c:if>
 		
 
-        
+<div class="col-xs-12">
+<div class="table-responsive">       
 <div class="row row-content">
 <div class="container"  id="tab1">
 
@@ -34,9 +35,7 @@
 </ul> 	
 
 <div class="tab-content clearfix">
-<div class="tab-pane active" id="1b">
-<div class="col-xs-12">
-<div class="table-responsive">
+
 
  
 	
