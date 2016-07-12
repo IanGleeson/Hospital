@@ -44,20 +44,31 @@ public class DepartmentServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		if(action==null){
 			action="viewAll";
+			request.setAttribute("viewAll", "active");
 		}
 		switch (action) {
 		case "addDepartment":
+			request.setAttribute("addDepartment", "active");
 			addDepartment(request,response);
 			
 			break;
 		case "editDepartment":
+			request.setAttribute("editDepartment", "active");
 			updateDepartment(request,response);
 			
 			break;		
 		case "deleteDepartment":
+			request.setAttribute("deleteDepartment", "active");
 			deleteDepartment(request,response);
 			
 			break;
+			
+		case "viewDepartment":
+			request.setAttribute("viewDepartment", "active");
+			
+			viewDepartment(request,response);
+			
+			break;			
 
 		default:
 			viewAllDepartment(request,response);
@@ -153,7 +164,7 @@ public class DepartmentServlet extends HttpServlet {
 		
 		/* Get the list of Department from the DAO */
 		List<Department> listOfDepartment = departmentDAO.viewAllDepartment();
-		
+
 		/* Assign the listOfDepartment to an attribute in the request object */
 		request.setAttribute("listOfDepartment", listOfDepartment);
 
@@ -169,7 +180,7 @@ public class DepartmentServlet extends HttpServlet {
 		request.setAttribute("mapOfWards", mapOfWards);*/
 			
 	
-		request.getRequestDispatcher("WEB-INF/view/Department/ViewDepartment.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/view/Department/Department.jsp").forward(request, response);
 
 		
 		
@@ -186,10 +197,9 @@ public class DepartmentServlet extends HttpServlet {
 	}
 	
 	private void viewDepartment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		request.getRequestDispatcher("WEB-INF/iew/Department/ViewDepartment.jsp").
-        forward(request, response);
+		String deptId =  request.getParameter("deptId") ;
+		request.setAttribute("DepartmentIdSelected", deptId);
+		viewAllDepartment(request,response);
 		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
