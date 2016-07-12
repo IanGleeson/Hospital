@@ -1,44 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-        <!DOCTYPE html>
-         <html lang="en">
-             <head>
-                 <meta charset="utf-8">
-                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                 <meta name="viewport" content="width=device-width, initial-scale=1">
-                 <link href="/HospitalManagementSystem/css/bootstrap.min.css" rel="stylesheet">
-                 <link href="/HospitalManagementSystem/css/bootstrap-theme.min.css" rel="stylesheet">
-                 <link href="/HospitalManagementSystem/css/font-awesome.min.css" rel="stylesheet">
-                 <link href="/HospitalManagementSystem/css/bootstrap-social.css" rel="stylesheet">
-                 <link href="/HospitalManagementSystem/css/mystyles.css" rel="stylesheet" >
-                 <title>Hospital Management Website</title>
-
-           </head>
-           <body>
-<jsp:include page="/WEB-INF/view/Index/defaultmenu.jsp"></jsp:include>
-               <header class="jumbotron">
-       <div class="container">
-           <div class="row row-header">
-               <div class="col-xs-12 col-sm-8">
-                   <h1>Hospital Management Application</h1>
-                   <p style="padding:40px;">When it comes to choosing a hospital, one thing is clear: quality counts. And a century-long tradition of providing medical care in a comfortable and convenient environment means peace of mind for the thousands of patients who are cared for by the doctors and nurses at The Finglas Hospital each year.
-                   </p>
-               </div>
-               <div class="col-xs-12 col-sm-4">
-                   <p style="padding:20px"></p>
-                   <img src="img/pix1.jpg" class="img-responsive" height=100%; width=100%;>
-               </div>
-           </div>
-       </div>
-   </header>
-   <div class="container">
-   
-   <ol class="breadcrumb">
-       <li><a href="User">Manage Users</a></li>   
-       <li><a href="Department">Manage Departments</a></li>                
-       <li><a href="Patient">Manage Personnel</a></li>
-   </ol>
-   <div class="row row-content">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+             <meta charset="utf-8">
+              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <link href="/HospitalManagementSystem/css/bootstrap.min.css" rel="stylesheet">
+              <link href="/HospitalManagementSystem/css/bootstrap-theme.min.css" rel="stylesheet">
+              <link href="/HospitalManagementSystem/css/font-awesome.min.css" rel="stylesheet">
+              <link href="/HospitalManagementSystem/css/bootstrap-social.css" rel="stylesheet">
+              <link href="/HospitalManagementSystem/css/mystyles.css" rel="stylesheet" >
+              <title>Hospital Management Website</title>
+	</head>
+	<body>
+		<jsp:include page="/WEB-INF/view/Index/defaultmenu.jsp"></jsp:include>
+		<c:if test="${ loggedIn == true }">
+			<jsp:include page="/WEB-INF/view/Index/superUserMenu.jsp"></jsp:include>
+		</c:if>
+       <header class="jumbotron">
+       		<div class="container">
+           		<div class="row row-header">
+               		<div class="col-xs-12 col-sm-8">
+                   		<h1>Finglas Hospital</h1>
+                   		<p style="padding:40px;">When it comes to choosing a hospital, one thing is clear: quality counts. And a century-long tradition
+                   		 of providing medical care in a comfortable and convenient environment means peace of mind for the thousands of patients who are
+                   		  cared for by the doctors and nurses at The Finglas Hospital each year.
+                   		</p>
+               		</div>
+               		<div class="col-xs-12 col-sm-4">
+                   		<p style="padding:20px"></p>
+                   		<img src="img/pix1.jpg" class="img-responsive" height=100%; width=100%;>
+               		</div>
+           		</div>
+       		</div>
+   		</header>
+   	<div class="container">
+   	<div class="row row-content">
         <div class="col-xs-12 col-sm-3 col-sm-push-9">
             <p style="padding:20px;"></p>
             <h3 align=center>Your health is our concern</h3>
