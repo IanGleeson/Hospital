@@ -15,6 +15,7 @@
 		<option value="doctor">Doctor</option>
 		<option value="admin">Admin</option>
 		<option value="HR">HR</option>
+		<option value="superuser">Super User</option>
 	</select> <input type="submit" value="Add">
 	<br><span>${ errMsg }</span>
 </form>

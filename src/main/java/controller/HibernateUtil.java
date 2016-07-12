@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+
 public class HibernateUtil {
 	
 	/* This class cannot be instantiated and therefore the constructor
@@ -22,7 +24,6 @@ public class HibernateUtil {
 		 * to read the properties. The configure() method uses
 		 * the mapping and properties in that resource/ config file. */
 		Configuration config = new Configuration().configure();
-		
 		config.addAnnotatedClass(model.Patient.class);
 		config.addAnnotatedClass(model.User.class);
 		config.addAnnotatedClass(model.Bill.class);
@@ -37,8 +38,6 @@ public class HibernateUtil {
 		config.addAnnotatedClass(model.Hospital.class);
 		config.addAnnotatedClass(model.RoomType.class);
 
-		
-		
 		/* config.getProperties() gets all the mappings/ properties 
 		 * from the hibernate config file. */
 		StandardServiceRegistryBuilder builder = 
@@ -46,7 +45,11 @@ public class HibernateUtil {
 				applySettings(config.getProperties());
 		
 		/* A SessionFactory is used to create each Session instance */
-		sessionFactory = config.buildSessionFactory(builder.build());
+		try {
+			sessionFactory = config.buildSessionFactory(builder.build());
+        } catch (Exception e) {
+            throw new ExceptionInInitializerError(e);
+        }
 	}
 	
 	/* A static method to return the instance of the sessionFactory */
