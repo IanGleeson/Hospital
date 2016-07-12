@@ -71,6 +71,7 @@ public class DepartmentServlet extends HttpServlet {
 			break;			
 
 		default:
+			request.setAttribute("DepartmentIdSelected", 0);
 			viewAllDepartment(request,response);
 			break;
 		}

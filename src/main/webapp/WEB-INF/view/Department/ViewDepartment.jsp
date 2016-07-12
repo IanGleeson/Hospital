@@ -35,7 +35,7 @@
 			<h2>There are no Department to Display</h2>
 		</c:when>
 		<c:otherwise>
-<h1>Department List  </h1>
+<h1>Department List </h1>
 <div class="table-responsive">
 <table class="table">
 <thead>
@@ -63,7 +63,7 @@
 <c:set var="privateOcupied" value="0" scope="page" />
 <c:set var="privateAvailable" value="0" scope="page" />
 
-<c:if test="${DepartmentIdSelected.isEmpty()}"> 
+<c:if test="${DepartmentIdSelected==0}"> 
 <jsp:include page="ShowallDepartmentNames.jsp"></jsp:include>
 </c:if>
 
