@@ -26,15 +26,9 @@ Update User
 		type="text" name=username value=${ userUpdate.username }> <input
 		type="text" name=password value=${ userUpdate.password }> <select
 		name="usertype">
-<<<<<<< HEAD
-		<option value="doctor" ${userUpdate.userType == 'DOCTOR' ? 'selected' : ''}>Doctor</option>
-		<option value="admin" ${userUpdate.userType == 'ADMIN' ? 'selected' : ''}>Admin</option>
-		<option value="HR" ${userUpdate.userType == 'HR' ? 'selected' : ''}>HR</option>
-=======
 		<option value="doctor" ${user.userType == 'DOCTOR' ? 'selected' : ''}>Doctor</option>
 		<option value="admin" ${user.userType == 'ADMIN' ? 'selected' : ''}>Admin</option>
 		<option value="HR" ${user.userType == 'HR' ? 'selected' : ''}>HR</option>
->>>>>>> branch 'master' of https://github.com/IanGleeson/Hospital.git
 		<option value="superuser" ${user.userType == 'SUPERUSER' ? 'selected' : ''}>Super User</option>
 	</select> <input type="submit" value="Update User">
 </form>
