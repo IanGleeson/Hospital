@@ -74,7 +74,6 @@
 							</td>
 							<td>
 							${room.type==1 ? 'Public' : room.type==2 ? 'Semi-Private' : room.type==3 ? 'Private' : ''}
-							${room.type==1 ? 'Public' : room.type==2 ? 'Semi-Private' : room.type==3 ? 'Private' : ''}
 							</td>
 							<td>
 							${room.beds.size()}
@@ -142,9 +141,9 @@
                         	</tbody>
 							</table>
 							</div>	  
-
-                 <h3>Public Bed layout</h3>
-                            <table class="table"  style="border-collapse: collapse;border-spacing: 10px;border-spacing: 10;" >                                              	                           
+                 <h3><u><b>${ward.name}</b>Ward Bed layout</u></h3>
+                 <h4>Public Room</h4>
+                            <table align="left"  style="border-spacing: 10;border-spacing: 10;" >                                              	                           
                 
 							<tr align="center">
 							<c:forEach var="counter" begin="1" end="${publicOcupied}">
@@ -177,8 +176,8 @@
 						    </tr>				
                        	  </table>
                        	   <c:set var="counter" value="1" scope="page" />
-          <h3>Semi Public Bed layout</h3>
-                            <table class="table"  style="border-collapse: collapse;border-spacing: 10px;border-spacing: 10;" >                                              	                           
+          <h4>Semi Public Room</h4>
+                            <table align="left" style="border-collapse: collapse;border-spacing: 10px;border-spacing: 10;" >                                              	                           
                 
 							<tr align="center">
 							<c:forEach var="counter" begin="1" end="${semipublicOcupied}">
@@ -212,34 +211,43 @@
                        	  </table>  
                        	  <c:set var="counter" value="1" scope="page" />
                        	  
-                       	  
+                       	   <table  style="border-collapse: collapse;border-spacing: 10px;border-spacing: 10;" > 
+                       	   <tr>
+                       	   <td>
+                             <h4>Private Room 1 </h4>                           
+                           </td>
+                            <td>
+                             <h4>Private Room 2 </h4>                           
+                           </td>
+                            <td>
+                             <h4>Private Room 3 </h4>                           
+                           </td>
+                            <td>
+                             <h4>Private Room 4 </h4>                           
+                           </td>
+                           </tr>
+                           <tr>
                        	  <c:forEach var="counter" begin="1" end="${privateOcupied}">
-                       	    <h3>Private Room <c:out value="${counter}"/> Bed layout</h3>
-                            <table class="table"  style="border-collapse: collapse;border-spacing: 10px;border-spacing: 10;" >                                              	                           
-  							<tr align="center">							
- 							<td><img src="/HospitalManagementSystem/img/occupied.jpg" height=100 width=100></td>				
-						    </tr>				
-                       	  </table>                  	  
+                       	  					
+ 							<td><img src="/HospitalManagementSystem/img/occupied.jpg" height=100 width=100></td>		
+	              	  
                        	   </c:forEach> 
                        	   
                        	    <c:forEach var="counter" begin="${privateOcupied+1}" end="${privateAvailable+privateOcupied}">
-                       	    <h3>Private Room <c:out value="${counter}"/> Bed layout</h3>
-                            <table class="table"  style="border-collapse: collapse;border-spacing: 10px;border-spacing: 10;" >                                              	                           
-  							<tr align="center">							
+                       	   
  							<td><img src="/HospitalManagementSystem/img/available.jpg" height=100 width=100></td>				
-						    </tr>				
-                       	  </table>                  	  
+						   				
                        	   </c:forEach> 
                        	   
                          <c:forEach var="counter" begin="${privateAvailable+privateOcupied+1}" end="4">
-                       	    <h3>Private Room <c:out value="${counter}"/> Bed layout</h3>
-                            <table class="table"  style="border-collapse: collapse;border-spacing: 10px;border-spacing: 10;" >                                              	                           
-  							<tr align="center">							
+                       	   	
  							<td><img src="/HospitalManagementSystem/img/nobed.jpg" height=100 width=100></td>				
-						    </tr>				
-                       	  </table>                  	  
-                       	   </c:forEach>                     	   
-                       	  
+                	  
+                       	   </c:forEach>                    	   
+
+                       	   </tr>
+                       	   </table>
+                       	   <p  class="clearfix"><br></p>
 						<c:set var="publicOcupied" value="0" scope="page" />
 						<c:set var="publicAvailable" value="0" scope="page" />
 						<c:set var="semipublicOcupied" value="0" scope="page" />
