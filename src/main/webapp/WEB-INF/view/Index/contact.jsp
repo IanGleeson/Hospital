@@ -17,13 +17,6 @@
 </div>
 </header>
 <div class="container">
-<div class="row">
-    <ul class="breadcrumb">
-   		<li><a href="index.jsp">Home</a></li>
-		<li><a href="Index?action=aboutUs">About Us</a></li>                
-		<li class="active"><a href="Index?action=contactUs">Contact Us</a></li>
-    </ul>
-</div>
    <div class="col-xs-12"><h3>Contact Us</h3><hr></div>
 </div>
 <div class="row row-content">

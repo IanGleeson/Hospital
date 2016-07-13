@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,13 +15,14 @@ import model.UserType;
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDAO userDAO;
-       
-   
-    public UserServlet() {
-    	userDAO = new UserDAO();
-    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+    		userDAO = new UserDAO();
+		} catch (ExceptionInInitializerError e) {
+			request.setAttribute("serverDown", true);
+		}
+		
 		String action = request.getParameter("action");
 		if (action == null) {
 			action = "viewAllUsers";
@@ -38,7 +40,7 @@ public class UserServlet extends HttpServlet {
 		case "showUpdateUserForm":
 			int userId = Integer.parseInt(request.getParameter("userId"));
 			User user = userDAO.getUserById(userId);
-			request.setAttribute("user", user);
+			request.setAttribute("userUpdate", user);
 			request.getRequestDispatcher("/WEB-INF/view/Users/updateUser.jsp").forward(request, response);
 			break;
 		case "addUser":
@@ -118,12 +120,18 @@ public class UserServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		if (userDAO.login(username, password)) {
-			request.getSession().setAttribute("user", userDAO.getUser());
-			request.setAttribute("loggedIn", true);
 			request.changeSessionId();
+			User user = userDAO.getUser();
+			request.getSession().setAttribute("user", user);
+			request.getSession().setAttribute("loggedIn", true);
+			if (request.getParameter("remember") != null) {
+				Cookie c = new Cookie("userid", user.getUsername());
+			    c.setMaxAge(24*60*60);
+			    response.addCookie(c);
+			}
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}else{
-			request.setAttribute("loggedIn", false);
+			request.getSession().setAttribute("loggedIn", false);
 			request.setAttribute("failedLogInMsg", "Username or password incorrect");
 			request.getRequestDispatcher("/WEB-INF/view/Users/login.jsp").forward(request, response);
 		}

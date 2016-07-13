@@ -1,17 +1,10 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="/HospitalManagementSystem/css/style.css">
-<title>View Bed</title>
-</head>
-<body>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<jsp:include page="/WEB-INF/view/Index/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/view/Index/defaultmenu.jsp"></jsp:include>
+
 <header>
 <center><h1>View all Beds</h1></center>
 </header>
@@ -39,7 +32,7 @@
 			<h2>There are no beds in the database</h2>
 		</c:when>
 		<c:otherwise>
-		<table>
+		<table class="table">
 				<tr><th>Bed Id</th><th>Room Id</th><th>Occupied</th><th>Delete</th><th>Update</th></tr>
 				<c:forEach var="bed" items="${bedsList}">
 					<tr>
@@ -66,5 +59,5 @@
 
 </c:choose>
 </div>
-</body>
-</html>
+
+<jsp:include page="/WEB-INF/view/Index/footer.jsp" ></jsp:include>

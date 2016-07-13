@@ -10,7 +10,7 @@ pageEncoding="ISO-8859-1"%>
 <header class="jumbotron">
     <div class="row row-header">
         <div class="col-xs-12 btn btn-primary btn-block" type="button">
-            What would you like to do?
+            
             <h2>Here you will be able to add Wards</h2>
             </div>
 

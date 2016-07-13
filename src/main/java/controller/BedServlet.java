@@ -96,7 +96,7 @@ public class BedServlet extends HttpServlet {
 	private void showAddForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
 		// Get the bed list
 		
-		List<Ward> wardList = wardDAO.viewWard();
+		List<Ward> wardList = wardDAO.viewAllWard();
 		request.setAttribute("wardList",wardList);
 		
 		String strWardOption = "16";//request.getParameter("wardOption");
