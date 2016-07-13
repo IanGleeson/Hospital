@@ -14,10 +14,4 @@
 	<input type="text" name="id" value="${doctor.id}"></p> 
 	<p><input type="submit" value="DELETE DOCTOR"/></p> 
 </form>
-</body>
-	
-	
-	 
-	
-</body>
-</html>
+<jsp:include page="/WEB-INF/view/Index/footer.jsp"></jsp:include>

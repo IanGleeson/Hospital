@@ -12,5 +12,4 @@
 		<label>DoctorId</label> <input type="text" name="doctorId"> <input
 			type="submit" value="Submit">
 	</form>
-</body>
-</html>
+<jsp:include page="/WEB-INF/view/Index/footer.jsp"></jsp:include>

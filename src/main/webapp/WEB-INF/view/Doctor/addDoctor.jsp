@@ -37,5 +37,4 @@
 	 
 	<p><input type="submit" value="ADD DOCTOR"/></p> 
 </form>
-</body>
-</html>
+<jsp:include page="/WEB-INF/view/Index/footer.jsp"></jsp:include>

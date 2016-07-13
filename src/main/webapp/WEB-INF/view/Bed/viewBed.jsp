@@ -4,26 +4,37 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <jsp:include page="/WEB-INF/view/Index/header.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/view/Index/defaultmenu.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/view/Index/superUserMenu.jsp"></jsp:include>
+		<header class="jumbotron">
+    <div class="row row-header">
+        <div class="col-xs-12 btn btn-primary btn-block" type="button" style="cursor:default">
+            
+            <h2>Here you will be able to view, and add beds</h2>
+            </div>
 
-<header>
-<center><h1>View all Beds</h1></center>
-</header>
+        </div>
+        </header>
 
 <div id="wrapper">
 
+<div class="row row-content">
 <ul>
-  <li><a href="<c:url value="BedServlet?action=viewAll"/>">View Beds</a></li>
+  <li  class="btn btn-primary"><a href="<c:url value="BedServlet?action=viewAll"/>">View Beds</a></li>
+  <div  class="btn btn-primary btn-sm"><a href="<c:url value="Ward?action=delete"><c:param name="wardId" value="${ward.id}"/></c:url>"><button type="submit">delete</button></a>
+</div>
  
   
-  <li><a href="<c:url value="BedServlet?action=showAddForm"/>">Add Bed</a></li>
+  <div class="btn btn-primary btn-sm"><a href="<c:url value="BedServlet?action=showAddForm"/>">Add Bed</a></div>
   
-  <li><a href="BedServlet?action=bedLayout">Layout</a></li>
   
-  <li>
+  <li ><a href="BedServlet?action=bedLayout">Layout</a></li>
+  
+  <div  class="btn btn-primary btn-sm"><a href="<c:url value="Ward?action=delete"><c:param name="wardId" value="${ward.id}"/></c:url>"><button type="submit">delete</button></a>
+</div>
   	  <c:if test="${username != null}">
 		<a href="<c:url value="#"/>">Logout</a>
 	</c:if>
-  </li>
+ 
 </ul>
 
 
@@ -58,6 +69,7 @@
 		</c:otherwise>
 
 </c:choose>
+</div>
 </div>
 
 <jsp:include page="/WEB-INF/view/Index/footer.jsp" ></jsp:include>

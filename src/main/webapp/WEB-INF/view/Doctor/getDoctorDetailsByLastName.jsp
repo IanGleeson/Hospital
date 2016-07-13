@@ -14,5 +14,4 @@ Hey, ya made it to the getDocsByLastName jsp yeah hooray!!! celebrate!
 <input type="text" name="doctorLastName">
 <input type="submit" value="Submit">
 </form>
-</body>
-</html>
+<jsp:include page="/WEB-INF/view/Index/footer.jsp"></jsp:include>

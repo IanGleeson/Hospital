@@ -60,6 +60,4 @@
 
 	<a href="<c:url value="DoctorServlet?action=showUpdateForm"/>">
 		Update a Doctor</a>
-	</body>
-
-</html>
+<jsp:include page="/WEB-INF/view/Index/footer.jsp"></jsp:include>

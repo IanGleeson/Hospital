@@ -21,5 +21,4 @@
 
 
 </form>
-</body>
-</html>
+<jsp:include page="/WEB-INF/view/Index/footer.jsp"></jsp:include>
