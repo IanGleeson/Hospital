@@ -16,18 +16,18 @@
        	<div id="navbar" class="nav navbar-nav navbar-collapse collapse pull-right">
        		<div class="btn btn-group">
        			<c:choose>
-					<c:when test="${user.userType == SUPERUSER}">
+					<c:when test="${user.userType == 'SUPERUSER'}">
 						<a type="button" class="btn btn-primary" href="User">Manage Users</a>
 						<a type="button" class="btn btn-primary" href="Patient">Manage Personnel</a>
 						<a type="button" class="btn btn-primary" href="Department">Manage Departments</a>
 					</c:when>
-					<c:when test="${user.userType == ADMIN}">
+					<c:when test="${user.userType == 'ADMIN'}">
 						<a type="button" class="btn btn-primary" href="User">Manage Users</a>
 					</c:when>
-					<c:when test="${user.userType == HR}">
+					<c:when test="${user.userType == 'HR'}">
 						<a type="button" class="btn btn-primary" href="Patient">Manage Personnel</a>
 					</c:when>
-					<c:when test="${user.userType == DOCTOR}">
+					<c:when test="${user.userType == 'DOCTOR'}">
 						<a type="button" class="btn btn-primary" href="Department">Manage Departments</a>
 					</c:when>
 				</c:choose>

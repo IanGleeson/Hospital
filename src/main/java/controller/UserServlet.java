@@ -125,7 +125,7 @@ public class UserServlet extends HttpServlet {
 			request.getSession().setAttribute("user", user);
 			request.getSession().setAttribute("loggedIn", true);
 			if (request.getParameter("remember") != null) {
-				Cookie c = new Cookie("userid", user.getUsername());
+				Cookie c = new Cookie("userid", String.valueOf(user.getId()));
 			    c.setMaxAge(24*60*60);
 			    response.addCookie(c);
 			}
@@ -136,6 +136,16 @@ public class UserServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/view/Users/login.jsp").forward(request, response);
 		}
 	}
+	
+	protected void loginWithCookie(HttpServletRequest request, HttpServletResponse response) {
+		Cookie[] cookies = request.getCookies();
+		for (Cookie cookie : cookies) {
+			if (cookie.getName() == "userId") {
+				User user = userDAO.getUserById(Integer.parseInt(cookie.getValue()));
+				request.getSession().setAttribute("user", user);
+				}
+			}
+		}
 	
 	protected void changePassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

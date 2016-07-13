@@ -28,5 +28,4 @@
 			<input type="submit" value="Submit" />
 		</p>
 	</form>
-</body>
-</html>
+<jsp:include page="/WEB-INF/view/Index/footer.jsp"></jsp:include>

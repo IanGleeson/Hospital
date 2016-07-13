@@ -84,6 +84,33 @@ public String getWardNames() {
 	}
 	return wardNames;
 }
+public int getBedCountisOccupied() {
+	int bedcount=0;
+	for(Ward ward:wards){		
+		for(Room room:ward.getRooms()){		
+			for(Bed bed:room.getBeds()){		
+			 	if(bed.isOccupied()){
+			 		bedcount++;
+			 	}
+			}	
+		}	
+	}
+	return bedcount;
+}
+public int getBedCountisAvailable() {
+	int bedcount=0;
+	for(Ward ward:wards){		
+		for(Room room:ward.getRooms()){		
+			for(Bed bed:room.getBeds()){		
+			 	if(!bed.isOccupied()){
+			 		bedcount++;
+			 	}
+			}	
+		}	
+	}
+	return bedcount;
+}
+
 
 /**
  * @param wards the wards to set
@@ -139,5 +166,7 @@ public boolean equals(Object obj) {
 public String toString() {
 	return "Department [Id=" + Id + ", Name=" + Name + ", wards=" + wards + "]";
 }
+
+
 
 }
