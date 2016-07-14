@@ -38,7 +38,12 @@
 		<h1>View Department</h1>
 			<h2>There are no Department to Display</h2>
 		</c:when>
-		<c:otherwise>
+		
+	    <c:when test="${DepartmentIdSelected==0}">
+		<jsp:include page="ShowallDepartmentNames.jsp"></jsp:include>
+		</c:when>
+
+    	<c:otherwise>
 <h1>Department List </h1>
 <div class="table-responsive">
 <table class="table">
@@ -67,10 +72,6 @@
 <c:set var="privateOcupied" value="0" scope="page" />
 <c:set var="privateAvailable" value="0" scope="page" />
 
-<c:if test="${DepartmentIdSelected==0}"> 
-I AM HERE
-<jsp:include page="ShowallDepartmentNames.jsp"></jsp:include>
-</c:if>
 
 <c:forEach var="department" items="${listOfDepartment}">
  <c:if test="${department.id==DepartmentIdSelected}">  
@@ -180,7 +181,100 @@ I AM HERE
 							</tr>
                             </tbody>
                             </table> 
-                        	                 <h3><u><b>${ward.name}</b>Ward Bed layout</u></h3>
+                            
+                            
+                            <table class="table" Style="bgcolor:blue;" >
+							<thead>
+							<tr>
+							<th><span class="badge">Room Types</span></th>
+						    <th><span class="badge">Rooms</span></th>							
+							<th><span class="badge">Beds</span></th>
+							<th><span class="badge">Occupied</span></th>
+							<th><span class="badge">Available</span></th>
+							</tr>
+							</thead>
+							<tbody>	
+							<tr bgcolor="#004444">
+							<td>
+							<b>Public</b>
+							</td>
+							<td>
+					      <c:set var="room" value="${(publicOcupied + publicAvailable)%6}" scope="page"/>	
+						  	
+						   <c:if test="${room >0  }"> 
+						    <c:set var="room" value="${(publicOcupied + publicAvailable)/6 }" scope="page"/>
+						   	<c:set var="room" value="${room + 1 }" scope="page"/>	
+						   <fmt:formatNumber type="number"        pattern="##" value="${room}" />					   
+						   </c:if>  
+						   
+						   	<c:if test="${room ==0  }"> 
+						    <c:set var="room" value="${(publicOcupied + publicAvailable)/6 }" scope="page"/>						   	
+						    <fmt:formatNumber type="number"        pattern="##" value="${room}" />							   
+						   </c:if>   
+					   
+						   <c:set var="room" value="-1" scope="page"/>
+						   
+							</td>							
+							<td>
+						    ${publicOcupied + publicAvailable} 
+							</td>
+							<td>
+							${publicOcupied}
+							</td>
+							<td>
+					  	    ${publicAvailable} 
+							</td>
+							</tr>
+							<tr bgcolor="#004444">
+							<td>
+							<b>Semi Public</b>
+							</td>							
+							<td>
+						    <c:set var="room" value="${(semipublicOcupied + semipublicAvailable)%4}" scope="page"/>	
+						  
+						   <c:if test="${room >0  }"> 
+						    <c:set var="room" value="${(semipublicOcupied + semipublicAvailable)/4 }" scope="page"/>
+						   	<c:set var="room" value="${room + 1 }" scope="page"/>	
+						   <fmt:formatNumber type="number"        pattern="##" value="${room}" />					   
+						   </c:if>  
+						   
+						   	<c:if test="${room ==0  }"> 
+						    <c:set var="room" value="${(semipublicOcupied + semipublicAvailable)/4 }" scope="page"/>						   	
+						   <fmt:formatNumber type="number"        pattern="##" value="${room}" />							   
+						   </c:if>   
+						   </td>
+						   <td>
+						    ${(semipublicOcupied + semipublicAvailable)}
+							</td>
+							<td>
+							${semipublicOcupied}
+							</td>
+							<td>
+					  	    ${semipublicAvailable} 
+							</td>
+							</tr>
+							<tr bgcolor="#004444">
+							<td>
+							<b>Private</b>
+							</td>
+							<td>
+						    ${privateOcupied + privateAvailable}
+							</td>							
+							<td>
+						    ${privateOcupied + privateAvailable}
+							</td>
+							<td>
+							${privateOcupied}
+							</td>
+							<td>
+					  	    ${privateAvailable} 
+							</td>
+							</tr>
+                            </tbody>
+                            </table>       
+                            
+                            
+                 <h3><u><b>${ward.name}</b>Ward Bed layout</u></h3>
                  <h4>Public Room</h4>
                             <table align="left"  style="border-spacing: 10;border-spacing: 10;" >                                              	                           
                 

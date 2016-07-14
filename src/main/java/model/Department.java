@@ -79,8 +79,12 @@ public Set<Ward> getWards() {
  */
 public String getWardNames() {
 	String wardNames="";
-	for(Ward ward:wards){		
-	 	wardNames += ward.getName() +", ";		
+	int size = wards.size();
+	for(Ward ward:wards){
+		wardNames += ward.getName();
+		if (--size != 0) {
+	 	wardNames +=  ", ";
+		}
 	}
 	return wardNames;
 }
