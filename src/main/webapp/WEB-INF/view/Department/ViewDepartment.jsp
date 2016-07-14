@@ -68,6 +68,7 @@
 <c:set var="privateAvailable" value="0" scope="page" />
 
 <c:if test="${DepartmentIdSelected==0}"> 
+I AM HERE
 <jsp:include page="ShowallDepartmentNames.jsp"></jsp:include>
 </c:if>
 

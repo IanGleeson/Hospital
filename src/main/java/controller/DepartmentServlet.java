@@ -49,19 +49,16 @@ public class DepartmentServlet extends HttpServlet {
 		switch (action) {
 		case "addDepartment":
 			request.setAttribute("addDepartment", "active");
-			request.setAttribute("DepartmentIdSelected", 0);
 			addDepartment(request,response);
 			
 			break;
 		case "editDepartment":
 			request.setAttribute("editDepartment", "active");
-			request.setAttribute("DepartmentIdSelected", 0);
 			updateDepartment(request,response);
 			
 			break;		
 		case "deleteDepartment":
 			request.setAttribute("deleteDepartment", "active");
-			request.setAttribute("DepartmentIdSelected", 0);
 			deleteDepartment(request,response);
 			
 			break;
@@ -70,14 +67,12 @@ public class DepartmentServlet extends HttpServlet {
 			request.setAttribute("viewDepartment", "active");
 			request.setAttribute("DepartmentIdSelected", 0);
 			viewDepartment(request,response);
+			
 			break;			
 
 		default:
-			
 			request.setAttribute("DepartmentIdSelected", 0);
 			viewAllDepartment(request,response);
-			
-
 			break;
 		}
 		
