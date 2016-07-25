@@ -68,5 +68,13 @@
   	<servlet-mapping>
   		<servlet-name>Page</servlet-name>
   		<url-pattern>/Index</url-pattern>
-	</servlet-mapping> 
+	</servlet-mapping>
+	  <servlet>
+    <servlet-name>DoctorServlet</servlet-name>
+    <servlet-class>controller.DoctorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoctorServlet</servlet-name>
+    <url-pattern>/Doctor</url-pattern>
+  </servlet-mapping>
 </web-app>

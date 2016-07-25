@@ -16,7 +16,7 @@ import model.Doctor;
 import model.Gender;
 
 
-@WebServlet({ "/DoctorServlet" })
+
 @SuppressWarnings("unchecked")
 public class DoctorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -183,7 +183,7 @@ public class DoctorServlet extends HttpServlet {
 		System.out.println("the list of doctors is "+ listOfDoctors);
 		request.setAttribute("listOfDoctors", listOfDoctors);
 		System.out.println("you heve set the attribute");
-		request.getRequestDispatcher("WEB-INF/view/viewDoctors.jsp").
+		request.getRequestDispatcher("WEB-INF/view/Doctor/viewDoctors.jsp").
 		forward(request, response);		
 	}	
 
