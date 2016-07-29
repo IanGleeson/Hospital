@@ -9,23 +9,23 @@
     <div class="row row-header">
         <div class="col-xs-12 btn btn-primary btn-block" type="button" style="cursor:default">
             
-            <h2>Here you will be able to add beds</h2>
+            <h6>Here you will be able to add beds</h6>
             </div>
 
         </div>
         </header>
-    
-<div id="wrapper">
+<div class="row row-content">    
+<div class="col-xs-12 btn btn-primary btn-sm">
 
 <ul class="btn btn-group">
-  <li><a href="<c:url value="BedServlet?action=viewAll"/>">View Beds</a></li>
-  <li><a href="<c:url value="BedServlet?action=showAddForm"/>">Add Bed</a></li>
- <li><a href="BedServlet?action=bedLayout">Layout</a></li>
-  <li>
+  <li class="btn btn-primary btn-sm"><a href="<c:url value="BedServlet?action=viewAll"/>"><button type="submit">View Beds</button></a></li>
+  <li class="btn btn-primary btn-sm"><a href="<c:url value="BedServlet?action=showAddForm"/>"><button type="submit">Add Bed</button></a></li>
+ <li class="btn btn-primary btn-sm"><a href="BedServlet?action=bedLayout"><button type="submit">Bed Layout</button></a></li>
+  
   	  <c:if test="${username != null}">
 		<a href="<c:url value="#"/>">Logout</a>
 	</c:if>
-  </li>
+  
 </ul>
 <form action="BedServlet?action=showAddForm" method="POST">
 <div><h1>Search</h1></div>
@@ -57,5 +57,6 @@
 
 </form>
 
+</div>
 </div>
 <jsp:include page="/WEB-INF/view/Index/footer.jsp" ></jsp:include>

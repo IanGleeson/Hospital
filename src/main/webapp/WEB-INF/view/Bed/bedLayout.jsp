@@ -11,27 +11,27 @@
     <div class="row row-header">
         <div class="col-xs-12 btn btn-primary btn-block" type="button" style="cursor:default">
             
-            <h2>Here you will be able to view bed layout</h2>
+            <h6>Here you will be able to view bed layout</h6>
             </div>
 
         </div>
         </header>
-    
-<div id="wrapper">
+ <div class="row row-content">   
+<div class="col-xs-12 btn btn-primary btn-sm">
 
 <ul>
-  <li><a href="<c:url value="BedServlet?action=viewAll"/>">View Beds</a></li>
+  <li class="btn btn-primary btn-sm"><a href="<c:url value="BedServlet?action=viewAll"/>"><button type="submit">View Beds</button></a></li>
  
   
-  <li><a href="<c:url value="BedServlet?action=showAddForm"/>">Add Bed</a></li>
+  <li class="btn btn-primary btn-sm"><a href="<c:url value="BedServlet?action=showAddForm"/>"><button type="submit">Add Bed</button></a></li>
   
-  <li><a href="BedServlet?action=bedLayout">Lay out</a></li>
+  <li class="btn btn-primary btn-sm"><a href="BedServlet?action=bedLayout"><button type="submit">Bed Layout</button></a></li>
   
-  <li>
+  
   	  <c:if test="${username != null}">
 		<a href="<c:url value="#"/>">Logout</a>
 	</c:if>
-  </li>
+  
 </ul>
 
 
@@ -48,13 +48,13 @@
 						
 						<td>${bed.roomId}</td>
 						
-						<td bgcolor="lightgreen">
-						<a href="<c:url value="BedServlet?action=delete">
+						<td bgcolor="amber">
+						<a class="btn btn-primary btn-sm" href="<c:url value="BedServlet?action=delete">
 								 <c:param name="bedId" value="${bed.id}"/>
 								 </c:url>">Delete</a>
 						</td>
-						<td bgcolor="lightgreen">
-						<a href="<c:url value="BedServlet?action=showUpdateForm">
+						<td bgcolor="green">
+						<a class="btn btn-primary btn-sm" href="<c:url value="BedServlet?action=showUpdateForm">
 								 <c:param name="bedId" value="${bed.id}"/>
 								 </c:url>">Update</a>
 						</td>
@@ -67,5 +67,6 @@
 		</c:otherwise>
 
 </c:choose>
+</div>
 </div>
 <jsp:include page="/WEB-INF/view/Index/footer.jsp"></jsp:include>
