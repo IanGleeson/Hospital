@@ -11,15 +11,18 @@
     <div class="row row-header">
         <div class="col-xs-12 btn btn-primary btn-block" type="button" style="cursor:default">
            
-            <h2>Here you will be able to update Wards</h2>
+            <h6>Here you will be able to update Wards</h6>
             </div>
 
         </div>
         </header>
+<div class="row row-content">
+
+<div class="col-xs-12 btn btn-primary btn-sm">
 <h1 align ="center">Update ward</h1>
 
 	
-	<h2>Updating Ward -- ${ward.name}  in ${departmentName} -- Department</h2>
+	<h4>Updating Ward -- ${ward.name}  in ${departmentName} -- Department</h4>
 	
 	<h2> Update Ward Details</h2>
 		<form action="Ward?action=updateWard" method="POST">
@@ -45,9 +48,10 @@
 	
 
 		<p>
-			<input type="submit" value="Submit" />
+			<input class="btn btn-primary btn-sm" type="submit" value="Submit" />
 		</p>
 
 	</form>
-	
+	</div>
+	</div>
 <jsp:include page="/WEB-INF/view/Index/footer.jsp"></jsp:include>

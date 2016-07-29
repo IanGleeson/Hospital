@@ -11,12 +11,14 @@ pageEncoding="ISO-8859-1"%>
     <div class="row row-header">
         <div class="col-xs-12 btn btn-primary btn-block" type="button">
             
-            <h2>Here you will be able to add Wards</h2>
+            <h6>Here you will be able to add Wards</h6>
             </div>
 
         </div>
 </header>
- 
+ <div class="row row-content">
+
+<div class="col-xs-12 btn btn-primary btn-sm">
  <div>&nbsp;</div>
 
  <div class="container">
@@ -35,8 +37,8 @@ pageEncoding="ISO-8859-1"%>
 	  						</c:forEach>
 							</select>
 							<div>&nbsp;</div>
-					<div><p><input class="form-control" type = "text" name="wardName" placeholder="Ward Name" required></p></div>
-	<input type="submit" value="Add Ward"/>
+	<div><p><input class="form-control" type = "text" name="wardName" placeholder="Ward Name" required></p></div>
+	<input class="btn btn-primary btn-sm" type="submit" value="Add Ward"/>
 	</div>
 </form>      
                    
@@ -44,6 +46,7 @@ pageEncoding="ISO-8859-1"%>
         </div>
 </div>
 </div>
-
+</div>
+</div>
 <jsp:include page="/WEB-INF/view/Index/footer.jsp" ></jsp:include>
 

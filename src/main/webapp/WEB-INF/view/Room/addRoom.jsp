@@ -11,14 +11,14 @@
     <div class="row row-header">
         <div class="col-xs-12 btn btn-primary btn-block" style="cursor:default">
            
-            <h2>Here you will be able to add room</h2>
+            <h6>Here you will be able to add room</h6>
             </div>
 
         </div>
         </header>
         
 <div class="row row-content">
-<div class="container">
+<div class="col-md-8 col-xs-offset-2 btn btn-primary btn-sm">
 
 	<div class="btn btn-default col-xs-8 col-xs-offset-2" style="cursor:default">Add Room</div>
 	<div class="col-xs-12 col-sm-6 col-sm-offset-3">

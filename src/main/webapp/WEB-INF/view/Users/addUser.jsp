@@ -7,6 +7,9 @@
 <header>
 	<span class="back"><a href="User">Back</a></span>
 </header>
+<div class="row row-content">
+
+<div class="col-xs-12 btn btn-primary btn-sm">
 <br>Add User
 <form action="User?action=addUser" method="post">
 	<input type="text" name=username placeholder="Username" required>
@@ -20,4 +23,6 @@
 	<br><span>${ errMsg }</span>
 </form>
 <br>
+</div>
+</div>
 <jsp:include page="/WEB-INF/view/Index/footer.jsp"></jsp:include>

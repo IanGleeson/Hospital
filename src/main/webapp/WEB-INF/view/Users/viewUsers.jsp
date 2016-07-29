@@ -11,21 +11,25 @@
     <div class="row row-header">
         <div class="col-xs-12 btn btn-primary btn-block" type="button" style="cursor:default">
             
-            <h2>Here you will be able to view all users</h2>
+            <h6>Here you will be able to view all users</h6>
             </div>
 
         </div>
         </header>
 
 <span class="back"><a href="index.jsp">Back</a></span>
-<br><br>
+
+<div class="row row-content">
+
+<div class="col-xs-12 btn btn-primary btn-sm">
+
 <c:choose>
 	<c:when test="${listOfUsers.isEmpty()}">
 		<h2>There are no users in the database</h2>
 	</c:when>
 	<c:otherwise>
-	<div class="container" class="table-responsive">
-	<div class="col-lg-10 col-xs-offset-1">
+	
+	
 	<a class="btn-sm btn-primary pull-right" href="<c:url value="User?action=showAddUserForm"></c:url>">Add User</a>
 		<table class="table">
 		<thead>
@@ -58,9 +62,10 @@
 			</c:forEach>
 			</tbody>
 		</table>
-		</div>
-		</div>
+		
+		
 	</c:otherwise>
 </c:choose>
-<br>
+</div>
+</div>
 <jsp:include page="/WEB-INF/view/Index/footer.jsp"></jsp:include>

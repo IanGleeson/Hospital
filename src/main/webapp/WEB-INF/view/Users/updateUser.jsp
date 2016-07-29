@@ -11,14 +11,18 @@
     <div class="row row-header">
         <div class="col-xs-12 btn btn-primary btn-block" type="button" style="cursor:default">
             
-            <h2>Here you will be able to update users</h2>
+            <h6>Here you will be able to update users</h6>
             </div>
 
         </div>
         </header>
 
 <span class="back"><a href="User">Back</a></span>
-<br><br>
+
+<div class="row row-content">
+
+<div class="col-xs-12 btn btn-primary btn-sm">
+
 Update User
 <br>
 <form action="User?action=updateUser" method="post">
@@ -30,7 +34,9 @@ Update User
 		<option value="admin" ${user.userType == 'ADMIN' ? 'selected' : ''}>Admin</option>
 		<option value="HR" ${user.userType == 'HR' ? 'selected' : ''}>HR</option>
 		<option value="superuser" ${user.userType == 'SUPERUSER' ? 'selected' : ''}>Super User</option>
-	</select> <input type="submit" value="Update User">
+	</select> 
+	<input class="btn btn-primary btn-sm" type="submit" value="Update User">
 </form>
-<br>
+</div>
+</div>
 <jsp:include page="/WEB-INF/view/Index/footer.jsp"></jsp:include>

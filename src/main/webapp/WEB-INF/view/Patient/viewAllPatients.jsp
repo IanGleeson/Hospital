@@ -1,19 +1,22 @@
-   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"pageEncoding="ISO-8859-1"%>
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+   pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <jsp:include page="/WEB-INF/view/Index/header.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/view/Index/defaultmenu.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/view/Index/superUserMenu.jsp"></jsp:include>
 		<header class="jumbotron">
-    <div class="row row-header">
+
+<div class="row row-header">
         <div class="col-xs-12 btn btn-primary btn-block" style="cursor:default">
             <h6>Here you will be able to view and manage all patients</h6>
         </div>
 
         </div>
         </header>
+        
 <div class="row row-content">
-<div class="col-xs-12 btn btn-primary btn-sm">
+<div class="col-md-12 btn btn-primary btn-sm">
 
 	<c:choose>
 		<c:when test="${allPatients.isEmpty()}">
@@ -70,42 +73,42 @@
 						<td>${patient.patientType}</td>
 						<td>${patient.alive}</td>
 
-						<td><a class="btn btn-xs btn-primary btn-group"
+						<td bgcolor="amber"><a class="btn btn-xs btn-primary btn-group"
 							href="<c:url value="PatientServlet?action=showUpdatePatientForm">
 								 <c:param name="patientId" value="${patient.id}"/>
 								 </c:url>">Update Details</a>
 						</td>
 
-						<td><a class="btn-xs btn-primary btn-group"
+						<td bgcolor="green"><a class="btn-xs btn-primary btn-group"
 							href="<c:url value="PatientServlet?action=viewNotes">
 								 <c:param name="patientId" value="${patient.id}"/>
 								 <c:param name="patientName" value="${patient.forename} ${patient.surname}"/>
 								 </c:url>">
 								View Notes</a></td>
-						<td><a class="btn-xs btn-primary btn-group"
+						<td bgcolor="amber"><a class="btn-xs btn-primary btn-group"
 							href="<c:url value="PatientServlet?action=viewPrescriptions">
 								 <c:param name="patientId" value="${patient.id}"/>
 								 </c:url>">
 								View Prescriptions</a></td>
-						<td><a class="btn-xs btn-primary btn-group"
+						<td bgcolor="green"><a class="btn-xs btn-primary btn-group"
 							href="<c:url value="BillServlet?action=showAddBillForm">
 								 <c:param name="patientId" value="${patient.id}"/>
 								 </c:url>">Add
 								Bills</a></td>
 
-						<td><a class="btn btn-xs btn-primary btn-group"
+						<td bgcolor="amber"><a class="btn btn-xs btn-primary btn-group"
 							href="<c:url value="BillServlet?action=viewBills">
 								 <c:param name="patientId" value="${patient.id}"/>
 								 </c:url>">View Bills</a>
 						</td>
 								 
-								 <td><a class="btn-xs btn-primary btn-group"
+						<td bgcolor="green"><a class="btn-xs btn-primary btn-group"
 							href="<c:url value="PatientServlet?action=showAddNoteForm">
 								 <c:param name="patientId" value="${patient.id}"/>
 								 <c:param name="patientName" value="${patient.forename} ${patient.surname}"/>
 								 </c:url>">Add Notes</a></td>
 								 
-								 <td><a class="btn-xs btn-primary btn-group" 	href="<c:url value="PatientServlet?action=showAddPrescriptionForm">
+							<td bgcolor="amber"><a class="btn-xs btn-primary btn-group" 	href="<c:url value="PatientServlet?action=showAddPrescriptionForm">
 								 <c:param name="patientId" value="${patient.id}"/>
 								 </c:url>">Add Prescriptions</a></td>
 

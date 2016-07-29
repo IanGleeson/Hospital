@@ -11,35 +11,30 @@
     <div class="row row-header">
         <div class="col-xs-12 btn btn-primary btn-block" type="button" style="cursor:default">
             What would you like to do?
-            <h2>Here you will be able to add, update or delete Wards</h2>
+            <h6>Here you will be able to add, update or delete Wards</h6>
             </div>
 
         </div>
         </header>
 		<br>
+<div class="row row-content">
+
+<div class="col-xs-12 btn btn-primary btn-sm">
+
 <c:if test="${message!=null}">
 	<button class="btn btn-primary col-sm-offset-5" style="cursor:default"><p><c:out value="${message}" /></p></button>
 </c:if>
-		
 
-        
-<div class="row row-content">
-<div class="container"  id="tab1">
 
 <ul  class="nav nav-pills">
-            <li class="active">  <a  href="#1b" data-toggle="tab">Wards</a></li>
-			<li><a href="#2b" data-toggle="tab">Add Ward</a></li>
-			<li><a href="#3b" data-toggle="tab">Update Ward</a></li>
-			<li><a href="#4b" data-toggle="tab">Delete Ward</a></li>
+            <li class="btn btn-primary btn-sm active">  <a  href="#1b" data-toggle="tab"><button type="submit">Wards</button></a></li>
+			<li class="btn btn-primary btn-sm"><a href="#2b" data-toggle="tab"><button type="submit">Add Ward</button></a></li>
+			<li class="btn btn-primary btn-sm"><a href="#3b" data-toggle="tab"><button type="submit">Update Ward</button></a></li>
+			<li class="btn btn-primary btn-sm"><a href="#4b" data-toggle="tab"><button type="submit">Delete Ward</button></a></li>
 </ul> 	
 
-<div class="tab-content clearfix">
-<div class="tab-pane active" id="1b">
-<div class="col-xs-12">
-<div class="table-responsive">
+<div>
 
- 
-	
 		<p>
 		
 			<c:choose>
@@ -92,9 +87,8 @@
 	
 		</p>
 
-</div>
-</div>
-</div>
+
+
 <div class="pull-right"><a href="Ward?action=addWardForm"><button type="submit" class="btn btn-primary btn-sm">Add Ward</button></a>
 
 
