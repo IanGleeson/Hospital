@@ -7,10 +7,9 @@
 <jsp:include page="/WEB-INF/view/Index/superUserMenu.jsp"></jsp:include>
 		<header class="jumbotron">
     <div class="row row-header">
-        <div class="col-xs-12 btn btn-primary btn-block" type="button" style="cursor:default">
-            
-            <h2>Here you will be able to view, and add beds</h2>
-            </div>
+        <div class="col-xs-12 btn btn-primary btn-block" style="cursor:default">
+            <h6>Here you will be able to view, and add beds</h6>
+        </div>
 
         </div>
         </header>
@@ -18,19 +17,13 @@
 <div id="wrapper">
 
 <div class="row row-content">
-<ul>
-  <li  class="btn btn-primary"><a href="<c:url value="BedServlet?action=viewAll"/>">View Beds</a></li>
-  <div  class="btn btn-primary btn-sm"><a href="<c:url value="Ward?action=delete"><c:param name="wardId" value="${ward.id}"/></c:url>"><button type="submit">delete</button></a>
-</div>
- 
-  
-  <div class="btn btn-primary btn-sm"><a href="<c:url value="BedServlet?action=showAddForm"/>">Add Bed</a></div>
+<ul >
+	<div class="btn btn-primary btn-sm"><a href="<c:url value="BedServlet?action=viewAll"/>">View Beds</a></div>	
+ 	<div class="btn btn-primary btn-sm"><a href="<c:url value="BedServlet?action=showAddForm"/>">Add Bed</a></div>
+  	<div class="btn btn-primary btn-sm"><a href="<c:url value="Ward?action=delete"><c:param name="wardId" value="${ward.id}"/></c:url>"><button type="submit">delete</button></a></div>
+  	<div class="btn btn-primary btn-sm"><a href="BedServlet?action=bedLayout">Bed Layout</a></div>
   
   
-  <li ><a href="BedServlet?action=bedLayout">Layout</a></li>
-  
-  <div  class="btn btn-primary btn-sm"><a href="<c:url value="Ward?action=delete"><c:param name="wardId" value="${ward.id}"/></c:url>"><button type="submit">delete</button></a>
-</div>
   	  <c:if test="${username != null}">
 		<a href="<c:url value="#"/>">Logout</a>
 	</c:if>

@@ -5,14 +5,14 @@
 
 	<c:choose>
 		<c:when test="${listOfDepartment.isEmpty()}">
-		<h1>View Department</h1>
-			<h2>There are no Department to Display</h2>
+		<h4>View Department</h4>
+			<h4>There are no Department to Display</h4>
 		</c:when>
 		<c:otherwise>
-<h1>View Department</h1>	
+<h4>View Department</h4>	
  <div class="col-xs-10">	
 <form class="form-horizontal" role="form" action="Department?action=viewDepartment" method="post">
-<label for="Deptname" class="col-sm-2 control-label">Select Department:</label>
+<label for="Deptname" class="col-sm-4 control-label">Select Department:</label>
  <div class="col-sm-4">
 <select name="deptId" class="form-control">
 <c:forEach var="department" items="${listOfDepartment}">
@@ -20,15 +20,16 @@
 </c:forEach>
 </select>
 </div>
-   <button type="submit" class="btn btn-success btn-lg">View Department</button>                   
+   <button type="submit" class="btn btn-success btn-sm">View Department</button>                   
  
 </form>	
-</div>
-
 <form  action="Department?action=viewDepartment" method="post">
 <input type="hidden" name="deptId" value="0">
-   <button type="submit" class="btn btn-success btn-lg">List Departments</button>   
+   <button type="submit" class="btn btn-success btn-sm">List Departments</button>   
 </form>
+</div>
+
+
 
 		</c:otherwise>
 	</c:choose>

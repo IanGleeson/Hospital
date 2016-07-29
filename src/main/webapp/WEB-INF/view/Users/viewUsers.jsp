@@ -19,39 +19,47 @@
 
 <span class="back"><a href="index.jsp">Back</a></span>
 <br><br>
-<a href="<c:url value="User?action=showAddUserForm"></c:url>">Add User</a>
 <c:choose>
 	<c:when test="${listOfUsers.isEmpty()}">
 		<h2>There are no users in the database</h2>
 	</c:when>
 	<c:otherwise>
-		<table border="1">
+	<div class="container" class="table-responsive">
+	<div class="col-lg-10 col-xs-offset-1">
+	<a class="btn-sm btn-primary pull-right" href="<c:url value="User?action=showAddUserForm"></c:url>">Add User</a>
+		<table class="table">
+		<thead>
 			<tr>
-				<th>Id</th>
-				<th>Username</th>
-				<th>Password</th>
-				<th>Usertype</th>
+				<th><span class="badge">ID</span></th>
+				<th><span class="badge">Username</span></th>
+				<th><span class="badge">Password</span></th>
+				<th><span class="badge">Usertype</span></th>
 				<th></th>
 			</tr>
+			</thead>
+			<tbody>
 			<c:forEach var="user" items="${listOfUsers}">
 				<tr>
 					<td>${user.id}</td>
 					<td>${user.username}</td>
 					<td>${user.password}</td>
 					<td>${user.userType}</td>
-					<td><a
+					<td><a class="btn-sm btn-primary"
 						href="<c:url value="User?action=deleteUser">
 									 <c:param name="userId" value="${user.id}"/>
 									 </c:url>">Delete</a>
 					</td>
-					<td><a
+					<td><a class="btn-sm btn-primary"
 						href="<c:url value="User?action=showUpdateUserForm">
 									 <c:param name="userId" value="${user.id}"/>
 									 </c:url>">Update</a>
 					</td>
 				</tr>
 			</c:forEach>
+			</tbody>
 		</table>
+		</div>
+		</div>
 	</c:otherwise>
 </c:choose>
 <br>

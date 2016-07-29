@@ -15,7 +15,7 @@
     <div class="row row-header">
         <div class="col-xs-12 btn btn-primary btn-block" type="button" style="cursor:default">
             What would you like to do?
-            <h2>Here you will be able to add, update or delete Departments</h2>
+            <h6>Here you will be able to add, update or delete Departments</h6>
             </div>
 
         </div>

@@ -5,11 +5,11 @@
 
 	<c:choose>
 		<c:when test="${listOfDepartment.isEmpty()}">
-		<h1>View Department</h1>
-			<h2>There are no Department to Display</h2>
+		<h5>View Department</h5>
+			<h4>There are no Department to Display</h4>
 		</c:when>
 		<c:otherwise>
-<h1>Department List</h1>
+<h4>Department List</h4>
 <div class="table-responsive">
 <table class="table">
 <thead>
